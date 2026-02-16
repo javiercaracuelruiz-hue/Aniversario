@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario Mi Amor ❤️ - 13/07/2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efecto de estrellas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+            animation: stars 200s linear infinite;
+        }
+
+        .stars::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 10px 10px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 80px 90px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 120px 140px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 200px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            opacity: 0.5;
+        }
+
+        /* Corazones flotantes */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.6);
+            animation: float 6s ease-in infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glitch {
+            font-size: 5rem;
+            font-weight: bold;
+            position: relative;
+            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                         0.025em 0.04em 0 #fffc00;
+            animation: glitch 725ms infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                             0.025em 0.04em 0 #fffc00;
+            }
+            15% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                             0.025em 0.04em 0 #fffc00;
+            }
+            16% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                             -0.05em -0.05em 0 #fffc00;
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                             -0.05em -0.05em 0 #fffc00;
+            }
+            50% {
+                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                             0 -0.04em 0 #fffc00;
+            }
+            99% {
+                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                             0 -0.04em 0 #fffc00;
+            }
+            100% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                             0.025em 0.04em 0 #fffc00;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        /* Password Panel - REGALO SECRETO */
+        .password-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .password-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: gold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .password-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .password-input-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #passwordInput {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            outline: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        #passwordInput:focus {
+            border-color: gold;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        #passwordBtn {
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #passwordBtn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .message-bubble {
+            background: rgba(255, 255, 255, 0.98);
+            color: #333;
+            padding: 25px;
+            border-radius: 25px;
+            position: relative;
+            margin-top: 25px;
+            display: none;
+            animation: bounceIn 0.5s;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid gold;
+        }
+
+        .message-bubble::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid gold;
+        }
+
+        .message-bubble.show {
+            display: block;
+        }
+
+        .message-bubble.error {
+            background: #fff5f5;
+            border-color: #ff6b6b;
+        }
+
+        .message-bubble.error::before {
+            border-bottom-color: #ff6b6b;
+        }
+
+        .message-bubble.success {
+            background: #f0fff4;
+            border-color: #51cf66;
+        }
+
+        .message-bubble.success::before {
+            border-bottom-color: #51cf66;
+        }
+
+        .countdown-small {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 15px;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Countdown section */
+        .countdown-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .countdown-box span:first-child {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-box span:last-child {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Love letter */
+        .love-letter-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .letter-container {
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+            margin-top: 30px;
+        }
+
+        .letter {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.8s;
+        }
+
+        .letter.opened {
+            transform: rotateY(180deg);
+        }
+
+        .letter-front, .letter-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter-front {
+            background: linear-gradient(145deg, #ff6b6b, #ff4757);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .letter-inside {
+            background: white;
+            color: #333;
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .letter-inside p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        /* Balloons */
+        .balloons-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .balloons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            min-height: 200px;
+        }
+
+        .balloon {
+            width: 60px;
+            height: 80px;
+            background: red;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            animation: bounce 1s ease infinite;
+            transition: all 0.3s;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .balloon:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .balloon.popped {
+            opacity: 0;
+            pointer-events: none;
+            animation: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Final message */
+        .final-message {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .heart-animation {
+            font-size: 5rem;
+            animation: heartbeat 1.5s ease infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            35% { transform: scale(1); }
+            45% { transform: scale(1.2); }
+            55% { transform: scale(1); }
+        }
+
+        .surprise-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 75, 75, 0.4);
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 75, 75, 0.6);
+        }
+
+        .surprise-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 3rem;
+            }
+            
+            .countdown-box {
+                min-width: 80px;
+                padding: 15px;
+            }
+            
+            .countdown-box span:first-child {
+                font-size: 2rem;
+            }
+
+            .password-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo de estrellas -->
+    <div class="stars"></div>
+    
+    <!-- Corazones flotantes -->
+    <div class="floating-hearts"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Header con título -->
+        <header class="hero">
+            <h1 class="glitch" data-text="13/07/2026">13/07/2026</h1>
+            <p class="subtitle">Hecho con ❤️ por Javi para ti</p>
+        </header>
+
+        <!-- Panel de REGALO SECRETO -->
+        <section class="password-section">
+            <h2>🎁 REGALO SECRETO 🎁</h2>
+            <p>Introduce la contraseña para descubrir tu regalo especial...</p>
+            
+            <div class="password-container">
+                <div class="password-input-group">
+                    <input type="password" id="passwordInput" placeholder="Escribe la contraseña" autocomplete="off">
+                    <button id="passwordBtn">¡Descubrir!</button>
+                </div>
+                
+                <!-- Bocadillo de mensajes -->
+                <div id="messageBubble" class="message-bubble">
+                    <p id="messageText"></p>
+                    <div id="countdownDisplay" class="countdown-small"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contador regresivo -->
+        <section class="countdown-section">
+            <h2>Tiempo para celebrar nuestro amor</h2>
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <span id="days">00</span>
+                    <span>Días</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="hours">00</span>
+                    <span>Horas</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="minutes">00</span>
+                    <span>Minutos</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="seconds">00</span>
+                    <span>Segundos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carta de amor interactiva -->
+        <section class="love-letter-section">
+            <h2>Una carta para ti</h2>
+            <div class="letter-container">
+                <div class="letter" id="loveLetter">
+                    <div class="letter-front">
+                        <p>💌 Haz clic para abrir</p>
+                    </div>
+                    <div class="letter-inside">
+                        <p>Mi amor,</p>
+                        <p>Cada día a tu lado es un regalo. Este 13 de Julio celebramos no solo un año más, sino cada momento, cada sonrisa y cada abrazo que hemos compartido.</p>
+                        <p>Eres la persona más especial que conozco, y por eso mereces algo único. Esta página es solo un pequeño reflejo de lo mucho que te amo.</p>
+                        <p>Te espero con los brazos abiertos y el corazón lleno de amor para celebrar nuestro día.</p>
+                        <p class="signature">Con todo mi amor,<br>Javi ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Globos interactivos -->
+        <section class="balloons-section">
+            <h2>¡Explota los globos y pide un deseo!</h2>
+            <div class="balloons-container" id="balloonsContainer"></div>
+        </section>
+
+        <!-- Mensaje final -->
+        <section class="final-message">
+            <div class="heart-animation">❤️</div>
+            <h2>Te espero con todo mi corazón</h2>
+            <p>13 de Julio de 2026 - Un día para recordar siempre</p>
+            <button id="surpriseBtn" class="surprise-btn">Haz clic para una sorpresa</button>
+        </section>
+    </div>
+
+    <script>
+        // Configuración de contraseñas
+        const JAVI_PASSWORD = "Patito2026-.-";  // Tu contraseña (acceso inmediato)
+        const ELLA_PASSWORD = "Patito2025";   // La contraseña de ella (verifica fecha)
+        const targetDate = new Date('July 13, 2026 00:00:00').getTime();
+
+        // Elementos del DOM
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordBtn = document.getElementById('passwordBtn');
+        const messageBubble = document.getElementById('messageBubble');
+        const messageText = document.getElementById('messageText');
+        const countdownDisplay = document.getElementById('countdownDisplay');
+
+        // Función para calcular días restantes
+        function getDaysRemaining() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            return { days, hours, minutes, distance };
+        }
+
+        // Función para mostrar mensaje en el bocadillo
+        function showMessage(message, isError = false, isSuccess = false) {
+            messageBubble.className = 'message-bubble show';
+            
+            if (isError) {
+                messageBubble.classList.add('error');
+                messageBubble.classList.remove('success');
+            } else if (isSuccess) {
+                messageBubble.classList.add('success');
+                messageBubble.classList.remove('error');
+            } else {
+                messageBubble.classList.remove('error', 'success');
+            }
+            
+            messageText.textContent = message;
+        }
+
+        // Función para redirigir a Regalo1.html
+        function goToRegalo() {
+            // Animación de salida
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'scale(0.95)';
+            document.body.style.transition = 'all 0.5s';
+            
+            // Redirigir después de la animación
+            setTimeout(() => {
+                window.location.href = 'Regalo1.html';
+            }, 500);
+        }
+
+        // Manejar clic en el botón de contraseña
+        passwordBtn.addEventListener('click', function() {
+            const enteredPassword = passwordInput.value;
+            const remaining = getDaysRemaining();
+            
+            // Caso 1: Contraseña correcta de Javi (acceso inmediato al regalo)
+            if (enteredPassword === JAVI_PASSWORD) {
+                showMessage('✅ ¡Acceso concedido! Redirigiendo a tu regalo...', false, true);
+                countdownDisplay.innerHTML = '';
+                
+                // Pequeña pausa para mostrar el mensaje antes de redirigir
+                setTimeout(goToRegalo, 1500);
+                
+            // Caso 2: Contraseña correcta de ella (verificar fecha)
+            } else if (enteredPassword === ELLA_PASSWORD) {
+                const now = new Date().getTime();
+                
+                if (now >= targetDate) {
+                    // Ya puede acceder al regalo
+                    showMessage('✨ ¡FELIZ ANIVERSARIO MI AMOR! ✨', false, true);
+                    countdownDisplay.innerHTML = 'Redirigiendo a tu regalo especial...';
+                    
+                    setTimeout(goToRegalo, 2000);
+                } else {
+                    // Mostrar días que faltan
+                    showMessage('📅 Regalo no disponible hasta el 13/07/2026', true, false);
+                    countdownDisplay.innerHTML = `Te quedan ${remaining.days} días, ${remaining.hours} horas y ${remaining.minutes} minutos... 💝`;
+                }
+                
+            // Caso 3: Contraseña incorrecta
+            } else {
+                showMessage('❌ Contraseña incorrecta', true, false);
+                countdownDisplay.innerHTML = '';
+                
+                // Animación de error
+                passwordInput.style.transform = 'translateX(5px)';
+                setTimeout(() => passwordInput.style.transform = 'translateX(-5px)', 50);
+                setTimeout(() => passwordInput.style.transform = 'translateX(5px)', 100);
+                setTimeout(() => passwordInput.style.transform = 'translateX(0)', 150);
+            }
+            
+            // Limpiar input
+            passwordInput.value = '';
+        });
+
+        // Permitir acceder con Enter
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                passwordBtn.click();
+            }
+        });
+
+        // INICIALIZAR TODAS LAS FUNCIONES DE LA PÁGINA PRINCIPAL
+        function initializeMainPage() {
+            // Cuenta regresiva
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Corazones flotantes
+            setInterval(createHeart, 500);
+            
+            // Carta interactiva
+            document.getElementById('loveLetter').addEventListener('click', function() {
+                this.classList.toggle('opened');
+            });
+            
+            // Globos
+            createBalloons(12);
+            
+            // Botón sorpresa
+            document.getElementById('surpriseBtn').addEventListener('click', function() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        createHeart();
+                    }, i * 50);
+                }
+                
+                alert('¡TE AMO! ❤️ Prepárate para el 13/07/2026');
+                
+                document.body.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%)';
+                setTimeout(() => {
+                    document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 1000);
+            });
+        }
+
+        // Funciones existentes
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = String(days).padStart(2, '0');
+            document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        function createBalloons(count) {
+            const balloonColors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#fd79a8'];
+            const balloonsContainer = document.getElementById('balloonsContainer');
+            
+            balloonsContainer.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+                
+                balloon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.add('popped');
+                    createConfetti();
+                });
+                
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 10; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.borderRadius = '50%';
+                confetti.style.zIndex = '9999';
+                confetti.style.animation = `float ${Math.random() * 3 + 2}s linear`;
+                confetti.style.pointerEvents = 'none';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Inicializar todo cuando carga la página
+        window.onload = function() {
+            initializeMainPage();
+        };
+    </script>
+</body>
+</html>

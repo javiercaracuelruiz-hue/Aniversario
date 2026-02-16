@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Regalo Especial - 13/07/2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* MENÚ SUPERIOR */
+        .menu-container {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .menu-item {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: gold;
+        }
+
+        /* Para que el contenido no quede debajo del menú fijo */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 40px 20px;
+        }
+
+        /* Secciones de prueba */
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: gold;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .section p {
+            font-size: 1.5rem;
+            line-height: 2;
+            opacity: 0.9;
+        }
+
+        .section-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        /* Botón volver */
+        .back-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                gap: 15px;
+            }
+            
+            .menu-item {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .section p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MENÚ SUPERIOR FIJO - AHORA CON ENLACES A HTMLs -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="Regalo1.html" class="menu-item">🏠 INICIO</a>
+            <a href="fotos.html" class="menu-item">📸 FOTOS</a>
+            <a href="cartas.html" class="menu-item">💌 CARTAS</a>
+            <a href="videos.html" class="menu-item">🎥 VIDEOS</a>
+            <a href="musica.html" class="menu-item">🎵 MÚSICA</a>
+            <a href="sorpresa.html" class="menu-item">🎁 SORPRESA</a>
+        </nav>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="content">
+        <!-- SECCIÓN INICIO -->
+        <div id="inicio" class="section">
+            <h2>✨ BIENVENIDA MI AMOR ✨</h2>
+            <p>13/07/2025 - 13/07/2026</p>
+            <p>Un año de momentos inolvidables juntos ❤️</p>
+            
+            <div class="section-box">
+                <div class="card">
+                    <h3>365</h3>
+                    <p>Días de amor</p>
+                </div>
+                <div class="card">
+                    <h3>∞</h3>
+                    <p>Momentos felices</p>
+                </div>
+                <div class="card">
+                    <h3>❤️</h3>
+                    <p>Siempre juntos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN PARA VOLVER A LA PÁGINA PRINCIPAL -->
+    <a href="index.html" class="back-button">← Volver</a>
+
+    <script>
+        // Mensaje de bienvenida en consola (solo para ti)
+        console.log('🎁 Regalo especial para el 13/07/2026');
+        console.log('📌 Menú con enlaces a: fotos.html, cartas.html, videos.html, musica.html, sorpresa.html');
+    </script>
+</body>
+</html>
