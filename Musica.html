@@ -1,724 +1,1216 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎵 Tocadiscos del Amor - Nuestra Música</title>
+    <title>🎵 Nuestra Música · Para Estrella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        :root {
+            --gold: #ffd700;
+            --acc: #a855f7;
+            --acc2: #ec4899;
+            --bg: #080810;
+            --surface: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.09);
+            --muted: rgba(255, 255, 255, 0.45);
+            --wood1: #3b1f0e;
+            --wood2: #2a150a;
+            --wood3: #4a2a14;
+            --chrome: #d0d8e4;
+            --chrome2: #8a96a8;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow-x: hidden
         }
 
-        /* MENÚ SUPERIOR - MISMO ESTILO QUE INDEX */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 15% 10%, rgba(168, 85, 247, .15) 0, transparent 70%),
+                radial-gradient(ellipse 60% 60% at 85% 90%, rgba(236, 72, 153, .12) 0, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(99, 102, 241, .06) 0, transparent 70%);
+        }
+
+        /* ── NAV ── */
         .menu-container {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
+            background: rgba(10, 8, 25, .65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, .08)
         }
 
         .menu {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
+            width: 100%;
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px
+        }
+
+        .menu-logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: .95rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: .9;
+            transition: opacity .2s
+        }
+
+        .menu-logo:hover {
+            opacity: 1
+        }
+
+        .menu-logo .logo-date {
+            color: gold
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            padding: 0 20px;
+            flex-wrap: wrap
         }
 
         .menu-item {
-            color: white;
+            color: rgba(255, 255, 255, .65);
             text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 25px;
+            font-size: .78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            transition: color .2s, background .2s;
+            white-space: nowrap
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            color: #fff;
+            background: rgba(255, 255, 255, .1)
+        }
+
+        .menu-item.active {
+            color: gold
+        }
+
+        .menu-vd {
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .07em;
+            padding: 7px 18px;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
+            text-decoration: none;
+            border: none;
             cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 1px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: #fff;
+            box-shadow: 0 0 14px rgba(224, 64, 251, .4);
+            transition: all .25s
         }
 
-        .menu-item:hover, .menu-item.active {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: gold;
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, .65)
         }
 
-        /* Para que el contenido no quede debajo del menú fijo */
-        .content {
+        @media(max-width:768px) {
+            .menu-logo .logo-date {
+                display: none
+            }
+
+            .menu-item {
+                font-size: .72rem;
+                padding: 5px 9px
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px
+            }
+        }
+
+        /* ── PAGE ── */
+        .page {
+            position: relative;
+            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 20px 40px 20px;
+            padding: 76px 24px 80px
         }
 
-        /* TÍTULO - ESTILO COHERENTE */
-        .page-title {
+        .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 48px;
+            padding-top: 8px
         }
 
-        .page-title h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: gold;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            margin-bottom: 10px;
+        .hero-eyebrow {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--acc);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px
         }
 
-        .page-title p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            height: 1px;
+            width: 44px;
+            background: var(--acc)
         }
 
-        /* GRID PRINCIPAL */
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, var(--acc) 50%, var(--acc2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 28px rgba(168, 85, 247, .4));
+            margin-bottom: 10px
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: .98rem;
+            font-weight: 300
+        }
+
         .main-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.9fr;
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 32px;
+            align-items: start
         }
 
-        /* TOCADISCOS CARD - CON EL MISMO ESTILO DE FONDO */
-        .turntable-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        @media(max-width:900px) {
+            .main-grid {
+                grid-template-columns: 1fr
+            }
         }
 
-        .turntable {
+        /* ══════════════════════════════════════
+   TOCADISCOS
+══════════════════════════════════════ */
+        .turntable-wrap {
+            position: sticky;
+            top: 76px
+        }
+
+        /* Plinto (cuerpo de madera) */
+        .plinth {
+            position: relative;
+            background:
+                repeating-linear-gradient(88deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .02) 1px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 18px),
+                linear-gradient(175deg, var(--wood3) 0%, var(--wood1) 30%, var(--wood2) 60%, var(--wood3) 100%);
+            border-radius: 20px;
+            padding: 32px 28px 24px;
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, .75),
+                0 8px 24px rgba(0, 0, 0, .6),
+                inset 0 1px 0 rgba(255, 255, 255, .12),
+                inset 0 -1px 0 rgba(0, 0, 0, .5);
+            border: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        /* filo frontal de madera */
+        .plinth::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(180deg, var(--wood2), #1a0c06);
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Área de plato */
+        .platter-area {
             position: relative;
             width: 100%;
             aspect-ratio: 1;
-            background: #2a2a3a;
+            background: radial-gradient(circle at 48% 42%, #2c2c3a 0%, #181820 60%, #0e0e18 100%);
             border-radius: 50%;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.6),
-                inset 0 -8px 12px rgba(0,0,0,0.4),
-                inset 0 8px 10px rgba(255,255,255,0.1);
-            border: 10px solid #3a3a4a;
-            margin-bottom: 24px;
+            box-shadow:
+                0 20px 48px rgba(0, 0, 0, .75),
+                inset 0 4px 12px rgba(255, 255, 255, .05),
+                inset 0 -8px 20px rgba(0, 0, 0, .6);
+            border: 6px solid #1a1a26;
+            margin-bottom: 20px;
         }
 
-        /* PLATO */
-        .platter {
+        /* Plato aluminum */
+        .plate {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 82%;
-            height: 82%;
-            background: #2a2a3a;
+            width: 84%;
+            height: 84%;
             border-radius: 50%;
-            border: 2px solid #4a4a5a;
-            box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: radial-gradient(circle at 40% 30%, #3c3c50, #1e1e2e 70%);
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, .5),
+                inset 0 3px 8px rgba(255, 255, 255, .07),
+                inset 0 -4px 10px rgba(0, 0, 0, .5);
         }
 
-        /* DISCO DE VINILO */
+        /* Disco de vinilo */
         .vinyl {
-            width: 92%;
-            height: 92%;
-            background: radial-gradient(circle at 30% 30%, #3a3a4a, #1a1a2a);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 91%;
+            height: 91%;
             border-radius: 50%;
-            position: relative;
-            box-shadow: 
-                0 0 30px rgba(0,0,0,0.8),
-                inset 0 0 60px rgba(0,0,0,0.8);
-            border: 6px solid #2a2a3a;
-            transition: all 0.4s ease;
-            animation: spin 0s linear infinite;
-            overflow: hidden;
+            /* surcos del vinilo */
+            background:
+                repeating-radial-gradient(circle at 50% 50%,
+                    #18181f 0px, #18181f 1.2px,
+                    #101018 1.2px, #101018 3px);
+            box-shadow:
+                0 0 0 2px #0e0e18,
+                0 4px 20px rgba(0, 0, 0, .7),
+                inset 0 0 60px rgba(0, 0, 0, .5);
+            animation: vinylSpin 2.2s linear infinite paused;
+            transition: animation-play-state .3s;
         }
 
         .vinyl.playing {
-            animation: spin 33s linear infinite;
+            animation-play-state: running
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes vinylSpin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg)
+            }
         }
 
-        /* SURCOS DEL VINILO */
+        /* reflejo sutil en el vinilo */
         .vinyl::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: 85%;
+            inset: 0;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 
-                0 0 0 1px rgba(255,255,255,0.02),
-                0 0 0 4px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, .06) 0%, transparent 40%, rgba(255, 255, 255, .02) 80%, transparent 100%);
+            pointer-events: none;
         }
 
-        /* ETIQUETA CENTRAL CON CARÁTULA */
+        /* Etiqueta central con artwork */
         .vinyl-label {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 30%;
-            height: 30%;
-            background: rgba(255, 215, 0, 0.2);
+            width: 28%;
+            height: 28%;
             border-radius: 50%;
-            border: 3px solid gold;
-            box-shadow: 0 0 30px gold;
-            overflow: hidden;
+            background: #1e1e2e;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #2a2a3e;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .08), 0 0 20px rgba(0, 0, 0, .7);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            color: white;
-            text-align: center;
-            background-size: cover;
-            background-position: center;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .3);
+            overflow: hidden;
         }
 
-        /* BRAZO DEL TOCADISCOS */
-        .tonearm-base {
-            position: absolute;
-            bottom: 12%;
-            right: 8%;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(145deg, #c0c0c0, #808080);
-            border-radius: 50%;
-            border: 4px solid #4a4a5a;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-            z-index: 20;
-        }
-
-        .tonearm {
-            position: absolute;
-            bottom: 18%;
-            right: 10%;
-            width: 160px;
-            height: 18px;
-            background: linear-gradient(90deg, #c0c0c0, #e0e0e0, #c0c0c0);
-            transform-origin: right center;
-            transform: rotate(-28deg);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-radius: 20px;
-            border: 1px solid #aaa;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            z-index: 15;
-        }
-
-        .tonearm.playing {
-            transform: rotate(2deg);
-        }
-
-        .tonearm::before {
+        .vinyl-label::after {
             content: '';
             position: absolute;
-            left: -8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 26px;
-            height: 26px;
-            background: radial-gradient(circle at 30% 30%, gold, #b8860b);
+            inset: 0;
             border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 20px gold;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .15) 0%, transparent 50%);
         }
 
-        .rpm-badge {
+        /* Agujero central */
+        .vinyl-hole {
             position: absolute;
-            top: 12%;
-            left: 12%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
-            padding: 6px 14px;
-            border-radius: 40px;
-            border: 2px solid gold;
-            color: white;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        /* CONTROLES */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .control-btn {
-            width: 48px;
-            height: 48px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4%;
+            height: 4%;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid gold;
-            color: gold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #050508;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, .9);
+            z-index: 5;
         }
 
-        .control-btn:hover {
-            background: gold;
-            color: #667eea;
-            transform: scale(1.1);
-            box-shadow: 0 0 30px gold;
-        }
-
-        /* PLAYLIST CARD - MISMO ESTILO */
-        .playlist-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            height: fit-content;
-        }
-
-        .playlist-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .playlist-header h2 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: gold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .playlist {
-            list-style: none;
-        }
-
-        .playlist-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 14px 16px;
-            margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .playlist-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: gold;
-            transform: translateX(5px);
-        }
-
-        .playlist-item.active {
-            background: rgba(255, 215, 0, 0.15);
-            border-color: gold;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .playlist-cover {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background-size: cover;
-            background-position: center;
-            border: 2px solid gold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .playlist-info {
-            flex: 1;
-        }
-
-        .playlist-song {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 4px;
-        }
-
-        .playlist-artist {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .playlist-duration {
-            color: gold;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        /* NOW PLAYING */
-        .now-playing-panel {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            border-left: 4px solid gold;
-            backdrop-filter: blur(5px);
-        }
-
-        .np-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            margin-bottom: 8px;
-        }
-
-        .np-song {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: gold;
-            margin-bottom: 4px;
-        }
-
-        .np-artist {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* REPRODUCTOR YOUTUBE OCULTO */
-        #youtube-player {
-            position: fixed;
-            bottom: -100px;
-            opacity: 0;
+        /* Strobe dots en el borde del plato */
+        .strobe-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 96%;
+            height: 96%;
+            border-radius: 50%;
             pointer-events: none;
         }
 
-        /* VOLVER - MISMO ESTILO QUE INDEX */
+        /* ── BRAZO TOCADISCOS ── */
+        .tonearm-assembly {
+            position: absolute;
+            top: 6%;
+            right: 4%;
+            width: 56%;
+            height: 56%;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        /* Pivote base */
+        .tonearm-pivot {
+            position: absolute;
+            bottom: 0;
+            right: 4%;
+            width: 42px;
+            height: 42px;
+            background: radial-gradient(circle at 35% 30%, var(--chrome), var(--chrome2));
+            border-radius: 50%;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .6), inset 0 2px 4px rgba(255, 255, 255, .4);
+            z-index: 22;
+        }
+
+        .tonearm-pivot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 30%, #e0e8f0, #9aa0b0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .5), inset 0 1px 2px rgba(255, 255, 255, .6);
+        }
+
+        /* Contrapeso */
+        .counterweight {
+            position: absolute;
+            bottom: 12px;
+            right: calc(4% + 34px);
+            width: 18px;
+            height: 22px;
+            background: linear-gradient(135deg, var(--chrome), var(--chrome2));
+            border-radius: 3px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .5);
+            transform-origin: right center;
+        }
+
+        /* Brazo principal */
+        .tonearm-arm {
+            position: absolute;
+            bottom: 20px;
+            right: calc(4% + 14px);
+            width: 68%;
+            height: 8px;
+            background: linear-gradient(90deg, #b0b8c8 0%, #d8e0f0 30%, #c0c8d8 60%, #a8b0c0 100%);
+            border-radius: 10px 2px 2px 10px;
+            transform-origin: right center;
+            transform: rotate(-30deg);
+            transition: transform .8s cubic-bezier(.34, 1.56, .64, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .3);
+            z-index: 21;
+        }
+
+        .tonearm-arm.playing {
+            transform: rotate(4deg)
+        }
+
+        /* Cabezal (headshell) */
+        .tonearm-arm::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 14px;
+            background: linear-gradient(135deg, var(--chrome), #8a90a0);
+            border-radius: 4px 0 0 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+        }
+
+        /* Aguja (stylus) */
+        .tonearm-arm::after {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 100%;
+            width: 2px;
+            height: 10px;
+            background: linear-gradient(180deg, #c0c8d8, #ffd700);
+            border-radius: 0 0 2px 2px;
+            box-shadow: 0 2px 6px rgba(255, 215, 0, .4);
+        }
+
+        /* Botón CUE */
+        .cue-lift {
+            position: absolute;
+            bottom: 8%;
+            right: 12%;
+            width: 22px;
+            height: 28px;
+            background: linear-gradient(180deg, #404050, #282834);
+            border-radius: 4px 4px 0 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .15);
+        }
+
+        /* RPM Badge */
+        .rpm-badge {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 215, 0, .35);
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .rpm-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--acc2);
+            box-shadow: 0 0 8px var(--acc2);
+            animation: blink 1.2s ease-in-out infinite;
+            display: none
+        }
+
+        .rpm-dot.on {
+            display: block
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .15
+            }
+        }
+
+        /* ── CONTROLES INTEGRADOS EN EL PLINTO ── */
+        .controls-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-group {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        /* Botones circulares */
+        .ctrl-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(145deg, #2a2014, #1a1409);
+            color: rgba(255, 255, 255, .7);
+            font-size: 1rem;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, .6), -1px -1px 4px rgba(255, 255, 255, .06), inset 0 1px 0 rgba(255, 255, 255, .08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .18s;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .ctrl-btn:hover {
+            color: #fff;
+            box-shadow: 0 0 16px rgba(168, 85, 247, .5), 3px 3px 8px rgba(0, 0, 0, .6);
+            transform: scale(1.08)
+        }
+
+        .ctrl-btn:active {
+            transform: scale(.95);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, .6), inset 0 1px 3px rgba(0, 0, 0, .5)
+        }
+
+        .ctrl-btn.play-btn {
+            width: 54px;
+            height: 54px;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, var(--acc), var(--acc2));
+            color: #fff;
+            box-shadow: 0 0 24px rgba(168, 85, 247, .55), 3px 3px 10px rgba(0, 0, 0, .5);
+        }
+
+        .ctrl-btn.play-btn:hover {
+            box-shadow: 0 0 40px rgba(168, 85, 247, .8), 3px 3px 10px rgba(0, 0, 0, .5)
+        }
+
+        /* Selector velocidad */
+        .speed-sel {
+            display: flex;
+            gap: 6px;
+        }
+
+        .speed-btn {
+            background: rgba(0, 0, 0, .4);
+            border: 1px solid rgba(255, 255, 255, .12);
+            color: var(--muted);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            padding: 4px 9px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: all .2s;
+        }
+
+        .speed-btn.active {
+            background: rgba(255, 215, 0, .15);
+            border-color: var(--gold);
+            color: var(--gold)
+        }
+
+        /* Barra progreso */
+        .progress-area {
+            margin-top: 16px
+        }
+
+        .prog-bar {
+            height: 3px;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 7px;
+            cursor: pointer
+        }
+
+        .prog-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--acc), var(--acc2));
+            border-radius: 3px;
+            transition: width .5s linear
+        }
+
+        .prog-times {
+            display: flex;
+            justify-content: space-between;
+            font-size: .68rem;
+            color: var(--muted)
+        }
+
+        /* ══════════════════════════════════════
+   PANEL DERECHO
+══════════════════════════════════════ */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        /* Now playing info */
+        .now-info {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            backdrop-filter: blur(12px);
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .now-thumb {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            background: #1e1e30;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .5);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, .2);
+        }
+
+
+        .now-label {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--acc);
+            margin-bottom: 5px
+        }
+
+        .now-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 220px
+        }
+
+        .now-artist {
+            font-size: .85rem;
+            color: var(--muted)
+        }
+
+        /* Playlist */
+        .playlist-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            backdrop-filter: blur(12px);
+            flex: 1;
+        }
+
+        .playlist-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .playlist-head h2 {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+
+        .pl-count {
+            font-size: .68rem;
+            color: var(--muted)
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 9px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background .15s;
+            border: 1px solid transparent;
+        }
+
+        .track:hover {
+            background: rgba(255, 255, 255, .05)
+        }
+
+        .track.active {
+            background: rgba(168, 85, 247, .1);
+            border-color: rgba(168, 85, 247, .22)
+        }
+
+        .track-num {
+            font-size: .75rem;
+            color: var(--muted);
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .track.active .track-num {
+            display: none
+        }
+
+        .track-eq {
+            display: none;
+            width: 16px;
+            flex-shrink: 0;
+            align-items: flex-end;
+            height: 14px;
+            gap: 2px
+        }
+
+        .track.active .track-eq {
+            display: flex
+        }
+
+        .track-eq span {
+            flex: 1;
+            background: var(--acc);
+            border-radius: 1px;
+            animation: eq .5s ease-in-out infinite alternate
+        }
+
+        .track-eq span:nth-child(2) {
+            animation-delay: .16s
+        }
+
+        .track-eq span:nth-child(3) {
+            animation-delay: .32s
+        }
+
+        @keyframes eq {
+            from {
+                height: 3px
+            }
+
+            to {
+                height: 100%
+            }
+        }
+
+        .track-art {
+            width: 44px;
+            height: 44px;
+            border-radius: 9px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a1a28;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
+        }
+
+        .track-meta {
+            flex: 1;
+            min-width: 0
+        }
+
+        .track-title {
+            font-size: .9rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px
+        }
+
+        .track.active .track-title {
+            color: var(--acc)
+        }
+
+        .track-sub {
+            font-size: .75rem;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .track-dur {
+            font-size: .75rem;
+            color: var(--muted);
+            flex-shrink: 0
+        }
+
+        /* Reproductor oculto */
+        #youtube-player {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            opacity: 0.01;
+            z-index: -100;
+            pointer-events: none;
+        }
+
+        /* Back */
         .back-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, #ff6b6b, #ff4757);
-            color: white;
-            padding: 15px 30px;
+            bottom: 22px;
+            right: 22px;
+            background: rgba(15, 13, 30, .8);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 10px 22px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: 2px solid white;
-            z-index: 1000;
+            font-weight: 700;
+            font-size: .82rem;
+            border: 1px solid var(--border);
+            transition: all .3s;
+            z-index: 200;
         }
 
         .back-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.5);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .page-title h1 {
-                font-size: 2.5rem;
-            }
-            
-            .menu {
-                gap: 15px;
-            }
-            
-            .menu-item {
-                font-size: 1rem;
-                padding: 8px 15px;
-            }
+            border-color: var(--acc);
+            color: var(--acc);
+            box-shadow: 0 0 18px rgba(168, 85, 247, .3)
         }
     </style>
 </head>
+
 <body>
-    <!-- MENÚ SUPERIOR - IDÉNTICO AL INDEX -->
+
+    <!-- ════ NAV ════ -->
     <div class="menu-container">
         <nav class="menu">
-            <a href="Regalo1.html" class="menu-item">🏠 INICIO</a>
-            <a href="fotos.html" class="menu-item">📸 FOTOS</a>
-            <a href="cartas.html" class="menu-item">💌 CARTAS</a>
-            <a href="videos.html" class="menu-item">🎥 VIDEOS</a>
-            <a href="musica.html" class="menu-item active">🎵 MÚSICA</a>
-            <a href="sorpresa.html" class="menu-item">🎁 SORPRESA</a>
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="Musica.html" class="menu-item active">🎵 Música</a>
+                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
         </nav>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="content">
-        <div class="page-title">
-            <h1>🎵 TOCADISCOS DEL AMOR</h1>
-            <p>13·07·2025 – 13·07·2026</p>
+    <!-- ════ PÁGINA ════ -->
+    <main class="page">
+
+        <!-- HEADER -->
+        <div class="hero">
+            <div class="hero-eyebrow">nuestra playlist</div>
+            <h1>Tocadiscos del Amor</h1>
+            <p>Las canciones que son de los dos &nbsp;💜</p>
         </div>
 
         <div class="main-grid">
-            <!-- TOCADISCOS -->
-            <div class="turntable-card">
-                <div class="turntable">
-                    <div class="rpm-badge">33⅓ RPM</div>
-                    
-                    <div class="platter">
+
+            <!-- ─── TOCADISCOS ─── -->
+            <div class="turntable-wrap">
+                <div class="plinth">
+
+                    <!-- Plato giratorio -->
+                    <div class="platter-area">
+
+                        <!-- Plato de aluminio -->
+                        <div class="plate"></div>
+
+                        <!-- Disco de vinilo -->
                         <div class="vinyl" id="vinyl">
-                            <div class="vinyl-label" id="vinylLabel" style="background-image: url('https://img.youtube.com/vi/otWSMRvaaqk/maxresdefault.jpg')"></div>
+                            <!-- Etiqueta central -->
+                            <div class="vinyl-label" id="vinylLabel">🎵</div>
+                            <!-- Agujero central -->
+                            <div class="vinyl-hole"></div>
+                        </div>
+
+                        <!-- Badge RPM -->
+                        <div class="rpm-badge">
+                            <span class="rpm-dot" id="rpmDot"></span>
+                            33⅓ RPM
+                        </div>
+
+                        <!-- BRAZO TOCADISCOS -->
+                        <div class="tonearm-assembly">
+                            <div class="tonearm-arm" id="tonearm"></div>
+                            <div class="counterweight"></div>
+                            <div class="tonearm-pivot"></div>
+                            <div class="cue-lift"></div>
+                        </div>
+
+                    </div><!-- /platter-area -->
+
+                    <!-- ── CONTROLES ── -->
+                    <div class="controls-bar">
+                        <div class="ctrl-group">
+                            <button class="ctrl-btn" onclick="prevTrack()" title="Anterior">⏮</button>
+                            <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                            <button class="ctrl-btn" onclick="nextTrack()" title="Siguiente">⏭</button>
+                            <button class="ctrl-btn" onclick="stopTrack()" title="Detener">⏹</button>
+                        </div>
+                        <div class="speed-sel">
+                            <button class="speed-btn active" id="sp33" onclick="setSpeed(33)">33 RPM</button>
+                            <button class="speed-btn" id="sp45" onclick="setSpeed(45)">45 RPM</button>
                         </div>
                     </div>
 
-                    <div class="tonearm-base"></div>
-                    <div class="tonearm" id="tonearm"></div>
+                    <!-- Progreso -->
+                    <div class="progress-area">
+                        <div class="prog-bar">
+                            <div class="prog-fill" id="progFill"></div>
+                        </div>
+                        <div class="prog-times">
+                            <span id="tElapsed">0:00</span>
+                            <span id="tDur">——</span>
+                        </div>
+                    </div>
+
+                </div><!-- /plinth -->
+            </div><!-- /turntable-wrap -->
+
+            <!-- ─── PANEL DERECHO ─── -->
+            <div class="right-panel">
+
+                <!-- Now playing -->
+                <div class="now-info">
+                    <div class="now-thumb" id="nowThumb">🎵</div>
+                    <div class="now-text">
+                        <div class="now-label">Reproduciendo ahora</div>
+                        <div class="now-title" id="nowTitle">Selecciona una canción</div>
+                        <div class="now-artist" id="nowArtist">——</div>
+                    </div>
                 </div>
 
-                <div class="controls">
-                    <button class="control-btn" onclick="playRecord()">▶</button>
-                    <button class="control-btn" onclick="pauseRecord()">⏸</button>
-                    <button class="control-btn" onclick="stopRecord()">⏹</button>
-                </div>
-            </div>
-
-            <!-- PLAYLIST CON TUS CANCIONES -->
-            <div class="playlist-card">
-                <div class="playlist-header">
-                    <span>🎶</span>
-                    <h2>NUESTRA PLAYLIST</h2>
+                <!-- Playlist -->
+                <div class="playlist-panel">
+                    <div class="playlist-head">
+                        <h2>💿 Nuestra Playlist</h2>
+                        <span class="pl-count">8 canciones</span>
+                    </div>
+                    <div id="trackList"></div>
                 </div>
 
-                <ul class="playlist">
-                    <!-- 1. IA - ClarentKP & Mora -->
-                    <li class="playlist-item" onclick="playSong(1, 'IA', 'ClarentKP & Mora', '3:45', 'otWSMRvaaqk', '#9b4d9b')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/otWSMRvaaqk/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">IA</div>
-                            <div class="playlist-artist">ClarentKP & Mora</div>
-                        </div>
-                        <span class="playlist-duration">3:45</span>
-                    </li>
-
-                    <!-- 2. No Se Vale - Mora -->
-                    <li class="playlist-item" onclick="playSong(2, 'No Se Vale', 'Mora', '3:30', '7pOr3dBFAeY', '#4d7c9b')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/7pOr3dBFAeY/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">No Se Vale</div>
-                            <div class="playlist-artist">Mora</div>
-                        </div>
-                        <span class="playlist-duration">3:30</span>
-                    </li>
-
-                    <!-- 3. Domingo - Mora -->
-                    <li class="playlist-item" onclick="playSong(3, 'Domingo', 'Mora', '3:45', 'G8HMkQf3s0s', '#7c9b4d')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/G8HMkQf3s0s/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">Domingo</div>
-                            <div class="playlist-artist">Mora</div>
-                        </div>
-                        <span class="playlist-duration">3:45</span>
-                    </li>
-
-                    <!-- 4. Como te imaginé - Demarco Flamenco -->
-                    <li class="playlist-item" onclick="playSong(4, 'Como te imaginé', 'Demarco Flamenco', '4:25', 'fEBEbB50FXI', '#9b4d4d')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/fEBEbB50FXI/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">Como te imaginé</div>
-                            <div class="playlist-artist">Demarco Flamenco</div>
-                        </div>
-                        <span class="playlist-duration">4:25</span>
-                    </li>
-
-                    <!-- 5. Loco - La Beriso -->
-                    <li class="playlist-item" onclick="playSong(5, 'Loco', 'La Beriso', '4:10', '7ddBc_Jxbw0', '#4d9b7c')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/7ddBc_Jxbw0/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">Loco</div>
-                            <div class="playlist-artist">La Beriso</div>
-                        </div>
-                        <span class="playlist-duration">4:10</span>
-                    </li>
-
-                    <!-- 6. Me Enamore Remix - Angel y Khriz -->
-                    <li class="playlist-item" onclick="playSong(6, 'Me Enamore Remix', 'Angel y Khriz ft. Tito El Bambino, Elvis Crespo', '4:15', 'HwEtcLfST54', '#9b6b4d')">
-                        <div class="playlist-cover" style="background-image: url('https://img.youtube.com/vi/HwEtcLfST54/maxresdefault.jpg')"></div>
-                        <div class="playlist-info">
-                            <div class="playlist-song">Me Enamore Remix</div>
-                            <div class="playlist-artist">Angel y Khriz ft. Tito El Bambino, Elvis Crespo</div>
-                        </div>
-                        <span class="playlist-duration">4:15</span>
-                    </li>
-                </ul>
-
-                <!-- REPRODUCIENDO AHORA -->
-                <div class="now-playing-panel" id="nowPlaying">
-                    <div class="np-label">REPRODUCIENDO AHORA</div>
-                    <div class="np-song" id="npSong">Selecciona una canción</div>
-                    <div class="np-artist" id="npArtist">——</div>
-                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- REPRODUCTOR YOUTUBE OCULTO -->
     <div id="youtube-player"></div>
-
-    <!-- BOTÓN VOLVER - IGUAL QUE INDEX -->
     <a href="Regalo1.html" class="back-button">← Volver</a>
 
-    <!-- API YOUTUBE -->
     <script src="https://www.youtube.com/iframe_api"></script>
-
     <script>
-        // VARIABLES
-        let player;
-        let isPlaying = false;
-        let currentVideoId = '';
-        let currentSong = null;
-        
-        const vinyl = document.getElementById('vinyl');
-        const tonearm = document.getElementById('tonearm');
-        const vinylLabel = document.getElementById('vinylLabel');
-        const npSong = document.getElementById('npSong');
-        const npArtist = document.getElementById('npArtist');
+        // ══════════════════════
+        //  CANCIONES CORREGIDAS
+        // ══════════════════════
+        const SONGS = [
+            { id: 0, title: 'IA', artist: 'ClarentKP & Mora', dur: '3:45', vid: 'EPljF8-PRCk' }, // ID CORREGIDO
+            { id: 1, title: 'No Se Vale', artist: 'Mora', dur: '3:30', vid: '7pOr3dBFAeY' },
+            { id: 2, title: 'Domingo', artist: 'Mora', dur: '3:45', vid: 'G8HMkQf3s0s' },
+            { id: 3, title: 'Como te imaginé', artist: 'Demarco Flamenco', dur: '4:25', vid: 'fEBEbB50FXI' },
+            { id: 4, title: 'Ojalá', artist: 'Fondo Flamenco', dur: '3:55', vid: 'F8JxgMNK_8g' }, // NUEVA: Fondo Flamenco
+            { id: 5, title: 'Loco', artist: 'La Beriso', dur: '4:10', vid: '7ddBc_Jxbw0' },
+            { id: 6, title: 'Me Enamore Remix', artist: 'Angel y Khriz', dur: '4:15', vid: 'HwEtcLfST54' },
+            { id: 7, title: 'Quiero Abrazarte Tanto', artist: 'Demarco Flamenco', dur: '4:30', vid: 'Q4I_9sFpVFI' } // NUEVA: Demarco
+        ];
 
-        // YOUTUBE API
+        // ══════════════════════
+        //  ESTADO
+        // ══════════════════════
+        let ytPlayer, isPlaying = false, curIdx = -1, progTimer = null;
+
+        // ══════════════════════
+        //  RENDER PLAYLIST
+        // ══════════════════════
+        function renderPlaylist() {
+            document.getElementById('trackList').innerHTML = SONGS.map((s, i) => `
+    <div class="track" id="t${i}" onclick="selectAndPlay(${i})">
+      <span class="track-num">${i + 1}</span>
+      <div class="track-eq"><span></span><span></span><span></span></div>
+      <div class="track-art" style="background-image:url('https://img.youtube.com/vi/${s.vid}/mqdefault.jpg')"></div>
+      <div class="track-meta">
+        <div class="track-title">${s.title}</div>
+        <div class="track-sub">${s.artist}</div>
+      </div>
+      <span class="track-dur">${s.dur}</span>
+    </div>`).join('');
+        }
+
+        // ══════════════════════
+        //  YOUTUBE API
+        // ══════════════════════
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                height: '0',
-                width: '0',
+            ytPlayer = new YT.Player('youtube-player', {
+                height: '250',
+                width: '250',
                 playerVars: {
                     autoplay: 0,
                     controls: 0,
                     disablekb: 1,
                     fs: 0,
-                    modestbranding: 1
+                    modestbranding: 1,
+                    rel: 0,
+                    playsinline: 1,
                 },
                 events: {
-                    'onStateChange': onPlayerStateChange
+                    onStateChange: onStateChange,
+                    onReady: function () {
+                        console.log('✅ YouTube Player Ready');
+                    },
+                    onError: function (event) {
+                        console.error('❌ Error de YouTube:', event.data);
+                    }
                 }
             });
         }
 
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                stopRecord();
+        function onStateChange(e) {
+            if (e.data === YT.PlayerState.ENDED) nextTrack();
+            else if (e.data === YT.PlayerState.PLAYING) startTimer();
+            else stopTimer();
+        }
+
+        // ══════════════════════
+        //  PROGRESO
+        // ══════════════════════
+        function startTimer() { stopTimer(); progTimer = setInterval(updateProg, 600) }
+        function stopTimer() { if (progTimer) { clearInterval(progTimer); progTimer = null } }
+
+        function updateProg() {
+            if (!ytPlayer || !ytPlayer.getDuration) return;
+            const dur = ytPlayer.getDuration(), cur = ytPlayer.getCurrentTime();
+            if (!dur) return;
+            document.getElementById('progFill').style.width = (cur / dur * 100) + '%';
+            document.getElementById('tElapsed').textContent = fmt(cur);
+        }
+
+        function fmt(s) {
+            const m = Math.floor(s / 60), ss = Math.floor(s % 60).toString().padStart(2, '0');
+            return `${m}:${ss}`
+        }
+
+        // ══════════════════════
+        //  REPRODUCIR
+        // ══════════════════════
+        function selectAndPlay(idx) {
+            if (idx === curIdx && isPlaying) { pause(); return }
+            curIdx = idx;
+            const s = SONGS[idx];
+
+            // playlist highlight
+            document.querySelectorAll('.track').forEach(el => el.classList.remove('active'));
+            document.getElementById('t' + idx).classList.add('active');
+
+            // cover vinilo
+            document.getElementById('vinylLabel').style.backgroundImage = `url('https://img.youtube.com/vi/${s.vid}/maxresdefault.jpg')`;
+            document.getElementById('vinylLabel').style.backgroundSize = 'cover';
+            document.getElementById('vinylLabel').style.backgroundPosition = 'center';
+            document.getElementById('vinylLabel').textContent = '';
+
+            // now playing panel
+            document.getElementById('nowThumb').style.backgroundImage = `url('https://img.youtube.com/vi/${s.vid}/mqdefault.jpg')`;
+            document.getElementById('nowThumb').style.backgroundSize = 'cover';
+            document.getElementById('nowThumb').style.backgroundPosition = 'center';
+            document.getElementById('nowThumb').textContent = '';
+            document.getElementById('nowTitle').textContent = s.title;
+            document.getElementById('nowArtist').textContent = s.artist;
+            document.getElementById('tDur').textContent = s.dur;
+            document.getElementById('progFill').style.width = '0%';
+            document.getElementById('tElapsed').textContent = '0:00';
+
+            if (ytPlayer && ytPlayer.loadVideoById) {
+                ytPlayer.loadVideoById(s.vid);
+                play();
             }
         }
 
-        // REPRODUCIR CANCIÓN
-        function playSong(numero, cancion, artista, duracion, videoId, color) {
-            // Quitar active de todos
-            document.querySelectorAll('.playlist-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            event.currentTarget.classList.add('active');
-            
-            // Guardar datos
-            currentSong = { numero, cancion, artista, duracion, videoId };
-            currentVideoId = videoId;
-            
-            // Actualizar UI
-            npSong.textContent = cancion;
-            npArtist.textContent = artista;
-            
-            // Cambiar carátula del disco
-            vinylLabel.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')`;
-            
-            // Cambiar color del vinilo
-            vinyl.style.background = `radial-gradient(circle at 30% 30%, ${color}, #1a1a2a)`;
-            
-            // Cargar y reproducir en YouTube
-            if (player && player.loadVideoById) {
-                player.loadVideoById(videoId);
+        function togglePlay() {
+            if (curIdx === -1) {
+                selectAndPlay(0);
+                return;
             }
-            
-            playRecord();
+            isPlaying ? pause() : play();
         }
 
-        // PLAY
-        function playRecord() {
-            isPlaying = true;
-            vinyl.classList.add('playing');
-            tonearm.classList.add('playing');
-            
-            if (player && player.playVideo) {
-                player.playVideo();
-            }
+        function play() {
+            setPlaying(true);
+            if (ytPlayer && ytPlayer.playVideo) ytPlayer.playVideo();
         }
 
-        // PAUSE
-        function pauseRecord() {
-            isPlaying = false;
-            vinyl.classList.remove('playing');
-            tonearm.classList.remove('playing');
-            
-            if (player && player.pauseVideo) {
-                player.pauseVideo();
-            }
+        function pause() {
+            setPlaying(false);
+            if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
         }
 
-        // STOP
-        function stopRecord() {
-            isPlaying = false;
-            vinyl.classList.remove('playing');
-            tonearm.classList.remove('playing');
-            
-            if (player && player.stopVideo) {
-                player.stopVideo();
-            }
-            
-            document.querySelectorAll('.playlist-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            npSong.textContent = 'Selecciona una canción';
-            npArtist.textContent = '——';
-            
-            // Reset disco
-            vinyl.style.background = 'radial-gradient(circle at 30% 30%, #3a3a4a, #1a1a2a)';
-            vinylLabel.style.backgroundImage = "url('https://img.youtube.com/vi/otWSMRvaaqk/maxresdefault.jpg')";
-            
-            currentSong = null;
+        function stopTrack() {
+            setPlaying(false);
+            document.getElementById('progFill').style.width = '0%';
+            document.getElementById('tElapsed').textContent = '0:00';
+            if (ytPlayer && ytPlayer.stopVideo) ytPlayer.stopVideo();
         }
 
-        // CLICK EN DISCO
-        vinyl.addEventListener('click', () => {
-            if (isPlaying) {
-                pauseRecord();
-            } else if (currentSong) {
-                playRecord();
-            }
-        });
+        function nextTrack() { selectAndPlay((curIdx + 1) % SONGS.length) }
+        function prevTrack() { selectAndPlay((curIdx - 1 + SONGS.length) % SONGS.length) }
+
+        function setPlaying(state) {
+            isPlaying = state;
+            document.getElementById('playBtn').textContent = state ? '⏸' : '▶';
+            document.getElementById('vinyl').classList.toggle('playing', state);
+            document.getElementById('tonearm').classList.toggle('playing', state);
+            document.getElementById('rpmDot').classList.toggle('on', state);
+        }
+
+        // ══════════════════════
+        //  SPEED SELECTOR
+        // ══════════════════════
+        function setSpeed(rpm) {
+            document.getElementById('sp33').classList.toggle('active', rpm === 33);
+            document.getElementById('sp45').classList.toggle('active', rpm === 45);
+            document.getElementById('vinyl').style.animationDuration = (rpm === 33 ? '2.2s' : '1.5s');
+        }
 
         // Inicializar
-        window.onload = () => {
-            console.log('🎵 Tocadiscos con estilo de inicio cargado');
-        };
+        renderPlaylist();
     </script>
 </body>
+
 </html>

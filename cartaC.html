@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 Carta de Cumpleaños · Para Estrella</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 70% 30%, #5a0030 0%, #200010 45%, #0d0008 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ── BIRTHDAY NAV ── */
+        .menu-container {
+            background: rgba(80, 5, 35, 0.75);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 110, 160, 0.22);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            transition: filter 0.2s;
+        }
+
+        .menu-logo:hover {
+            filter: brightness(1.2);
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 220, 235, 0.7);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 50px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 110, 160, 0.18);
+            border-color: rgba(255, 110, 160, 0.3);
+        }
+
+        .menu-item.active {
+            color: #ff8cba;
+            background: rgba(255, 110, 160, 0.15);
+            border-color: rgba(255, 110, 160, 0.4);
+        }
+
+        .menu-home {
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            padding: 8px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            color: #1a0010;
+            box-shadow: 0 0 18px rgba(255, 110, 180, 0.5);
+            transition: all 0.25s;
+        }
+
+        .menu-home:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 34px rgba(255, 110, 180, 0.8);
+        }
+
+        @media (max-width:768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.7rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 5px;
+            }
+        }
+
+        /* ── FLOATING HEARTS ── */
+        .heart {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            font-size: 1.4rem;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* ── PAGE ── */
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 100px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── HEADER ── */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+
+        .letter-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff8cba;
+            border: 1px solid rgba(255, 110, 160, 0.4);
+            padding: 5px 18px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            background: rgba(255, 110, 160, 0.08);
+        }
+
+        .letter-title {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #fff 0%, #ff8cba 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .letter-date {
+            color: rgba(255, 220, 235, 0.5);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* ── ENVELOPE ── */
+        .envelope-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 44px;
+        }
+
+        .envelope {
+            width: 340px;
+            cursor: pointer;
+            filter: drop-shadow(0 20px 50px rgba(255, 110, 160, 0.5));
+            transition: transform 0.3s;
+        }
+
+        .envelope:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .env-body {
+            background: linear-gradient(160deg, #7c1040, #40001c);
+            border-radius: 4px 4px 14px 14px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 110, 160, 0.3);
+        }
+
+        .env-flap {
+            width: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 110px solid rgba(120, 10, 60, 0.9);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.6s ease;
+            transform-origin: top center;
+        }
+
+        .envelope.open .env-flap {
+            transform: rotateX(180deg);
+            border-top-color: rgba(180, 40, 90, 0.9);
+        }
+
+        .env-left {
+            width: 0;
+            height: 0;
+            border-top: 200px solid transparent;
+            border-left: 170px solid rgba(100, 5, 45, 0.7);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .env-right {
+            width: 0;
+            height: 0;
+            border-top: 200px solid transparent;
+            border-right: 170px solid rgba(80, 0, 35, 0.7);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .env-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 0 20px rgba(255, 110, 180, 0.7);
+            transition: opacity 0.4s;
+        }
+
+        .envelope.open .env-seal {
+            opacity: 0;
+        }
+
+        .env-hint {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: rgba(255, 200, 220, 0.5);
+            font-weight: 300;
+        }
+
+        /* ── CARTA ── */
+        .carta-paper {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 110, 160, 0.2);
+            border-radius: 24px;
+            padding: 52px 56px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: none;
+            animation: fadeSlideIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carta-paper::before {
+            content: '💌';
+            position: absolute;
+            bottom: 20px;
+            right: 24px;
+            font-size: 120px;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .carta-paper.visible {
+            display: block;
+        }
+
+        .carta-paper .saludo {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: #ff8cba;
+            margin-bottom: 28px;
+        }
+
+        .carta-paper p {
+            font-size: 1.12rem;
+            line-height: 2.0;
+            color: rgba(255, 235, 242, 0.9);
+            font-weight: 300;
+            margin-bottom: 22px;
+        }
+
+        .carta-paper p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .carta-firma {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #ffd700;
+            text-align: right;
+            margin-top: 36px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+        }
+
+        /* ── STARS ── */
+        .star-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.3);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="star-bg" id="starBg"></div>
+
+    <!-- NAV CUMPLEAÑOS -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="cumpleaños.html" class="menu-logo">🎂 <span class="logo-date">¡Feliz Cumple!</span></a>
+            <div class="menu-links">
+                <a href="cumpleaños.html" class="menu-item">🎉 Inicio</a>
+                <a href="cartaC.html" class="menu-item active">💌 Carta</a>
+                <a href="regalosC.html" class="menu-item">🎁 Regalos</a>
+                <a href="recuerdosC.html" class="menu-item">📸 Recuerdos</a>
+                <a href="deseosC.html" class="menu-item">✨ Deseos</a>
+            </div>
+            <a href="index.html" class="menu-home">🏠 Volver al Inicio</a>
+        </nav>
+    </div>
+
+    <div class="page">
+        <div class="letter-header">
+            <div class="letter-tag">💌 Solo para ti · Con todo mi amor</div>
+            <h1 class="letter-title">Una carta de<br>cumpleaños</h1>
+            <p class="letter-date">Escrita con el corazón · Javi ❤️</p>
+        </div>
+
+        <!-- SOBRE -->
+        <div class="envelope-wrap">
+            <div>
+                <div class="envelope" id="envelope" onclick="openLetter()">
+                    <div class="env-body">
+                        <div class="env-flap"></div>
+                        <div class="env-left"></div>
+                        <div class="env-right"></div>
+                        <div class="env-seal">💌</div>
+                    </div>
+                </div>
+                <p class="env-hint">Haz clic en el sobre para abrir la carta 🎀</p>
+            </div>
+        </div>
+
+        <!-- CARTA (oculta hasta abrir) -->
+        <div class="carta-paper" id="cartaPaper">
+            <p class="saludo">Mi amor, mi gordita, mi Estrella ✨</p>
+
+            <p>
+                Hoy es tu día. Y aunque cada día que amanece contigo ya es especial, hoy tiene
+                algo diferente — es el día en que el mundo recibió a la persona más bonita,
+                más buena y más mía que existe. Así que el mundo debería estarme eternamente
+                agradecido. 😄
+            </p>
+            <p>
+                Cada año que pasa a tu lado me confirma lo que ya sé: que elegirte fue la mejor
+                decisión de mi vida. Me haces reír cuando no quiero hacerlo, me aguantas cuando
+                soy imposible, y me quieres con una intensidad que todavía me sorprende y me
+                derrite cada vez.
+            </p>
+            <p>
+                Quiero que este cumpleaños lo sientas especial. No por los regalos, ni por las
+                sorpresas, sino porque sepas — de verdad — lo mucho que significas para mí.
+                Eres mi calma, mi cómplice y mi persona favorita en todo el universo.
+            </p>
+            <p>
+                Que este año que empieza hoy venga cargado de todo lo que mereces: salud,
+                risas, viajes, logros, y por supuesto... muchísimo amor mío.
+            </p>
+            <p>
+                Gracias por existir, gordi. Gracias por dejarme quererte.
+                Hoy, mañana, siempre. ❤️
+            </p>
+
+            <div class="carta-firma">
+                Con todo mi amor,<br>
+                Javi ❤️
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Estrellas
+        const bg = document.getElementById('starBg');
+        for (let i = 0; i < 120; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const sz = Math.random() * 2.5 + 1;
+            s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random() * 3}s`;
+            bg.appendChild(s);
+        }
+
+        // Corazones flotantes
+        const hearts = ['💗', '💖', '💝', '💕', '🌸', '✨'];
+        for (let i = 0; i < 18; i++) {
+            const h = document.createElement('div');
+            h.className = 'heart';
+            h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            h.style.cssText = `left:${Math.random() * 100}%;animation-duration:${6 + Math.random() * 8}s;animation-delay:${Math.random() * 8}s;font-size:${0.9 + Math.random() * 1.2}rem`;
+            document.body.appendChild(h);
+        }
+
+        let opened = false;
+        function openLetter() {
+            if (opened) return;
+            opened = true;
+            document.getElementById('envelope').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('cartaPaper').classList.add('visible');
+                document.getElementById('cartaPaper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 600);
+        }
+    </script>
+</body>
+
+</html>

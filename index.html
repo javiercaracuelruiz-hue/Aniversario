@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario Mi Amor ❤️ - 13/07/2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,12 +14,131 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* ── NAV PROFESIONAL ── */
+        .menu-container {
+            background: rgba(10, 0, 30, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
+            transition: all 0.25s;
+        }
+
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px;
+            }
         }
 
         /* Efecto de estrellas */
@@ -39,13 +160,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 10px 10px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 80px 90px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 120px 140px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 180px 200px, #fff, rgba(0,0,0,0));
+            background-image:
+                radial-gradient(2px 2px at 10px 10px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 80px 90px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 120px 140px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 180px 200px, #fff, rgba(0, 0, 0, 0));
             background-repeat: repeat;
             opacity: 0.5;
         }
@@ -73,6 +194,7 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) rotate(720deg);
                 opacity: 0;
@@ -82,7 +204,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 80px 20px 20px;
             position: relative;
             z-index: 2;
         }
@@ -95,8 +217,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .glitch {
@@ -104,38 +233,44 @@
             font-weight: bold;
             position: relative;
             text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                         0.025em 0.04em 0 #fffc00;
+                0.025em 0.04em 0 #fffc00;
             animation: glitch 725ms infinite;
         }
 
         @keyframes glitch {
             0% {
                 text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                             0.025em 0.04em 0 #fffc00;
+                    0.025em 0.04em 0 #fffc00;
             }
+
             15% {
                 text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                             0.025em 0.04em 0 #fffc00;
+                    0.025em 0.04em 0 #fffc00;
             }
+
             16% {
                 text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                             -0.05em -0.05em 0 #fffc00;
+                    -0.05em -0.05em 0 #fffc00;
             }
+
             49% {
                 text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                             -0.05em -0.05em 0 #fffc00;
+                    -0.05em -0.05em 0 #fffc00;
             }
+
             50% {
                 text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                             0 -0.04em 0 #fffc00;
+                    0 -0.04em 0 #fffc00;
             }
+
             99% {
                 text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                             0 -0.04em 0 #fffc00;
+                    0 -0.04em 0 #fffc00;
             }
+
             100% {
                 text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                             0.025em 0.04em 0 #fffc00;
+                    0.025em 0.04em 0 #fffc00;
             }
         }
 
@@ -279,10 +414,12 @@
                 transform: scale(0.3);
                 opacity: 0;
             }
+
             50% {
                 transform: scale(1.05);
                 opacity: 0.8;
             }
+
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -317,8 +454,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .countdown-box span:first-child {
@@ -359,7 +503,8 @@
             transform: rotateY(180deg);
         }
 
-        .letter-front, .letter-inside {
+        .letter-front,
+        .letter-inside {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -460,8 +605,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         /* Final message */
@@ -477,11 +629,27 @@
         }
 
         @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.3); }
-            35% { transform: scale(1); }
-            45% { transform: scale(1.2); }
-            55% { transform: scale(1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.3);
+            }
+
+            35% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.2);
+            }
+
+            55% {
+                transform: scale(1);
+            }
         }
 
         .surprise-btn {
@@ -511,12 +679,12 @@
             .glitch {
                 font-size: 3rem;
             }
-            
+
             .countdown-box {
                 min-width: 80px;
                 padding: 15px;
             }
-            
+
             .countdown-box span:first-child {
                 font-size: 2rem;
             }
@@ -527,10 +695,27 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- MENÚ SUPERIOR -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Musica.html" class="menu-item">🎵 Música</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
+        </nav>
+    </div>
+
     <!-- Fondo de estrellas -->
     <div class="stars"></div>
-    
+
     <!-- Corazones flotantes -->
     <div class="floating-hearts"></div>
 
@@ -546,13 +731,13 @@
         <section class="password-section">
             <h2>🎁 REGALO SECRETO 🎁</h2>
             <p>Introduce la contraseña para descubrir tu regalo especial...</p>
-            
+
             <div class="password-container">
                 <div class="password-input-group">
                     <input type="password" id="passwordInput" placeholder="Escribe la contraseña" autocomplete="off">
                     <button id="passwordBtn">¡Descubrir!</button>
                 </div>
-                
+
                 <!-- Bocadillo de mensajes -->
                 <div id="messageBubble" class="message-bubble">
                     <p id="messageText"></p>
@@ -594,8 +779,10 @@
                     </div>
                     <div class="letter-inside">
                         <p>Mi amor,</p>
-                        <p>Cada día a tu lado es un regalo. Este 13 de Julio celebramos no solo un año más, sino cada momento, cada sonrisa y cada abrazo que hemos compartido.</p>
-                        <p>Eres la persona más especial que conozco, y por eso mereces algo único. Esta página es solo un pequeño reflejo de lo mucho que te amo.</p>
+                        <p>Cada día a tu lado es un regalo. Este 13 de Julio celebramos no solo un año más, sino cada
+                            momento, cada sonrisa y cada abrazo que hemos compartido.</p>
+                        <p>Eres la persona más especial que conozco, y por eso mereces algo único. Esta página es solo
+                            un pequeño reflejo de lo mucho que te amo.</p>
                         <p>Te espero con los brazos abiertos y el corazón lleno de amor para celebrar nuestro día.</p>
                         <p class="signature">Con todo mi amor,<br>Javi ❤️</p>
                     </div>
@@ -622,6 +809,7 @@
         // Configuración de contraseñas
         const JAVI_PASSWORD = "Patito2026-.-";  // Tu contraseña (acceso inmediato)
         const ELLA_PASSWORD = "Patito2025";   // La contraseña de ella (verifica fecha)
+        const CUMPLE_PASSWORD = "cumpleaños1234";  // Contraseña cumpleaños → cumpleaños.html
         const targetDate = new Date('July 13, 2026 00:00:00').getTime();
 
         // Elementos del DOM
@@ -638,14 +826,14 @@
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            
+
             return { days, hours, minutes, distance };
         }
 
         // Función para mostrar mensaje en el bocadillo
         function showMessage(message, isError = false, isSuccess = false) {
             messageBubble.className = 'message-bubble show';
-            
+
             if (isError) {
                 messageBubble.classList.add('error');
                 messageBubble.classList.remove('success');
@@ -655,70 +843,79 @@
             } else {
                 messageBubble.classList.remove('error', 'success');
             }
-            
+
             messageText.textContent = message;
         }
 
         // Función para redirigir a Regalo1.html
         function goToRegalo() {
-            // Animación de salida
             document.body.style.opacity = '0';
             document.body.style.transform = 'scale(0.95)';
             document.body.style.transition = 'all 0.5s';
-            
-            // Redirigir después de la animación
-            setTimeout(() => {
-                window.location.href = 'Regalo1.html';
-            }, 500);
+            setTimeout(() => { window.location.href = 'Regalo1.html'; }, 500);
+        }
+
+        // Función para redirigir a cumpleaños.html
+        function goToCumple() {
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'scale(0.95)';
+            document.body.style.transition = 'all 0.5s';
+            setTimeout(() => { window.location.href = 'cumpleaños.html'; }, 500);
         }
 
         // Manejar clic en el botón de contraseña
-        passwordBtn.addEventListener('click', function() {
+        passwordBtn.addEventListener('click', function () {
             const enteredPassword = passwordInput.value;
             const remaining = getDaysRemaining();
-            
-            // Caso 1: Contraseña correcta de Javi (acceso inmediato al regalo)
-            if (enteredPassword === JAVI_PASSWORD) {
+
+            // Caso 0: Contraseña de cumpleaños → cumpleaños.html
+            if (enteredPassword === CUMPLE_PASSWORD) {
+                showMessage('🎂 ¡Feliz Cumpleaños! Redirigiendo...', false, true);
+                countdownDisplay.innerHTML = '';
+                setTimeout(goToCumple, 1500);
+
+                // Caso 1: Contraseña correcta de Javi (acceso inmediato al regalo)
+            } else if (enteredPassword === JAVI_PASSWORD) {
                 showMessage('✅ ¡Acceso concedido! Redirigiendo a tu regalo...', false, true);
                 countdownDisplay.innerHTML = '';
-                
+
                 // Pequeña pausa para mostrar el mensaje antes de redirigir
                 setTimeout(goToRegalo, 1500);
-                
-            // Caso 2: Contraseña correcta de ella (verificar fecha)
+
+                // Caso 2: Contraseña correcta de ella (verificar fecha)
             } else if (enteredPassword === ELLA_PASSWORD) {
                 const now = new Date().getTime();
-                
+
                 if (now >= targetDate) {
                     // Ya puede acceder al regalo
                     showMessage('✨ ¡FELIZ ANIVERSARIO MI AMOR! ✨', false, true);
                     countdownDisplay.innerHTML = 'Redirigiendo a tu regalo especial...';
-                    
+
                     setTimeout(goToRegalo, 2000);
                 } else {
                     // Mostrar días que faltan
                     showMessage('📅 Regalo no disponible hasta el 13/07/2026', true, false);
                     countdownDisplay.innerHTML = `Te quedan ${remaining.days} días, ${remaining.hours} horas y ${remaining.minutes} minutos... 💝`;
                 }
-                
-            // Caso 3: Contraseña incorrecta
+
+                // Caso 3: Contraseña incorrecta
             } else {
                 showMessage('❌ Contraseña incorrecta', true, false);
                 countdownDisplay.innerHTML = '';
-                
+
                 // Animación de error
                 passwordInput.style.transform = 'translateX(5px)';
                 setTimeout(() => passwordInput.style.transform = 'translateX(-5px)', 50);
                 setTimeout(() => passwordInput.style.transform = 'translateX(5px)', 100);
                 setTimeout(() => passwordInput.style.transform = 'translateX(0)', 150);
             }
-            
+
             // Limpiar input
             passwordInput.value = '';
         });
 
         // Permitir acceder con Enter
-        passwordInput.addEventListener('keypress', function(e) {
+        passwordInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 passwordBtn.click();
             }
@@ -729,28 +926,28 @@
             // Cuenta regresiva
             updateCountdown();
             setInterval(updateCountdown, 1000);
-            
+
             // Corazones flotantes
             setInterval(createHeart, 500);
-            
+
             // Carta interactiva
-            document.getElementById('loveLetter').addEventListener('click', function() {
+            document.getElementById('loveLetter').addEventListener('click', function () {
                 this.classList.toggle('opened');
             });
-            
+
             // Globos
             createBalloons(12);
-            
+
             // Botón sorpresa
-            document.getElementById('surpriseBtn').addEventListener('click', function() {
+            document.getElementById('surpriseBtn').addEventListener('click', function () {
                 for (let i = 0; i < 50; i++) {
                     setTimeout(() => {
                         createHeart();
                     }, i * 50);
                 }
-                
+
                 alert('¡TE AMO! ❤️ Prepárate para el 13/07/2026');
-                
+
                 document.body.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%)';
                 setTimeout(() => {
                     document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
@@ -781,9 +978,9 @@
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 4 + 's';
             heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-            
+
             document.querySelector('.floating-hearts').appendChild(heart);
-            
+
             setTimeout(() => {
                 heart.remove();
             }, 10000);
@@ -792,19 +989,19 @@
         function createBalloons(count) {
             const balloonColors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#fd79a8'];
             const balloonsContainer = document.getElementById('balloonsContainer');
-            
+
             balloonsContainer.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const balloon = document.createElement('div');
                 balloon.classList.add('balloon');
                 balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-                
-                balloon.addEventListener('click', function(e) {
+
+                balloon.addEventListener('click', function (e) {
                     e.stopPropagation();
                     this.classList.add('popped');
                     createConfetti();
                 });
-                
+
                 balloonsContainer.appendChild(balloon);
             }
         }
@@ -822,9 +1019,9 @@
                 confetti.style.zIndex = '9999';
                 confetti.style.animation = `float ${Math.random() * 3 + 2}s linear`;
                 confetti.style.pointerEvents = 'none';
-                
+
                 document.body.appendChild(confetti);
-                
+
                 setTimeout(() => {
                     confetti.remove();
                 }, 5000);
@@ -832,9 +1029,10 @@
         }
 
         // Inicializar todo cuando carga la página
-        window.onload = function() {
+        window.onload = function () {
             initializeMainPage();
         };
     </script>
 </body>
+
 </html>

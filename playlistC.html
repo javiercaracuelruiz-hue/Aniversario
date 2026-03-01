@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Playlist de Cumpleaños · Para Estrella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 40% 80%, #5a0030 0%, #200010 50%, #0d0008 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden
+        }
+
+        /* NAV */
+        .menu-container {
+            background: rgba(80, 5, 35, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 110, 160, 0.22)
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 900;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            transition: filter 0.2s
+        }
+
+        .menu-logo:hover {
+            filter: brightness(1.2)
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .menu-item {
+            color: rgba(255, 220, 235, 0.7);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 50px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            border: 1px solid transparent
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 110, 160, 0.18);
+            border-color: rgba(255, 110, 160, 0.3)
+        }
+
+        .menu-item.active {
+            color: #ff8cba;
+            background: rgba(255, 110, 160, 0.15);
+            border-color: rgba(255, 110, 160, 0.4)
+        }
+
+        .menu-home {
+            font-size: 0.78rem;
+            font-weight: 900;
+            padding: 8px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            color: #1a0010;
+            box-shadow: 0 0 18px rgba(255, 110, 180, 0.5);
+            transition: all 0.25s;
+            letter-spacing: 0.06em
+        }
+
+        .menu-home:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 34px rgba(255, 110, 180, 0.8)
+        }
+
+        @media(max-width:768px) {
+            .menu-logo .logo-date {
+                display: none
+            }
+
+            .menu-item {
+                font-size: 0.7rem;
+                padding: 5px 9px
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 5px
+            }
+        }
+
+        /* VINYL BG DECO */
+        .vinyl-deco {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: repeating-radial-gradient(circle, rgba(255, 110, 160, 0.06) 0px, rgba(255, 110, 160, 0) 3px, rgba(255, 110, 160, 0.04) 6px);
+            right: -150px;
+            top: 20%;
+            pointer-events: none;
+            animation: rotate 30s linear infinite
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* PAGE */
+        .page {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 100px 20px 80px
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 44px
+        }
+
+        .page-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff8cba;
+            border: 1px solid rgba(255, 110, 160, 0.4);
+            padding: 5px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            background: rgba(255, 110, 160, 0.08)
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #ff8cba 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px
+        }
+
+        .page-sub {
+            color: rgba(255, 200, 220, 0.6);
+            font-size: 0.95rem;
+            font-weight: 300
+        }
+
+        /* NOW PLAYING */
+        .now-playing {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 110, 160, 0.25);
+            border-radius: 28px;
+            padding: 32px 36px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .disc {
+            width: 90px;
+            height: 90px;
+            flex-shrink: 0;
+            background: conic-gradient(#1a0010, #5a0030, #e91e8c, #ff6eb4, #ffd700, #1a0010);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 110, 160, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 4s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .disc.playing {
+            animation-play-state: running
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .disc-center {
+            width: 28px;
+            height: 28px;
+            background: #0d0008;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .np-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .np-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff8cba;
+            margin-bottom: 5px;
+            font-weight: 700
+        }
+
+        .np-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .np-artist {
+            font-size: 0.88rem;
+            color: rgba(255, 200, 220, 0.6);
+            font-weight: 300
+        }
+
+        .np-reason {
+            font-size: 0.78rem;
+            color: rgba(255, 180, 210, 0.5);
+            margin-top: 8px;
+            font-style: italic;
+            line-height: 1.5
+        }
+
+        .np-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 14px
+        }
+
+        .ctrl-btn {
+            background: rgba(255, 110, 160, 0.15);
+            border: 1px solid rgba(255, 110, 160, 0.3);
+            color: white;
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em
+        }
+
+        .ctrl-btn:hover {
+            background: rgba(255, 110, 160, 0.35);
+            transform: scale(1.04)
+        }
+
+        .ctrl-btn.play-btn {
+            background: linear-gradient(135deg, #ff6eb4, #e91e8c);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 110, 160, 0.4)
+        }
+
+        /* PROGRESS */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 110, 160, 0.15);
+            border-radius: 2px;
+            margin-top: 14px;
+            cursor: pointer;
+            position: relative
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6eb4, #ffd700);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear
+        }
+
+        /* PLAYLIST */
+        .playlist-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 180, 210, 0.5);
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-left: 4px
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .track:hover {
+            background: rgba(255, 110, 160, 0.1)
+        }
+
+        .track.active {
+            background: rgba(255, 110, 160, 0.12)
+        }
+
+        .track-num {
+            font-size: 0.78rem;
+            color: rgba(255, 180, 210, 0.4);
+            font-weight: 600;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .track.active .track-num {
+            color: #ff8cba
+        }
+
+        .track-art {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: var(--c)
+        }
+
+        .track-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .track-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .track.active .track-title {
+            color: #ff8cba
+        }
+
+        .track-artist {
+            font-size: 0.78rem;
+            color: rgba(255, 180, 210, 0.5);
+            font-weight: 300
+        }
+
+        .track-reason {
+            font-size: 0.72rem;
+            color: rgba(255, 160, 200, 0.4);
+            font-style: italic;
+            margin-top: 2px;
+            display: none;
+            line-height: 1.4
+        }
+
+        .track.active .track-reason {
+            display: block;
+            color: rgba(255, 180, 210, 0.65)
+        }
+
+        .track-note {
+            font-size: 0.8rem;
+            color: rgba(255, 180, 210, 0.3);
+            font-size: 1rem
+        }
+
+        .track.active .track-note {
+            color: #ff8cba
+        }
+
+        .eq-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 18px
+        }
+
+        .eq-bar {
+            width: 3px;
+            background: #ff8cba;
+            border-radius: 1px;
+            animation: eq var(--d, 0.5s) ease-in-out infinite alternate
+        }
+
+        @keyframes eq {
+            from {
+                height: 3px
+            }
+
+            to {
+                height: var(--h, 14px)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vinyl-deco"></div>
+
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="cumpleaños.html" class="menu-logo">🎂 <span class="logo-date">¡Feliz Cumple!</span></a>
+            <div class="menu-links">
+                <a href="cumpleaños.html" class="menu-item">🎉 Inicio</a>
+                <a href="cartaC.html" class="menu-item">💌 Carta</a>
+                <a href="regalosC.html" class="menu-item">🎁 Regalos</a>
+                <a href="recuerdosC.html" class="menu-item">📸 Recuerdos</a>
+                <a href="playlistC.html" class="menu-item active">🎵 Playlist</a>
+            </div>
+            <a href="index.html" class="menu-home">🏠 Volver al Inicio</a>
+        </nav>
+    </div>
+
+    <div class="page">
+        <div class="page-header">
+            <div class="page-tag">🎵 Playlist hecha con amor · Solo para hoy</div>
+            <h1 class="page-title">Tu playlist<br>de cumpleaños</h1>
+            <p class="page-sub">Canciones que me recuerdan a ti, a nosotros, y a este día 🎶</p>
+        </div>
+
+        <!-- NOW PLAYING -->
+        <div class="now-playing">
+            <div class="disc" id="disc">
+                <div class="disc-center">💿</div>
+            </div>
+            <div class="np-info">
+                <div class="np-label">▶ Reproduciendo ahora</div>
+                <div class="np-title" id="npTitle">— Elige una canción —</div>
+                <div class="np-artist" id="npArtist">Tu playlist de cumpleaños</div>
+                <div class="np-reason" id="npReason">Haz clic en una canción para escucharla en YouTube 🎧</div>
+                <div class="np-controls">
+                    <button class="ctrl-btn" onclick="prev()">⏮ Anterior</button>
+                    <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶ Reproducir</button>
+                    <button class="ctrl-btn" onclick="next()">Siguiente ⏭</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAYLIST -->
+        <div class="playlist-label">🎀 8 canciones · Especial cumpleaños</div>
+        <div id="playlist"></div>
+    </div>
+
+    <script>
+        const songs = [
+            { icon: '🌹', color: 'linear-gradient(135deg,#e91e8c,#9c1060)', title: 'Feliz cumpleaños a ti', artist: 'Canción clásica', reason: 'Porque hoy es tu día, y no puede faltar. ¡Muchos años más a mi lado! 🎂', url: 'https://www.youtube.com/results?search_query=happy+birthday' },
+            { icon: '💜', color: 'linear-gradient(135deg,#7c3aed,#4c1d95)', title: 'A Thousand Years', artist: 'Christina Perri', reason: 'Porque te querré por miles de años más. Y porque cada vez que la escucho pienso en ti.', url: 'https://www.youtube.com/results?search_query=christina+perri+a+thousand+years' },
+            { icon: '🌸', color: 'linear-gradient(135deg,#f472b6,#db2777)', title: 'Perfect', artist: 'Ed Sheeran', reason: 'Eres perfecta, sí. No te lo digo suficiente, pero lo es. Perfecta para mí.', url: 'https://www.youtube.com/results?search_query=ed+sheeran+perfect' },
+            { icon: '💃', color: 'linear-gradient(135deg,#ff8c00,#e91e8c)', title: 'Despacito', artist: 'Luis Fonsi ft. Daddy Yankee', reason: 'Para que баilem el día de tu cumpleaños aunque no quieras. 😄', url: 'https://www.youtube.com/results?search_query=despacito+luis+fonsi' },
+            { icon: '✨', color: 'linear-gradient(135deg,#ffd700,#f59e0b)', title: 'Unstoppable', artist: 'Sia', reason: 'Porque eres exactamente eso — imparable. No te pones límites y eso me encanta de ti.', url: 'https://www.youtube.com/results?search_query=sia+unstoppable' },
+            { icon: '🎉', color: 'linear-gradient(135deg,#10b981,#065f46)', title: 'Good as Hell', artist: 'Lizzo', reason: 'Hoy te sientes bien, porque lo eres. ¡Es tu cumpleaños!', url: 'https://www.youtube.com/results?search_query=lizzo+good+as+hell' },
+            { icon: '💕', color: 'linear-gradient(135deg,#ec4899,#9d174d)', title: 'Lover', artist: 'Taylor Swift', reason: 'Porque somos tú y yo. Y eso ya es suficiente para hacer algo grande.', url: 'https://www.youtube.com/results?search_query=taylor+swift+lover' },
+            { icon: '🌙', color: 'linear-gradient(135deg,#6366f1,#4338ca)', title: 'All of Me', artist: 'John Legend', reason: 'Todo de mí ama todo de ti. Hoy, en tu cumpleaños, y siempre. ❤️', url: 'https://www.youtube.com/results?search_query=john+legend+all+of+me' },
+        ];
+
+        let current = -1;
+        let playing = false;
+        let progressInterval = null;
+        let progressVal = 0;
+
+        const playlist = document.getElementById('playlist');
+        songs.forEach((s, i) => {
+            const el = document.createElement('div');
+            el.className = 'track';
+            el.id = 'track-' + i;
+            el.innerHTML = `
+                <div class="track-num">${String(i + 1).padStart(2, '0')}</div>
+                <div class="track-art" style="background:${s.color}">${s.icon}</div>
+                <div class="track-info">
+                    <div class="track-title">${s.title}</div>
+                    <div class="track-artist">${s.artist}</div>
+                    <div class="track-reason">${s.reason}</div>
+                </div>
+                <div class="track-note">🎵</div>
+            `;
+            el.onclick = () => selectTrack(i);
+            playlist.appendChild(el);
+        });
+
+        function selectTrack(i) {
+            if (current === i) { togglePlay(); return; }
+            if (current >= 0) document.getElementById('track-' + current).classList.remove('active');
+            current = i;
+            const s = songs[i];
+            document.getElementById('track-' + i).classList.add('active');
+            document.getElementById('npTitle').textContent = s.title;
+            document.getElementById('npArtist').textContent = s.artist;
+            document.getElementById('npReason').textContent = s.reason;
+            progressVal = 0;
+            document.getElementById('progress').style.width = '0%';
+            startPlaying();
+            window.open(s.url, '_blank');
+        }
+
+        function startPlaying() {
+            playing = true;
+            document.getElementById('disc').classList.add('playing');
+            document.getElementById('playBtn').textContent = '⏸ Pausar';
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                progressVal = Math.min(progressVal + 0.15, 100);
+                document.getElementById('progress').style.width = progressVal + '%';
+                if (progressVal >= 100) { clearInterval(progressInterval); next(); }
+            }, 200);
+        }
+
+        function togglePlay() {
+            if (current < 0) { selectTrack(0); return; }
+            if (playing) {
+                playing = false;
+                document.getElementById('disc').classList.remove('playing');
+                document.getElementById('playBtn').textContent = '▶ Reproducir';
+                clearInterval(progressInterval);
+            } else {
+                startPlaying();
+            }
+        }
+
+        function next() {
+            selectTrack((current + 1) % songs.length);
+        }
+
+        function prev() {
+            selectTrack((current - 1 + songs.length) % songs.length);
+        }
+    </script>
+</body>
+
+</html>

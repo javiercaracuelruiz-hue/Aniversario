@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Regalos Especiales · Para Estrella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 20% 70%, #5a0030 0%, #200010 50%, #0d0008 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAV CUMPLEAÑOS */
+        .menu-container {
+            background: rgba(80, 5, 35, 0.75);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 110, 160, 0.22);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 900;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            transition: filter 0.2s;
+        }
+
+        .menu-logo:hover {
+            filter: brightness(1.2);
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 220, 235, 0.7);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 50px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 110, 160, 0.18);
+            border-color: rgba(255, 110, 160, 0.3);
+        }
+
+        .menu-item.active {
+            color: #ff8cba;
+            background: rgba(255, 110, 160, 0.15);
+            border-color: rgba(255, 110, 160, 0.4);
+        }
+
+        .menu-home {
+            font-size: 0.78rem;
+            font-weight: 900;
+            padding: 8px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            color: #1a0010;
+            box-shadow: 0 0 18px rgba(255, 110, 180, 0.5);
+            transition: all 0.25s;
+            letter-spacing: 0.06em;
+        }
+
+        .menu-home:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 34px rgba(255, 110, 180, 0.8);
+        }
+
+        @media (max-width:768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.7rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 5px;
+            }
+        }
+
+        /* PAGE */
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 20px 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .page-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff8cba;
+            border: 1px solid rgba(255, 110, 160, 0.4);
+            padding: 5px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            background: rgba(255, 110, 160, 0.08);
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #ff8cba 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .page-sub {
+            color: rgba(255, 200, 220, 0.6);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* GIFT GRID */
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .gift-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 110, 160, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .gift-box:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 110, 160, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 110, 160, 0.2);
+        }
+
+        .gift-box.opened {
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .gift-lid {
+            background: linear-gradient(135deg, var(--c1), var(--c2));
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+
+        .gift-lid::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%);
+        }
+
+        .gift-lid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 18px;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%);
+        }
+
+        .gift-icon {
+            font-size: 3.2rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.5s;
+        }
+
+        .gift-box.opened .gift-icon {
+            transform: scale(0) translateY(-30px);
+        }
+
+        .gift-box.opened .gift-lid {
+            background: linear-gradient(135deg, #ffd700, #f59e0b);
+        }
+
+        .gift-body {
+            padding: 24px 22px;
+        }
+
+        .gift-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .gift-preview {
+            font-size: 0.88rem;
+            color: rgba(255, 210, 225, 0.6);
+            font-weight: 300;
+        }
+
+        .gift-reveal {
+            display: none;
+            padding: 0 22px 24px;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: rgba(255, 230, 240, 0.9);
+            font-weight: 300;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .gift-box.opened .gift-reveal {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gift-stamp {
+            display: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ffd700;
+            border: 1.5px solid #ffd700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin: 0 22px 20px;
+            width: fit-content;
+        }
+
+        .gift-box.opened .gift-stamp {
+            display: block;
+        }
+
+        /* CONFETTI */
+        .confetti-piece {
+            position: fixed;
+            top: -20px;
+            border-radius: 3px;
+            animation: confettiFall linear forwards;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV CUMPLEAÑOS -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="cumpleaños.html" class="menu-logo">🎂 <span class="logo-date">¡Feliz Cumple!</span></a>
+            <div class="menu-links">
+                <a href="cumpleaños.html" class="menu-item">🎉 Inicio</a>
+                <a href="cartaC.html" class="menu-item">💌 Carta</a>
+                <a href="regalosC.html" class="menu-item active">🎁 Regalos</a>
+                <a href="recuerdosC.html" class="menu-item">📸 Recuerdos</a>
+                <a href="deseosC.html" class="menu-item">✨ Deseos</a>
+            </div>
+            <a href="index.html" class="menu-home">🏠 Volver al Inicio</a>
+        </nav>
+    </div>
+
+    <div class="page">
+        <div class="page-header">
+            <div class="page-tag">🎁 Abre cada regalo · Con amor de Javi</div>
+            <h1 class="page-title">Tus regalos<br>de cumpleaños</h1>
+            <p class="page-sub">Haz clic en cada caja para descubrir tu sorpresa ✨</p>
+        </div>
+
+        <div class="gift-grid">
+
+            <div class="gift-box" style="--c1:#e91e8c;--c2:#9c1060" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">🌹</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">Una promesa de amor</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Prometo estar siempre ahí. En los días fáciles y también en los complicados.
+                    Prometo hacerte reír, escucharte, mimarte y quererte con todo lo que tengo. Hoy y todos los días. ❤️
+                </div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+            <div class="gift-box" style="--c1:#a855f7;--c2:#6d28d9" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">🗺️</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">Un viaje pendiente</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Tú eliges el destino, yo pongo la compañía. Tenemos una aventura pendiente para
+                    este año — dime dónde quieres ir y lo hacemos realidad juntos. El mundo nos espera. ✈️🌍</div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+            <div class="gift-box" style="--c1:#f59e0b;--c2:#d97706" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">🌙</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">Una noche especial</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Una cena, tú y yo, el lugar que tú quieras. Sin prisas, sin teléfonos, solo
+                    nosotros dos celebrando que eres la mejor persona en mi vida. Esa noche va por ti. 🍷✨</div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+            <div class="gift-box" style="--c1:#10b981;--c2:#065f46" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">📝</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">1000 razones más</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Podría escribirte mil razones por las que te quiero — pero me quedaría corto.
+                    Así que aquí va la más importante: eres tú. Simplemente tú. Y eso es más que suficiente. 💜</div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+            <div class="gift-box" style="--c1:#ef4444;--c2:#991b1b" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">🎬</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">Maratón de pelis</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Una tarde/noche de maratón de pelis: tú eliges absolutamente todo — la
+                    película, las palomitas, la manta y la postura en el sofá. Yo solo pongo los mimos. 🍿😊</div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+            <div class="gift-box" style="--c1:#f472b6;--c2:#be185d" onclick="openGift(this)">
+                <div class="gift-lid">
+                    <div class="gift-icon">💆‍♀️</div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-title">Día de mimos</div>
+                    <div class="gift-preview">Haz clic para descubrir...</div>
+                </div>
+                <div class="gift-reveal">Un día entero dedicado a ti. Desayuno especial, planes que tú decides, y todos
+                    los mimos que quepan en un solo día. Hoy eres la protagonista de todo. 👸✨</div>
+                <div class="gift-stamp">🎀 Desvelado</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function confetti() {
+            const colors = ['#ec4899', '#ffd700', '#a855f7', '#34d399', '#f87171', '#fff'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.className = 'confetti-piece';
+                    const sz = Math.random() * 10 + 6;
+                    el.style.cssText = `left:${Math.random() * 100}%;width:${sz}px;height:${sz * (Math.random() > 0.5 ? 1 : 2.5)}px;background:${colors[Math.floor(Math.random() * colors.length)]};animation-duration:${2 + Math.random() * 3}s;`;
+                    document.body.appendChild(el);
+                    el.addEventListener('animationend', () => el.remove());
+                }, i * 50);
+            }
+        }
+
+        function openGift(el) {
+            if (el.classList.contains('opened')) return;
+            el.classList.add('opened');
+            confetti();
+        }
+    </script>
+</body>
+
+</html>

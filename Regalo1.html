@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎁 Regalo Especial - 13/07/2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,55 +14,132 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* MENÚ SUPERIOR */
+        /* ── NAV PROFESIONAL ── */
         .menu-container {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
+            background: rgba(10, 8, 25, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .menu {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
+            width: 100%;
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: gold;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
             justify-content: center;
-            gap: 30px;
             flex-wrap: wrap;
-            padding: 0 20px;
         }
 
         .menu-item {
-            color: white;
+            color: rgba(255, 255, 255, 0.65);
             text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
         }
 
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: gold;
+        .menu-item:hover,
+        .menu-item.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            color: gold;
+        }
+
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
+            transition: all 0.25s;
+        }
+
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px;
+            }
         }
 
         /* Para que el contenido no quede debajo del menú fijo */
@@ -148,32 +227,37 @@
             .menu {
                 gap: 15px;
             }
-            
+
             .menu-item {
                 font-size: 1rem;
                 padding: 8px 15px;
             }
-            
+
             .section h2 {
                 font-size: 2rem;
             }
-            
+
             .section p {
                 font-size: 1.2rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- MENÚ SUPERIOR FIJO - AHORA CON ENLACES A HTMLs -->
     <div class="menu-container">
         <nav class="menu">
-            <a href="Regalo1.html" class="menu-item">🏠 INICIO</a>
-            <a href="fotos.html" class="menu-item">📸 FOTOS</a>
-            <a href="cartas.html" class="menu-item">💌 CARTAS</a>
-            <a href="videos.html" class="menu-item">🎥 VIDEOS</a>
-            <a href="musica.html" class="menu-item">🎵 MÚSICA</a>
-            <a href="sorpresa.html" class="menu-item">🎁 SORPRESA</a>
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item active">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="musica.html" class="menu-item">🎵 Música</a>
+                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
         </nav>
     </div>
 
@@ -184,7 +268,7 @@
             <h2>✨ BIENVENIDA MI AMOR ✨</h2>
             <p>13/07/2025 - 13/07/2026</p>
             <p>Un año de momentos inolvidables juntos ❤️</p>
-            
+
             <div class="section-box">
                 <div class="card">
                     <h3>365</h3>
@@ -208,7 +292,8 @@
     <script>
         // Mensaje de bienvenida en consola (solo para ti)
         console.log('🎁 Regalo especial para el 13/07/2026');
-        console.log('📌 Menú con enlaces a: fotos.html, cartas.html, videos.html, musica.html, sorpresa.html');
+        console.log('📌 Menú con enlaces a: timeline.html, cartas.html, Juegos.html, musica.html, sorpresa.html');
     </script>
 </body>
+
 </html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>📆 Línea del Tiempo · Nuestra Historia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* ── NAV PROFESIONAL ── */
+        .menu-container {
+            background: rgba(10, 0, 30, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
+            transition: all 0.25s;
+        }
+
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 100px 20px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #fff, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+        }
+
+        /* Contenedor 3D */
+        .timeline-container {
+            position: relative;
+            height: 600px;
+            margin: 50px 0;
+            perspective: 2000px;
+            overflow: hidden;
+        }
+
+        .timeline-carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: autoRotate 30s infinite linear;
+            cursor: grab;
+        }
+
+        .timeline-carousel:active {
+            cursor: grabbing;
+            animation-play-state: paused;
+        }
+
+        @keyframes autoRotate {
+            from {
+                transform: rotateY(0deg) rotateX(5deg);
+            }
+
+            to {
+                transform: rotateY(360deg) rotateX(5deg);
+            }
+        }
+
+        /* Elementos de la línea */
+        .timeline-item {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            left: 50%;
+            top: 50%;
+            margin-left: -140px;
+            margin-top: -190px;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 30deg)) translateZ(500px);
+            transition: all 0.5s;
+        }
+
+        .timeline-item:hover {
+            transform: rotateY(calc(var(--i) * 30deg)) translateZ(550px) scale(1.1);
+        }
+
+        /* Tarjeta de momento */
+        .moment-card {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transform: rotateX(5deg);
+        }
+
+        .moment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            pointer-events: none;
+        }
+
+        .moment-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .moment-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        .moment-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .moment-content {
+            padding: 20px;
+        }
+
+        .moment-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .moment-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .moment-song {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #a855f7;
+            font-size: 0.9rem;
+        }
+
+        /* Controles */
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #a855f7;
+            color: white;
+            padding: 12px 30px;
+            margin: 0 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+
+        /* Estrellas de fondo */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Modal de detalle */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1030, #2a1a40);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #a855f7;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal h2 {
+            color: #a855f7;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENÚ SUPERIOR -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item active">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Musica.html" class="menu-item">🎵 Música</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
+        </nav>
+    </div>
+    <div class="stars" id="stars"></div>
+
+    <div class="header">
+        <h1>📆 Nuestra Historia en 3D</h1>
+        <p>Gira la línea del tiempo y revive nuestros momentos</p>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline-carousel" id="timelineCarousel">
+            <!-- Los items se generarán con JS -->
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" onclick="pauseRotation()">⏸ Pausar</button>
+        <button class="control-btn" onclick="resumeRotation()">▶ Reanudar</button>
+        <button class="control-btn" onclick="addMoment()">✨ Agregar momento</button>
+    </div>
+
+    <div class="modal" id="momentModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-image" id="modalImage"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalDescription"></p>
+            <p id="modalSong" style="color: #a855f7; margin-top: 15px;"></p>
+        </div>
+    </div>
+
+    <script>
+        // Momentos de la historia
+        const moments = [
+            {
+                date: "13·07·2026",
+                title: "💫 Nos conocimos",
+                description: "El día que nuestras vidas cambiaron para siempre. Una mirada fue suficiente para saber que éramos el uno para el otro.",
+                song: "🎵 IA - ClarentKP & Mora",
+                image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400"
+            },
+            {
+                date: "20·07·2026",
+                title: "💜 Primera cita",
+                description: "Café, conversación eterna y la certeza de que queríamos seguir viéndonos. El inicio de algo hermoso.",
+                song: "🎵 No Se Vale - Mora",
+                image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400"
+            },
+            {
+                date: "27·07·2026",
+                title: "💋 Primer beso",
+                description: "Bajo las estrellas, el tiempo se detuvo. Ese beso lo confirmó todo: estábamos hechos el uno para el otro.",
+                song: "🎵 Domingo - Mora",
+                image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400"
+            },
+            {
+                date: "13·08·2026",
+                title: "💕 Dijimos 'Te quiero'",
+                description: "Tres palabras, un millón de sentimientos. El corazón no nos cabía en el pecho.",
+                song: "🎵 Como te imaginé - Demarco Flamenco",
+                image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400"
+            },
+            {
+                date: "13·09·2026",
+                title: "🎶 Nuestra canción",
+                description: "Descubrimos que 'IA' sería nuestra canción. Cada vez que suena, volvemos a ese momento.",
+                song: "🎵 IA - ClarentKP & Mora",
+                image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400"
+            },
+            {
+                date: "13·10·2026",
+                title: "🌅 Primer atardecer",
+                description: "Juntos viendo cómo el sol se escondía, prometiéndonos que veríamos muchos más atardeceres así.",
+                song: "🎵 Ojalá - Fondo Flamenco",
+                image: "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=400"
+            },
+            {
+                date: "13·11·2026",
+                title: "✈️ Primer viaje",
+                description: "Nuestra primera aventura juntos. Descubrimos que viajar contigo es el mejor plan del mundo.",
+                song: "🎵 Loco - La Beriso",
+                image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400"
+            },
+            {
+                date: "13·12·2026",
+                title: "🎄 Primera Navidad",
+                description: "Nuestra primera Navidad juntos. Regalos, abrazos y la certeza de que eres el mejor regalo.",
+                song: "🎵 Me Enamore Remix - Angel y Khriz",
+                image: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400"
+            }
+        ];
+
+        let isPaused = false;
+
+        // Generar estrellas
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Generar línea del tiempo
+        function renderTimeline() {
+            const carousel = document.getElementById('timelineCarousel');
+            carousel.innerHTML = '';
+
+            moments.forEach((moment, index) => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.style.setProperty('--i', index);
+                item.onclick = () => openModal(index);
+
+                item.innerHTML = `
+                    <div class="moment-card">
+                        <div class="moment-image" style="background-image: url('${moment.image}')">
+                            <div class="moment-date">${moment.date}</div>
+                        </div>
+                        <div class="moment-content">
+                            <div class="moment-title">${moment.title}</div>
+                            <div class="moment-description">${moment.description.substring(0, 50)}...</div>
+                            <div class="moment-song">${moment.song}</div>
+                        </div>
+                    </div>
+                `;
+
+                carousel.appendChild(item);
+            });
+        }
+
+        // Abrir modal
+        function openModal(index) {
+            const moment = moments[index];
+            document.getElementById('modalImage').style.backgroundImage = `url('${moment.image}')`;
+            document.getElementById('modalTitle').textContent = moment.title;
+            document.getElementById('modalDate').textContent = moment.date;
+            document.getElementById('modalDescription').textContent = moment.description;
+            document.getElementById('modalSong').textContent = moment.song;
+            document.getElementById('momentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('momentModal').style.display = 'none';
+        }
+
+        function pauseRotation() {
+            document.getElementById('timelineCarousel').style.animationPlayState = 'paused';
+        }
+
+        function resumeRotation() {
+            document.getElementById('timelineCarousel').style.animationPlayState = 'running';
+        }
+
+        function addMoment() {
+            const newMoment = {
+                date: prompt("Fecha (ej: 13·07·2026):"),
+                title: prompt("Título del momento:"),
+                description: prompt("Descripción:"),
+                song: prompt("Canción relacionada:"),
+                image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400"
+            };
+
+            if (newMoment.date && newMoment.title) {
+                moments.push(newMoment);
+                renderTimeline();
+            }
+        }
+
+        // Inicializar
+        createStars();
+        renderTimeline();
+
+        // Click en fondo para cerrar modal
+        window.onclick = function (event) {
+            const modal = document.getElementById('momentModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+
+</html>

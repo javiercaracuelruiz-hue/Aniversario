@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>🔮 Bola Mágica del Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        /* ── NAV PROFESIONAL ── */
+        .menu-container {
+            background: rgba(10, 0, 30, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: #ffd700;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
+            transition: all 0.25s;
+        }
+
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px;
+            }
+        }
+
+        /* Fondo místico */
+        .mist {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(168, 85, 247, 0.2), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.2), transparent 50%);
+            animation: mistMove 20s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes mistMove {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.5) rotate(5deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Estrellas */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Contenedor principal */
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, #fff, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Bola mágica */
+        .magic-ball {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 40px;
+            position: relative;
+            cursor: pointer;
+            filter: drop-shadow(0 0 50px rgba(168, 85, 247, 0.5));
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .ball-outer {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #3a1a4a, #1a0b2e);
+            border-radius: 50%;
+            border: 5px solid rgba(168, 85, 247, 0.8);
+            box-shadow:
+                0 0 50px #a855f7,
+                inset 0 0 50px rgba(168, 85, 247, 0.3),
+                inset 20px 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Reflejos de la bola */
+        .ball-highlight {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Ventana mágica */
+        .magic-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #2a1a3a, #0a0a1a);
+            border-radius: 50%;
+            border: 3px solid rgba(168, 85, 247, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        .answer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 10px #a855f7;
+            animation: glow 2s infinite alternate;
+            transition: all 0.5s;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #a855f7;
+            }
+
+            to {
+                text-shadow: 0 0 30px #ec4899, 0 0 20px #a855f7;
+            }
+        }
+
+        /* Humo dentro de la bola */
+        .smoke {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent);
+            animation: smokeSwirl 8s infinite linear;
+        }
+
+        @keyframes smokeSwirl {
+            from {
+                transform: rotate(0deg) scale(1);
+                opacity: 0.3;
+            }
+
+            to {
+                transform: rotate(360deg) scale(1.5);
+                opacity: 0.1;
+            }
+        }
+
+        /* Pregunta */
+        .question-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 60px;
+            padding: 5px;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            display: flex;
+        }
+
+        .question-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 15px 25px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .question-box input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .question-box button {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .question-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Sugerencias */
+        .suggestions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .suggestion-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .suggestion-chip:hover {
+            background: rgba(168, 85, 247, 0.2);
+            color: white;
+            border-color: #a855f7;
+        }
+
+        /* Contador de preguntas */
+        .counter {
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Mensaje especial */
+        .special-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            padding: 30px 60px;
+            border-radius: 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 100;
+            animation: popIn 0.5s;
+            display: none;
+            box-shadow: 0 0 100px rgba(168, 85, 247, 0.8);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+
+            80% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENÚ SUPERIOR -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Musica.html" class="menu-item">🎵 Música</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="sorpresa.html" class="menu-item active">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
+        </nav>
+    </div>
+    <div class="mist"></div>
+    <div class="stars" id="stars"></div>
+    <div class="heart-rain" id="heartRain"></div>
+
+    <div class="container">
+        <h1>🔮 Bola Mágica del Amor</h1>
+        <div class="subtitle">Pregúntale lo que quieras, ella siempre dice la verdad...</div>
+
+        <div class="magic-ball" onclick="askQuestion()">
+            <div class="ball-outer">
+                <div class="ball-highlight"></div>
+                <div class="smoke"></div>
+                <div class="magic-window">
+                    <div class="answer" id="answer">✨</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <input type="text" id="question" placeholder="Escribe tu pregunta..."
+                onkeypress="if(event.key==='Enter') askQuestion()">
+            <button onclick="askQuestion()">Preguntar</button>
+        </div>
+
+        <div class="suggestions">
+            <span class="suggestion-chip" onclick="setQuestion('¿Me ama?')">¿Me ama?</span>
+            <span class="suggestion-chip" onclick="setQuestion('¿Seremos felices?')">¿Seremos felices?</span>
+            <span class="suggestion-chip" onclick="setQuestion('¿Estamos destinados?')">¿Estamos destinados?</span>
+            <span class="suggestion-chip" onclick="setQuestion('¿Viajaremos juntos?')">¿Viajaremos juntos?</span>
+            <span class="suggestion-chip" onclick="setQuestion('¿Para siempre?')">¿Para siempre?</span>
+        </div>
+
+        <div class="counter" id="counter">Has preguntado 0 veces</div>
+    </div>
+
+    <div class="special-message" id="specialMessage">
+        💜 TE AMO 💜
+    </div>
+
+    <script>
+        // Respuestas mágicas personalizadas
+        const answers = [
+            "💜 Sí, infinitamente",
+            "✨ Por supuesto mi amor",
+            "🌟 El destino lo quiere así",
+            "💫 Sin ninguna duda",
+            "⭐ Más de lo que imaginas",
+            "❤️ Para siempre",
+            "💕 Claro que sí",
+            "🌹 Es tu destino",
+            "🎯 Totalmente",
+            "💖 Sin dudarlo",
+            "✨ Ya lo sabes...",
+            "🌟 Pregunta al corazón",
+            "💫 El universo lo dice",
+            "⭐ Hoy, mañana y siempre",
+            "❤️ Eres su todo"
+        ];
+
+        const specialAnswers = [
+            "TE AMO",
+            "Eres mi vida",
+            "Mi corazón es tuyo",
+            "Contigo siempre",
+            "Eres perfecta"
+        ];
+
+        let questionCount = 0;
+
+        // Crear estrellas
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 3) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function setQuestion(q) {
+            document.getElementById('question').value = q;
+        }
+
+        function askQuestion() {
+            const question = document.getElementById('question').value.trim();
+
+            if (!question) {
+                alert('💜 Escribe algo bonito...');
+                return;
+            }
+
+            questionCount++;
+            document.getElementById('counter').textContent = `Has preguntado ${questionCount} veces`;
+
+            // Efecto de vibración
+            document.querySelector('.magic-ball').style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                document.querySelector('.magic-ball').style.animation = 'float 6s infinite ease-in-out';
+            }, 500);
+
+            // Seleccionar respuesta
+            let answer;
+            if (question.toLowerCase().includes('te amo') || question.toLowerCase().includes('quieres')) {
+                answer = specialAnswers[Math.floor(Math.random() * specialAnswers.length)];
+                showSpecialMessage(answer);
+                createHeartRain();
+            } else {
+                answer = answers[Math.floor(Math.random() * answers.length)];
+            }
+
+            // Mostrar respuesta con efecto de escritura
+            const answerElement = document.getElementById('answer');
+            answerElement.style.opacity = '0';
+            setTimeout(() => {
+                answerElement.textContent = answer;
+                answerElement.style.opacity = '1';
+            }, 300);
+
+            // Limpiar pregunta
+            document.getElementById('question').value = '';
+        }
+
+        function showSpecialMessage(message) {
+            const specialMsg = document.getElementById('specialMessage');
+            specialMsg.style.display = 'block';
+            setTimeout(() => {
+                specialMsg.style.display = 'none';
+            }, 3000);
+        }
+
+        function createHeartRain() {
+            const rain = document.getElementById('heartRain');
+            rain.innerHTML = '';
+
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = '-50px';
+                heart.style.fontSize = (Math.random() * 30 + 10) + 'px';
+                heart.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                heart.style.opacity = Math.random() + 0.5;
+                rain.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+
+        // Animación de shake
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+            
+            @keyframes fall {
+                to { transform: translateY(100vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Inicializar
+        createStars();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💋 Verdad o Reto · Para Estrella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --truth: #e040fb;
+            --dare: #ff5252;
+            --gold: #ffd700;
+            --bg1: #1a0533;
+            --bg2: #2d0b5e;
+            --glass: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ── PARTÍCULAS DE FONDO ── */
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .spark {
+            position: absolute;
+            border-radius: 50%;
+            animation: drift linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* ── NAV PROFESIONAL ── */
+        .menu-container {
+            background: rgba(10, 0, 30, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: var(--gold);
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botón único Verdad o Reto en el menú */
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid rgba(224, 64, 251, 0.5);
+            cursor: default;
+            flex-shrink: 0;
+            white-space: nowrap;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--truth), var(--dare));
+            color: white;
+            box-shadow: 0 0 20px rgba(224, 64, 251, 0.45);
+        }
+
+        .menu-sep {
+            width: 1px;
+            height: 28px;
+            background: var(--border);
+            margin: 0 4px;
+        }
+
+        /* ── CONTENIDO PRINCIPAL ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 110px 20px 80px;
+        }
+
+        /* ── ENCABEZADO ── */
+        .hero {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .hero-title {
+            font-size: 3.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f06, var(--truth), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 24px rgba(224, 64, 251, 0.4));
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* ── SELECTOR DE JUGADORES ── */
+        .players-box {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .players-box h3 {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .players-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .player-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.25s;
+            user-select: none;
+        }
+
+        .player-chip.active {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.12);
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+        }
+
+        .player-chip span.avatar {
+            font-size: 1.5rem;
+        }
+
+        .player-chip span.name {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* ── BOTONES PRINCIPALES ── */
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .big-btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            border-radius: 22px;
+            padding: 32px 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .big-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.12);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .big-btn:hover::before {
+            opacity: 1;
+        }
+
+        .big-btn:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+
+        .big-btn:active {
+            transform: scale(0.97);
+        }
+
+        .big-btn .btn-emoji {
+            font-size: 2.8rem;
+            line-height: 1;
+        }
+
+        .big-btn .btn-label {
+            font-size: 1.7rem;
+        }
+
+        .big-btn .btn-sub {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.75;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-truth {
+            background: linear-gradient(145deg, #9c27b0, var(--truth), #7b1fa2);
+            box-shadow: 0 8px 32px rgba(224, 64, 251, 0.45);
+        }
+
+        .btn-truth:hover {
+            box-shadow: 0 16px 48px rgba(224, 64, 251, 0.7);
+        }
+
+        .btn-dare {
+            background: linear-gradient(145deg, #c62828, var(--dare), #d32f2f);
+            box-shadow: 0 8px 32px rgba(255, 82, 82, 0.45);
+        }
+
+        .btn-dare:hover {
+            box-shadow: 0 16px 48px rgba(255, 82, 82, 0.7);
+        }
+
+        /* ── TARJETA DE RESULTADO ── */
+        #resultCard {
+            display: none;
+            position: relative;
+            border-radius: 28px;
+            padding: 40px 36px;
+            text-align: center;
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        #resultCard.truth-card {
+            background: linear-gradient(145deg, rgba(156, 39, 176, 0.35), rgba(224, 64, 251, 0.15));
+            border: 2px solid rgba(224, 64, 251, 0.5);
+            box-shadow: 0 0 60px rgba(224, 64, 251, 0.3), inset 0 0 40px rgba(224, 64, 251, 0.08);
+        }
+
+        #resultCard.dare-card {
+            background: linear-gradient(145deg, rgba(198, 40, 40, 0.35), rgba(255, 82, 82, 0.15));
+            border: 2px solid rgba(255, 82, 82, 0.5);
+            box-shadow: 0 0 60px rgba(255, 82, 82, 0.3), inset 0 0 40px rgba(255, 82, 82, 0.08);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.6) rotate(-4deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        #resultCard .type-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        #resultCard.truth-card .type-badge {
+            background: rgba(224, 64, 251, 0.25);
+            border: 1px solid rgba(224, 64, 251, 0.6);
+            color: var(--truth);
+        }
+
+        #resultCard.dare-card .type-badge {
+            background: rgba(255, 82, 82, 0.25);
+            border: 1px solid rgba(255, 82, 82, 0.6);
+            color: var(--dare);
+        }
+
+        #resultCard .player-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 4px;
+        }
+
+        #resultCard .player-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 22px;
+            color: var(--gold);
+        }
+
+        #resultCard .card-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.55;
+            color: white;
+        }
+
+        /* brillo animado en la tarjeta */
+        #resultCard .shimmer {
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 80%;
+            height: 220%;
+            background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.10) 50%, transparent 60%);
+            transform: rotate(25deg);
+            animation: shimmer 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -60%;
+            }
+
+            100% {
+                left: 140%;
+            }
+        }
+
+        /* ── BOTÓN VOLVER ── */
+        .back-button {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 11px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            z-index: 200;
+        }
+
+        .back-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 28px rgba(255, 71, 87, 0.55);
+        }
+
+        /* ── HISTORIAL ── */
+        .history-section {
+            margin-top: 8px;
+        }
+
+        .history-section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        #historyList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        #historyList::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #historyList::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #historyList::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .hist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+        }
+
+        .hist-badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            padding: 3px 10px;
+            border-radius: 50px;
+            flex-shrink: 0;
+        }
+
+        .hist-badge.t {
+            background: rgba(224, 64, 251, 0.2);
+            color: var(--truth);
+            border: 1px solid rgba(224, 64, 251, 0.4);
+        }
+
+        .hist-badge.d {
+            background: rgba(255, 82, 82, 0.2);
+            color: var(--dare);
+            border: 1px solid rgba(255, 82, 82, 0.4);
+        }
+
+        .hist-player {
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .hist-text {
+            color: rgba(255, 255, 255, 0.65);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 540px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .action-row {
+                grid-template-columns: 1fr;
+            }
+
+            .big-btn {
+                padding: 26px 16px;
+            }
+
+            .big-btn .btn-label {
+                font-size: 1.4rem;
+            }
+
+            #resultCard .card-text {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PARTÍCULAS -->
+    <div id="particles"></div>
+
+    <!-- ══════════════ MENÚ SUPERIOR ══════════════ -->
+    <div class="menu-container">
+        <nav class="menu">
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item">💌 Cartas</a>
+                <a href="Musica.html" class="menu-item">🎵 Música</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+            </div>
+            <span class="menu-vd">🎲 Verdad o Reto</span>
+        </nav>
+    </div>
+
+    <!-- ══════════════ CONTENIDO ══════════════ -->
+    <main class="page">
+
+        <div class="hero">
+            <h1 class="hero-title">Verdad o Reto 🎲</h1>
+            <p class="hero-sub">¿Te atreves a jugar, Estrella? 😈</p>
+        </div>
+
+        <!-- SELECTOR DE JUGADORES -->
+        <div class="players-box">
+            <h3>¿Quién juega este turno?</h3>
+            <div class="players-row">
+                <div class="player-chip active" id="chip-1" onclick="selectPlayer(1)">
+                    <span class="avatar">🌟</span>
+                    <span class="name">Estrella</span>
+                </div>
+                <div class="player-chip" id="chip-2" onclick="selectPlayer(2)">
+                    <span class="avatar">💙</span>
+                    <span class="name">Yo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTONES PRINCIPALES -->
+        <div class="action-row">
+            <button class="big-btn btn-truth" onclick="pick('truth')">
+                <span class="btn-emoji">💜</span>
+                <span class="btn-label">VERDAD</span>
+                <span class="btn-sub">Dime la verdad</span>
+            </button>
+            <button class="big-btn btn-dare" onclick="pick('dare')">
+                <span class="btn-emoji">🔥</span>
+                <span class="btn-label">RETO</span>
+                <span class="btn-sub">¿Te atreves?</span>
+            </button>
+        </div>
+
+        <!-- TARJETA DE RESULTADO -->
+        <div id="resultCard">
+            <div class="shimmer"></div>
+            <div class="type-badge" id="typeBadge"></div>
+            <div class="player-label">Le toca a</div>
+            <div class="player-name" id="resultPlayer"></div>
+            <div class="card-text" id="resultText"></div>
+        </div>
+
+        <!-- HISTORIAL -->
+        <div class="history-section" id="historySection" style="display:none;">
+            <h3>📜 Historial de turnos</h3>
+            <div id="historyList"></div>
+        </div>
+
+    </main>
+
+    <!-- BOTÓN VOLVER -->
+    <a href="Juegos.html" class="back-button">← VOLVER</a>
+
+    <script>
+        // ════════════════════════════════════════════
+        //  PREGUNTAS Y RETOS (añade aquí tus propios)
+        // ════════════════════════════════════════════
+        const TRUTHS = [
+            "¿Cuál es la parte de mi cuerpo que más te pone cuando la tocas?",
+            "¿Dónde te gusta más que te bese lentamente?",
+            "¿Qué es lo que más te excita de cuando te toco?",
+            "¿Cuál es la fantasía más atrevida que has tenido conmigo?",
+            "¿Hay algún sitio de tu cuerpo en el que nunca te he besado y quieres que lo haga?",
+            "¿Qué parte de mi cuerpo te cuesta más no tocar cuando estamos juntos?",
+            "¿Cuál es la postura que más te gusta y por qué?",
+            "¿Qué es lo que más te gusta que te haga con las manos?",
+            "¿Dónde te provoca más que te pase los dedos despacio?",
+            "¿Hay algo que quieras que te haga y que nunca te hayas atrevido a pedirme?",
+            "¿Cuál es el lugar de tu cuerpo más sensible al que apenas te toco?",
+            "¿Dónde te gustaría que te mandara un beso ahora mismo?",
+            "¿Qué prenda mía o tuya te pone más cuando la ves?",
+            "¿Cuál sería tu noche perfecta conmigo, sin ningún límite?",
+            "¿Tienes alguna fantasía de rol que te gustaría vivir conmigo?",
+        ];
+
+        const DARES = [
+            "Guía mi mano lentamente por la parte de tu cuerpo que más te gusta que toque. 🔥",
+            "Descríbeme en voz alta y con detalle qué quieres que te haga esta noche.",
+            "Pasa tus manos por mi cuerpo sin parar durante 30 segundos.",
+            "Dime al oído, muy despacio, lo que más deseas que te haga ahora.",
+            "Bésame en el sitio de mi cuerpo que más te guste, el que tú elijas.",
+            "Manda un audio con la voz más seductora que tengas describiendo cómo me deseas.",
+            "Quítame una prenda usando solo los dientes. 😈",
+            "Masajéame la parte del cuerpo que más te apetezca durante 1 minuto.",
+            "Escríbeme las 3 cosas más atrevidas que quieras hacerme la próxima vez que estemos solos.",
+            "Pasa los labios muy despacio por mi cuello sin besarlo, solo rozando.",
+            "Dime en voz alta qué parte de mi cuerpo te pone más y por qué.",
+            "Haz que te recorra el cuerpo con un cubito de hielo y dime dónde parar.",
+            "Cuéntame el sueño más íntimo y explícito que hayas tenido conmigo.",
+            "Pásame los dedos por el pelo mientras me miras a los ojos durante 1 minuto sin hablar.",
+            "Diseña en voz alta la escena más picante que puedas imaginar entre nosotros dos.",
+        ];
+
+        // ════════════════════════════════════════════
+        //  ESTADO
+        // ════════════════════════════════════════════
+        const PLAYERS = [
+            { id: 1, name: "Estrella", emoji: "🌟" },
+            { id: 2, name: "Yo", emoji: "💙" },
+        ];
+        let currentPlayer = 1;
+        const history = [];
+
+        // índices usados para no repetir
+        const usedTruths = new Set();
+        const usedDares = new Set();
+
+        function selectPlayer(id) {
+            currentPlayer = id;
+            document.getElementById('chip-1').classList.toggle('active', id === 1);
+            document.getElementById('chip-2').classList.toggle('active', id === 2);
+        }
+
+        function getRandom(arr, used) {
+            // si ya se usaron todos, reiniciar
+            if (used.size >= arr.length) used.clear();
+            let idx;
+            do { idx = Math.floor(Math.random() * arr.length); } while (used.has(idx));
+            used.add(idx);
+            return arr[idx];
+        }
+
+        function pick(type) {
+            const player = PLAYERS.find(p => p.id === currentPlayer);
+            const text = type === 'truth' ? getRandom(TRUTHS, usedTruths) : getRandom(DARES, usedDares);
+
+            // mostrar tarjeta
+            const card = document.getElementById('resultCard');
+            const badge = document.getElementById('typeBadge');
+            const pName = document.getElementById('resultPlayer');
+            const pText = document.getElementById('resultText');
+
+            card.className = type === 'truth' ? 'truth-card' : 'dare-card';
+            badge.textContent = type === 'truth' ? '💜 VERDAD' : '🔥 RETO';
+            pName.textContent = player.emoji + '  ' + player.name;
+            pText.textContent = text;
+            card.style.display = 'block';
+
+            // scroll suave
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // confeti ligero
+            burst(type === 'truth' ? '#e040fb' : '#ff5252');
+
+            // añadir al historial
+            history.unshift({ type, player: player.name, text });
+            renderHistory();
+
+            // cambiar turno automáticamente
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+            selectPlayer(currentPlayer);
+        }
+
+        // ════════════════════════════════════════════
+        //  HISTORIAL
+        // ════════════════════════════════════════════
+        function renderHistory() {
+            const section = document.getElementById('historySection');
+            const list = document.getElementById('historyList');
+            section.style.display = 'block';
+            list.innerHTML = history.map(h => `
+        <div class="hist-item">
+          <span class="hist-badge ${h.type === 'truth' ? 't' : 'd'}">${h.type === 'truth' ? 'VERDAD' : 'RETO'}</span>
+          <span class="hist-player">${h.player}</span>
+          <span class="hist-text">${h.text}</span>
+        </div>
+      `).join('');
+        }
+
+        // ════════════════════════════════════════════
+        //  CONFETI / EFECTO DE BURST
+        // ════════════════════════════════════════════
+        function burst(color) {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 18; i++) {
+                const el = document.createElement('div');
+                el.className = 'spark';
+                const size = Math.random() * 7 + 4;
+                el.style.cssText = `
+          width:${size}px; height:${size}px;
+          left:${20 + Math.random() * 60}%;
+          bottom:0;
+          background:${color};
+          animation-duration:${1.2 + Math.random() * 1.8}s;
+          animation-delay:${Math.random() * 0.4}s;
+          box-shadow: 0 0 ${size * 2}px ${color};
+        `;
+                container.appendChild(el);
+                el.addEventListener('animationend', () => el.remove());
+            }
+        }
+
+        // ════════════════════════════════════════════
+        //  PARTÍCULAS AMBIENTE
+        // ════════════════════════════════════════════
+        (function initAmbient() {
+            const container = document.getElementById('particles');
+            const colors = ['#e040fb', '#ff5252', '#ffd700', '#ab47bc', '#ef5350'];
+            for (let i = 0; i < 40; i++) {
+                const el = document.createElement('div');
+                el.className = 'spark';
+                const size = Math.random() * 5 + 2;
+                el.style.cssText = `
+          width:${size}px; height:${size}px;
+          left:${Math.random() * 100}%;
+          bottom:0;
+          background:${colors[Math.floor(Math.random() * colors.length)]};
+          animation-duration:${5 + Math.random() * 10}s;
+          animation-delay:${Math.random() * 8}s;
+          opacity:0;
+          box-shadow: 0 0 ${size * 3}px currentColor;
+        `;
+                container.appendChild(el);
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

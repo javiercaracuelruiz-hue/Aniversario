@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💌 Para mi Estrella · 13/07/2026 · La carta más larga de mi vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,55 +14,132 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* MENÚ SUPERIOR */
+        /* ── NAV PROFESIONAL ── */
         .menu-container {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
+            background: rgba(10, 8, 25, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .menu {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
+            width: 100%;
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            gap: 12px;
+        }
+
+        .menu-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .menu-logo:hover {
+            opacity: 1;
+        }
+
+        .menu-logo .logo-date {
+            color: gold;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
             justify-content: center;
-            gap: 30px;
             flex-wrap: wrap;
-            padding: 0 20px;
         }
 
         .menu-item {
-            color: white;
+            color: rgba(255, 255, 255, 0.65);
             text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
         }
 
-        .menu-item:hover, .menu-item.active {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: gold;
+        .menu-item:hover,
+        .menu-item.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            color: gold;
+        }
+
+        .menu-vd {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 7px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
+            transition: all 0.25s;
+        }
+
+        .menu-vd:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .menu-logo .logo-date {
+                display: none;
+            }
+
+            .menu-item {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+
+            .menu {
+                padding: 0 12px;
+                gap: 6px;
+            }
         }
 
         .content {
@@ -269,8 +348,17 @@
         }
 
         @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 10px gold); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 30px #ffb6c1); transform: scale(1.1); }
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 10px gold);
+                transform: scale(1);
+            }
+
+            50% {
+                filter: drop-shadow(0 0 30px #ffb6c1);
+                transform: scale(1.1);
+            }
         }
 
         .back-button {
@@ -298,32 +386,41 @@
             .menu {
                 gap: 15px;
             }
+
             .menu-item {
                 font-size: 1rem;
                 padding: 8px 15px;
             }
+
             .letter-container {
                 padding: 40px 25px;
             }
+
             h2 {
                 font-size: 2rem;
             }
+
             p {
                 font-size: 1.1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- MENÚ SUPERIOR -->
     <div class="menu-container">
         <nav class="menu">
-            <a href="Regalo1.html" class="menu-item">🏠 INICIO</a>
-            <a href="fotos.html" class="menu-item">📸 FOTOS</a>
-            <a href="cartas.html" class="menu-item active">💌 CARTAS</a>
-            <a href="Juegos.html" class="menu-item">🎥 Juegos</a>
-            <a href="musica.html" class="menu-item">🎵 MÚSICA</a>
-            <a href="sorpresa.html" class="menu-item">🎁 SORPRESA</a>
+            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <div class="menu-links">
+                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
+                <a href="timeline.html" class="menu-item">📅 Timeline</a>
+                <a href="cartas.html" class="menu-item active">💌 Cartas</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="musica.html" class="menu-item">🎵 Música</a>
+                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
+            </div>
+            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
         </nav>
     </div>
 
@@ -348,14 +445,36 @@
             <!-- CARTA 1 - EL INICIO (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h2>Mi querida Estrella, mi gordita hermosa,</h2>
-            
-            <p>Hoy, <span class="highlight">13 de julio de 2026</span>, mientras el mundo sigue girando afuera, yo estoy aquí, sentado, con el corazón latiendo tan fuerte que parece querer escapárseme del pecho. Hace exactamente 365 días, un 13 de julio como hoy pero de 2025, nuestras vidas se cruzaron para siempre. Y no me refiero a que nos conocimos, no. Me refiero a que dos almas que llevaban toda una eternidad buscándose finalmente se encontraron. Porque yo, sin saberlo, había estado buscándote toda mi vida. En cada sonrisa que no llegaba a iluminarme del todo, en cada abrazo que no terminaba de arroparme, en cada "te quiero" que se quedaba a medio camino. Estaba buscándote sin saber que existías, y cuando apareciste, todo cobró sentido.</p>
 
-            <p>Recuerdo aquella noche como si la estuviera viviendo ahora mismo, mi gordita. El sonido de tu risa, ese sonido que hoy reconozco entre mil y que sigue siendo mi melodía favorita. La forma en que tus ojos verdes brillaban bajo las farolas, con ese verde tan especial que tienen, ese que cambia con la luz y que a veces parece miel, a veces esmeralda, pero siempre, siempre, es el espejo de tu alma. Ese gesto tuyo de apartar el cabello cuando estás nerviosa, que yo ya sabía que significaba que algo te importaba, que estabas ahí, presente, sintiendo. Ibas vestida con ese conjunto azul que tanto me gusta, ese que hace juego con tus ojos cuando el cielo está despejado y el atardecer les da de lleno.</p>
+            <p>Hoy, <span class="highlight">13 de julio de 2026</span>, mientras el mundo sigue girando afuera, yo estoy
+                aquí, sentado, con el corazón latiendo tan fuerte que parece querer escapárseme del pecho. Hace
+                exactamente 365 días, un 13 de julio como hoy pero de 2025, nuestras vidas se cruzaron para siempre. Y
+                no me refiero a que nos conocimos, no. Me refiero a que dos almas que llevaban toda una eternidad
+                buscándose finalmente se encontraron. Porque yo, sin saberlo, había estado buscándote toda mi vida. En
+                cada sonrisa que no llegaba a iluminarme del todo, en cada abrazo que no terminaba de arroparme, en cada
+                "te quiero" que se quedaba a medio camino. Estaba buscándote sin saber que existías, y cuando
+                apareciste, todo cobró sentido.</p>
 
-            <p>Y yo, en aquel momento, no lo sabía aún, pero mi vida se partía en dos. Hay un antes del 13/07/25, un mundo gris, desdibujado, donde yo vivía pero no sabía lo que era estar vivo de verdad. Y hay un después, un mundo de color, de luz, de sentido, donde cada amanecer tiene tu nombre y cada noche tu recuerdo. 365 días después, puedo decirlo con total certeza: aquel fue el día más importante de mi vida. El día en que, sin saberlo, empecé a vivir de verdad.</p>
+            <p>Recuerdo aquella noche como si la estuviera viviendo ahora mismo, mi gordita. El sonido de tu risa, ese
+                sonido que hoy reconozco entre mil y que sigue siendo mi melodía favorita. La forma en que tus ojos
+                verdes brillaban bajo las farolas, con ese verde tan especial que tienen, ese que cambia con la luz y
+                que a veces parece miel, a veces esmeralda, pero siempre, siempre, es el espejo de tu alma. Ese gesto
+                tuyo de apartar el cabello cuando estás nerviosa, que yo ya sabía que significaba que algo te importaba,
+                que estabas ahí, presente, sintiendo. Ibas vestida con ese conjunto azul que tanto me gusta, ese que
+                hace juego con tus ojos cuando el cielo está despejado y el atardecer les da de lleno.</p>
 
-            <p>Y ahora, un año después, sigo sin encontrar las palabras exactas para describir lo que significas para mí. Porque el diccionario se queda corto, porque el lenguaje humano no está preparado para expresar sentimientos tan inmensos. Te amo, sí, pero esa palabra se queda pequeña. Te quiero, sí, pero no alcanza. Eres mi todo, sí, pero el todo es tan vasto que no se puede abarcar. Así que lo único que puedo hacer es intentarlo, con estas palabras humildes, con este corazón abierto en canal, para que sepas, aunque sea una mínima parte, lo que siento por ti.</p>
+            <p>Y yo, en aquel momento, no lo sabía aún, pero mi vida se partía en dos. Hay un antes del 13/07/25, un
+                mundo gris, desdibujado, donde yo vivía pero no sabía lo que era estar vivo de verdad. Y hay un después,
+                un mundo de color, de luz, de sentido, donde cada amanecer tiene tu nombre y cada noche tu recuerdo. 365
+                días después, puedo decirlo con total certeza: aquel fue el día más importante de mi vida. El día en
+                que, sin saberlo, empecé a vivir de verdad.</p>
+
+            <p>Y ahora, un año después, sigo sin encontrar las palabras exactas para describir lo que significas para
+                mí. Porque el diccionario se queda corto, porque el lenguaje humano no está preparado para expresar
+                sentimientos tan inmensos. Te amo, sí, pero esa palabra se queda pequeña. Te quiero, sí, pero no
+                alcanza. Eres mi todo, sí, pero el todo es tan vasto que no se puede abarcar. Así que lo único que puedo
+                hacer es intentarlo, con estas palabras humildes, con este corazón abierto en canal, para que sepas,
+                aunque sea una mínima parte, lo que siento por ti.</p>
 
             <div class="quote">
                 "Dicen que el amor verdadero solo se encuentra una vez en la vida.<br>
@@ -368,140 +487,358 @@
             <!-- ============================================== -->
             <h3>✨ Lo que siento cuando pienso en ti (y pienso en ti siempre)</h3>
 
-            <p>Cuando pienso en ti, gordita, el mundo se detiene. No es una metáfora, no es una exageración romántica. Es real. El ruido de la calle desaparece, las preocupaciones se disuelven, las prisas se olvidan. Y solo existe tu rostro, proyectado en mi mente con una claridad sobrecogedora. Puedo estar en medio de una reunión aburrida, en el trabajo, en el metro abarrotado a las ocho de la mañana, en cualquier lugar; si pienso en ti, de repente estoy en nuestro lugar favorito. Estoy contigo, sintiendo el calor de tus manos entre las mías, oliendo ese perfume tuyo que me vuelve loco, ese que dices que es el de siempre pero que en ti huele a magia, a hogar, a ti.</p>
+            <p>Cuando pienso en ti, gordita, el mundo se detiene. No es una metáfora, no es una exageración romántica.
+                Es real. El ruido de la calle desaparece, las preocupaciones se disuelven, las prisas se olvidan. Y solo
+                existe tu rostro, proyectado en mi mente con una claridad sobrecogedora. Puedo estar en medio de una
+                reunión aburrida, en el trabajo, en el metro abarrotado a las ocho de la mañana, en cualquier lugar; si
+                pienso en ti, de repente estoy en nuestro lugar favorito. Estoy contigo, sintiendo el calor de tus manos
+                entre las mías, oliendo ese perfume tuyo que me vuelve loco, ese que dices que es el de siempre pero que
+                en ti huele a magia, a hogar, a ti.</p>
 
-            <p>Te amo de tantas formas que a veces siento que las palabras se quedan cortas, que me fallan, que no pueden expresar la inmensidad de lo que llevo dentro. Te amo con la intensidad de un solo de guitarra en directo, de esos que te erizan la piel y te hacen sentir que la música sale del alma. Te amo con la ternura de un amanecer después de una noche de tormenta, cuando todo está en calma y el mundo parece recién nacido. Te amo con la paciencia de quien sabe que tiene toda una vida para seguir descubriéndote, y que aún así no será suficiente.</p>
+            <p>Te amo de tantas formas que a veces siento que las palabras se quedan cortas, que me fallan, que no
+                pueden expresar la inmensidad de lo que llevo dentro. Te amo con la intensidad de un solo de guitarra en
+                directo, de esos que te erizan la piel y te hacen sentir que la música sale del alma. Te amo con la
+                ternura de un amanecer después de una noche de tormenta, cuando todo está en calma y el mundo parece
+                recién nacido. Te amo con la paciencia de quien sabe que tiene toda una vida para seguir descubriéndote,
+                y que aún así no será suficiente.</p>
 
-            <p>Te amo en español, en inglés, en francés, en italiano, en todos los idiomas que aprendí y en los que me quedan por aprender. Te amo en silencio cuando duermes, observando cada respiración tuya como si fuera un milagro. Y te amo en voz alta cuando despiertas, cuando te lo digo al oído, cuando lo grito sin pudor. Te amo en presente porque es lo único que tengo seguro, y te amo en futuro porque es lo único que quiero construir contigo. Te amo en pasado también, porque te habría amado siempre aunque no te hubiera conocido, aunque solo fueras un sueño.</p>
+            <p>Te amo en español, en inglés, en francés, en italiano, en todos los idiomas que aprendí y en los que me
+                quedan por aprender. Te amo en silencio cuando duermes, observando cada respiración tuya como si fuera
+                un milagro. Y te amo en voz alta cuando despiertas, cuando te lo digo al oído, cuando lo grito sin
+                pudor. Te amo en presente porque es lo único que tengo seguro, y te amo en futuro porque es lo único que
+                quiero construir contigo. Te amo en pasado también, porque te habría amado siempre aunque no te hubiera
+                conocido, aunque solo fueras un sueño.</p>
 
-            <p>Y luego está la palabra <span class="highlight">"gordita"</span>. Esa palabra que solo existe entre nosotros, que nació un día sin querer, casi de broma, mientras reíamos en la cocina. Y que ahora es el apodo más bonito que podría haberte puesto. Porque cuando te llamo gordita, no estoy viendo tu cuerpo, estoy viendo tu alma. Estoy viendo a la niña que fuiste, con tus sueños y tus miedos. Estoy viendo a la mujer que eres, fuerte, valiente, hermosa. Estoy viendo a la anciana que serás, sabia, serena, con arrugas que contarán nuestra historia. Estoy viendo todo lo que eres para mí, todo lo que representas, todo lo que significas. Y cada vez que lo digo, es como un pequeño secreto que compartimos, un código que solo nosotros entendemos, una contraseña para entrar en nuestro mundo privado.</p>
+            <p>Y luego está la palabra <span class="highlight">"gordita"</span>. Esa palabra que solo existe entre
+                nosotros, que nació un día sin querer, casi de broma, mientras reíamos en la cocina. Y que ahora es el
+                apodo más bonito que podría haberte puesto. Porque cuando te llamo gordita, no estoy viendo tu cuerpo,
+                estoy viendo tu alma. Estoy viendo a la niña que fuiste, con tus sueños y tus miedos. Estoy viendo a la
+                mujer que eres, fuerte, valiente, hermosa. Estoy viendo a la anciana que serás, sabia, serena, con
+                arrugas que contarán nuestra historia. Estoy viendo todo lo que eres para mí, todo lo que representas,
+                todo lo que significas. Y cada vez que lo digo, es como un pequeño secreto que compartimos, un código
+                que solo nosotros entendemos, una contraseña para entrar en nuestro mundo privado.</p>
 
-            <p>Te quiero, mi gordita. Te quiero con todas las letras, con todas las palabras, con todos los silencios. Te quiero cuando estás y te quiero cuando no estás, porque hasta tu ausencia la llenas de recuerdos. Te quiero en la distancia y en la cercanía, en el ruido y en el silencio, en la alegría y en la tristeza. Te quiero siempre, y ese siempre es la única certeza que tengo en esta vida.</p>
+            <p>Te quiero, mi gordita. Te quiero con todas las letras, con todas las palabras, con todos los silencios.
+                Te quiero cuando estás y te quiero cuando no estás, porque hasta tu ausencia la llenas de recuerdos. Te
+                quiero en la distancia y en la cercanía, en el ruido y en el silencio, en la alegría y en la tristeza.
+                Te quiero siempre, y ese siempre es la única certeza que tengo en esta vida.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 3 - LOS MOMENTOS (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>📆 Los 365 momentos que guardo en mi corazón</h3>
 
-            <p>Guardo cada momento como un tesoro, como si fueran piedras preciosas que voy coleccionando en el cofre de mi memoria. Nuestra primera cita, cuando hablamos durante horas y horas sin darnos cuenta de que el café se había quedado frío, de que el camarero nos miraba con cara de "¿se van a ir alguna vez?", de que el mundo exterior había dejado de existir. Hablamos de todo y de nada, de la vida, de los sueños, de las tonterías que nos hacían reír. Y en ese momento supe que contigo no necesitaba fingir, que podía ser yo mismo, con mis virtudes y mis defectos, y que tú me aceptarías igual.</p>
+            <p>Guardo cada momento como un tesoro, como si fueran piedras preciosas que voy coleccionando en el cofre de
+                mi memoria. Nuestra primera cita, cuando hablamos durante horas y horas sin darnos cuenta de que el café
+                se había quedado frío, de que el camarero nos miraba con cara de "¿se van a ir alguna vez?", de que el
+                mundo exterior había dejado de existir. Hablamos de todo y de nada, de la vida, de los sueños, de las
+                tonterías que nos hacían reír. Y en ese momento supe que contigo no necesitaba fingir, que podía ser yo
+                mismo, con mis virtudes y mis defectos, y que tú me aceptarías igual.</p>
 
-            <p>La primera vez que me tomaste de la mano. Recuerdo la textura de tu piel, el calor que transmitía, la forma en que nuestros dedos se entrelazaron como si llevaran toda la vida haciéndolo. Sentí que flotaba, que el suelo desaparecía bajo mis pies, que el mundo se reducía a ese punto de contacto entre tu mano y la mía. Y supe, con una certeza absoluta, que quería pasar el resto de mi vida sintiendo esa conexión.</p>
+            <p>La primera vez que me tomaste de la mano. Recuerdo la textura de tu piel, el calor que transmitía, la
+                forma en que nuestros dedos se entrelazaron como si llevaran toda la vida haciéndolo. Sentí que flotaba,
+                que el suelo desaparecía bajo mis pies, que el mundo se reducía a ese punto de contacto entre tu mano y
+                la mía. Y supe, con una certeza absoluta, que quería pasar el resto de mi vida sintiendo esa conexión.
+            </p>
 
-            <p>Aquel atardecer donde me dijiste "te quiero" por primera vez. Estábamos en la playa, el sol se escondía en el horizonte pintando el cielo de naranja y rosa, y de repente, con esa voz temblorosa y esa honestidad que tanto admiro en ti, lo dijiste. "Te quiero". Tres palabras que habían sido dichas millones de veces por millones de personas, pero que en tu boca sonaron a la primera vez, a descubrimiento, a verdad absoluta. Yo me quedé sin habla, te miré a los ojos, y allí, en tu mirada, vi todo lo que necesitaba ver. Vi el futuro. Vi la felicidad. Vi el amor.</p>
+            <p>Aquel atardecer donde me dijiste "te quiero" por primera vez. Estábamos en la playa, el sol se escondía
+                en el horizonte pintando el cielo de naranja y rosa, y de repente, con esa voz temblorosa y esa
+                honestidad que tanto admiro en ti, lo dijiste. "Te quiero". Tres palabras que habían sido dichas
+                millones de veces por millones de personas, pero que en tu boca sonaron a la primera vez, a
+                descubrimiento, a verdad absoluta. Yo me quedé sin habla, te miré a los ojos, y allí, en tu mirada, vi
+                todo lo que necesitaba ver. Vi el futuro. Vi la felicidad. Vi el amor.</p>
 
-            <p>Nuestra primera discusión. Qué curioso, hasta el enfado contigo es bonito. Porque sé que al final siempre hay un abrazo esperando. Sé que podemos estar enfadados, podemos estar molestos, podemos tener razones para no hablarnos, pero al final, siempre, siempre, prevalece el amor. Y ese abrazo de reconciliación, cuando después de horas de tensión nos fundimos el uno en el otro, es de los momentos más auténticos que tenemos.</p>
+            <p>Nuestra primera discusión. Qué curioso, hasta el enfado contigo es bonito. Porque sé que al final siempre
+                hay un abrazo esperando. Sé que podemos estar enfadados, podemos estar molestos, podemos tener razones
+                para no hablarnos, pero al final, siempre, siempre, prevalece el amor. Y ese abrazo de reconciliación,
+                cuando después de horas de tensión nos fundimos el uno en el otro, es de los momentos más auténticos que
+                tenemos.</p>
 
-            <p>Aquel día que estabas triste y no querías hablar. Entré en la habitación y te vi hecha un ovillo en la cama, con la mirada perdida. No hiciste ademán de contarme nada, y yo no pregunté. Simplemente me senté a tu lado, en silencio, hasta que decidiste apoyar la cabeza en mi hombro. Pasó una hora, quizá dos. Y entonces susurraste <span class="highlight">"gracias por quedarte"</span>. En ese momento entendí que el amor no es solo estar en los momentos buenos, sino también, y sobre todo, en los malos. En los grises. En los que no apetece hablar. En los que solo necesitas compañía.</p>
+            <p>Aquel día que estabas triste y no querías hablar. Entré en la habitación y te vi hecha un ovillo en la
+                cama, con la mirada perdida. No hiciste ademán de contarme nada, y yo no pregunté. Simplemente me senté
+                a tu lado, en silencio, hasta que decidiste apoyar la cabeza en mi hombro. Pasó una hora, quizá dos. Y
+                entonces susurraste <span class="highlight">"gracias por quedarte"</span>. En ese momento entendí que el
+                amor no es solo estar en los momentos buenos, sino también, y sobre todo, en los malos. En los grises.
+                En los que no apetece hablar. En los que solo necesitas compañía.</p>
 
-            <p>La primera vez que te vi llorar de alegría. Fue cuando te regalé ese libro que tanto querías, ese que llevabas meses diciendo que tenías que comprar. Abriste el paquete, viste la portada, y de repente tus ojos se llenaron de lágrimas. "¿Cómo sabías que era este?", preguntaste. Y yo sonreí. Porque te conozco, mi gordita. Porque presto atención a cada palabra que dices, a cada deseo que mencionas, a cada pequeño detalle. Porque tú te mereces que te regalen no solo cosas, sino momentos, emociones, recuerdos.</p>
+            <p>La primera vez que te vi llorar de alegría. Fue cuando te regalé ese libro que tanto querías, ese que
+                llevabas meses diciendo que tenías que comprar. Abriste el paquete, viste la portada, y de repente tus
+                ojos se llenaron de lágrimas. "¿Cómo sabías que era este?", preguntaste. Y yo sonreí. Porque te conozco,
+                mi gordita. Porque presto atención a cada palabra que dices, a cada deseo que mencionas, a cada pequeño
+                detalle. Porque tú te mereces que te regalen no solo cosas, sino momentos, emociones, recuerdos.</p>
 
-            <p>La primera vez que te enfadaste de verdad. Ese mohín tan tuyo, esa forma de fruncir el ceño, ese cruce de brazos. Me pareciste adorable incluso enfadada. Y luego, cuando hicimos las paces, ese abrazo de cinco minutos, apretados, sin hablar, solo sintiendo que todo estaba bien otra vez.</p>
+            <p>La primera vez que te enfadaste de verdad. Ese mohín tan tuyo, esa forma de fruncir el ceño, ese cruce de
+                brazos. Me pareciste adorable incluso enfadada. Y luego, cuando hicimos las paces, ese abrazo de cinco
+                minutos, apretados, sin hablar, solo sintiendo que todo estaba bien otra vez.</p>
 
-            <p>Guardo todos los mensajes de buenos días que me has mandado. Todos y cada uno. Están en una carpeta especial de mi teléfono, una carpeta que abro cuando te extraño, que es básicamente cada día. 365 mensajes, 365 buenos días, 365 maneras de empezar el día con una sonrisa. Hay días que eran solo un "buenos días", otros que eran párrafos enteros, otros que llevaban fotos, otros que llevaban audios con tu voz dormida. Todos especiales. Todos únicos. Todos tuyos.</p>
+            <p>Guardo todos los mensajes de buenos días que me has mandado. Todos y cada uno. Están en una carpeta
+                especial de mi teléfono, una carpeta que abro cuando te extraño, que es básicamente cada día. 365
+                mensajes, 365 buenos días, 365 maneras de empezar el día con una sonrisa. Hay días que eran solo un
+                "buenos días", otros que eran párrafos enteros, otros que llevaban fotos, otros que llevaban audios con
+                tu voz dormida. Todos especiales. Todos únicos. Todos tuyos.</p>
 
-            <p>Guardo las fotos que nos hemos hecho. Las bonitas, esas donde salimos guapos y sonrientes. Las ridículas, esas donde hacemos muecas y nos reímos de nosotros mismos. Las espontáneas, las posadas, las de viaje, las de casa. Todas forman el álbum de nuestra historia, el que algún día enseñaremos a nuestros hijos, el que miraremos cuando seamos viejos y recordaremos lo jóvenes y enamorados que estábamos.</p>
+            <p>Guardo las fotos que nos hemos hecho. Las bonitas, esas donde salimos guapos y sonrientes. Las ridículas,
+                esas donde hacemos muecas y nos reímos de nosotros mismos. Las espontáneas, las posadas, las de viaje,
+                las de casa. Todas forman el álbum de nuestra historia, el que algún día enseñaremos a nuestros hijos,
+                el que miraremos cuando seamos viejos y recordaremos lo jóvenes y enamorados que estábamos.</p>
 
-            <p>Guardo las canciones que hemos compartido. Esas que me mandabas con un "esta me recuerda a ti". Esas que sonaban cuando pasaba algo importante. Esas que se convirtieron en nuestras sin querer. Cada una tiene una historia, un momento, una emoción asociada. Y cuando las escucho, viajo en el tiempo y vuelvo a vivirlos.</p>
+            <p>Guardo las canciones que hemos compartido. Esas que me mandabas con un "esta me recuerda a ti". Esas que
+                sonaban cuando pasaba algo importante. Esas que se convirtieron en nuestras sin querer. Cada una tiene
+                una historia, un momento, una emoción asociada. Y cuando las escucho, viajo en el tiempo y vuelvo a
+                vivirlos.</p>
 
-            <p>Guardo nuestras conversaciones de madrugada. Esas en las que el mundo se vuelve más pequeño y solo existimos nosotros. Esas en las que confesamos nuestros miedos más profundos, nuestros sueños más locos, nuestras vergüenzas más íntimas. Esas en las que hemos llorado juntos, reído juntos, planeado juntos. Esas en las que hemos hecho el amor con palabras, antes de hacerlo con el cuerpo.</p>
+            <p>Guardo nuestras conversaciones de madrugada. Esas en las que el mundo se vuelve más pequeño y solo
+                existimos nosotros. Esas en las que confesamos nuestros miedos más profundos, nuestros sueños más locos,
+                nuestras vergüenzas más íntimas. Esas en las que hemos llorado juntos, reído juntos, planeado juntos.
+                Esas en las que hemos hecho el amor con palabras, antes de hacerlo con el cuerpo.</p>
 
-            <p>Guardo cuando me contaste lo que querías ser de pequeña. Cuando me enseñaste tus fotos de la infancia, señalándome a la niña de trenzas que ya tenía esa mirada especial. Cuando me presentaste a tu familia, con esa mezcla de orgullo y nervios, como diciendo "este es el hombre que he elegido, espero que os guste".</p>
+            <p>Guardo cuando me contaste lo que querías ser de pequeña. Cuando me enseñaste tus fotos de la infancia,
+                señalándome a la niña de trenzas que ya tenía esa mirada especial. Cuando me presentaste a tu familia,
+                con esa mezcla de orgullo y nervios, como diciendo "este es el hombre que he elegido, espero que os
+                guste".</p>
 
-            <p>Podría seguir hasta el infinito. Porque cada día de estos 365 ha dejado una huella imborrable en mi memoria. Y lo mejor de todo es que esto solo es el principio. Que nos quedan miles de momentos por guardar, miles de recuerdos por crear, miles de instantes por atesorar.</p>
+            <p>Podría seguir hasta el infinito. Porque cada día de estos 365 ha dejado una huella imborrable en mi
+                memoria. Y lo mejor de todo es que esto solo es el principio. Que nos quedan miles de momentos por
+                guardar, miles de recuerdos por crear, miles de instantes por atesorar.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 4 - QUIÉN ERES TÚ (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>💫 Quién eres tú en mi vida</h3>
 
-            <p>Tú eres la persona que me enseñó que el amor no duele. Antes de ti, el amor era para mí algo confuso, algo que siempre venía acompañado de sufrimiento, de incertidumbre, de miedo. Creía que querer a alguien implicaba sacrificio, implicaba renuncia, implicaba estar siempre en alerta. Y entonces llegaste tú, y me demostraste que no. Que el amor de verdad no duele. Que el amor de verdad te sostiene, te levanta, te da paz. Que cuando es auténtico, fluye con la naturalidad del agua, con la calidez del sol, con la suavidad de la brisa.</p>
+            <p>Tú eres la persona que me enseñó que el amor no duele. Antes de ti, el amor era para mí algo confuso,
+                algo que siempre venía acompañado de sufrimiento, de incertidumbre, de miedo. Creía que querer a alguien
+                implicaba sacrificio, implicaba renuncia, implicaba estar siempre en alerta. Y entonces llegaste tú, y
+                me demostraste que no. Que el amor de verdad no duele. Que el amor de verdad te sostiene, te levanta, te
+                da paz. Que cuando es auténtico, fluye con la naturalidad del agua, con la calidez del sol, con la
+                suavidad de la brisa.</p>
 
-            <p>Tú me enseñaste que el amor no tiene que ser complicado. Que no hay que merecérselo, ni ganárselo, ni conquistarlo. Que el amor simplemente es. Y cuando es de verdad, no necesita esfuerzo, no necesita lucha, no necesita demostraciones constantes. Está ahí, siempre, como un faro que guía, como un hogar al que volver.</p>
+            <p>Tú me enseñaste que el amor no tiene que ser complicado. Que no hay que merecérselo, ni ganárselo, ni
+                conquistarlo. Que el amor simplemente es. Y cuando es de verdad, no necesita esfuerzo, no necesita
+                lucha, no necesita demostraciones constantes. Está ahí, siempre, como un faro que guía, como un hogar al
+                que volver.</p>
 
-            <p>Antes de ti, creía que el amor era una batalla. Algo que había que ganar cada día, que había que defender de los demás, que había que proteger del mundo. Contigo aprendí que el amor es un jardín. Que se riega con pequeños gestos, con paciencia, con presencia. Que se cuida con cariño, con atención, con detalles. Que no hay que defenderlo de nada ni de nadie, porque el amor verdadero es impermeable, es fuerte, es eterno.</p>
+            <p>Antes de ti, creía que el amor era una batalla. Algo que había que ganar cada día, que había que defender
+                de los demás, que había que proteger del mundo. Contigo aprendí que el amor es un jardín. Que se riega
+                con pequeños gestos, con paciencia, con presencia. Que se cuida con cariño, con atención, con detalles.
+                Que no hay que defenderlo de nada ni de nadie, porque el amor verdadero es impermeable, es fuerte, es
+                eterno.</p>
 
-            <p>Tú eres mi paz en medio del caos. Cuando el mundo se vuelve demasiado ruidoso, demasiado rápido, demasiado exigente, cierro los ojos y pienso en ti. En tu risa. En la forma en que frunces el ceño cuando te concentras. En cómo tus ojos cambian de color según la luz. En cómo dices "Javi" cuando necesitas mi atención. En cómo hueles después de la ducha. En cómo te mueves cuando bailas. Y de repente, todo vuelve a su sitio. El corazón se serena, la mente se ordena, los hombros se relajan. Tú eres mi centro de gravedad, el punto fijo en este mundo que no para de moverse.</p>
+            <p>Tú eres mi paz en medio del caos. Cuando el mundo se vuelve demasiado ruidoso, demasiado rápido,
+                demasiado exigente, cierro los ojos y pienso en ti. En tu risa. En la forma en que frunces el ceño
+                cuando te concentras. En cómo tus ojos cambian de color según la luz. En cómo dices "Javi" cuando
+                necesitas mi atención. En cómo hueles después de la ducha. En cómo te mueves cuando bailas. Y de
+                repente, todo vuelve a su sitio. El corazón se serena, la mente se ordena, los hombros se relajan. Tú
+                eres mi centro de gravedad, el punto fijo en este mundo que no para de moverse.</p>
 
-            <p>Tú eres mi confidente, mi cómplice, mi mejor amiga. Contigo puedo ser yo mismo sin miedo al juicio, sin miedo a parecer vulnerable. Contigo he llorado como un niño, he reído como un loco, he gritado de alegría, he susurrado secretos. Contigo he compartido mis miedos más profundos: el miedo al fracaso, el miedo a la soledad, el miedo a no ser suficiente. Y tú siempre, siempre, has estado ahí para escucharme, para sostenerme, para recordarme que soy suficiente, que soy valioso, que soy amado.</p>
+            <p>Tú eres mi confidente, mi cómplice, mi mejor amiga. Contigo puedo ser yo mismo sin miedo al juicio, sin
+                miedo a parecer vulnerable. Contigo he llorado como un niño, he reído como un loco, he gritado de
+                alegría, he susurrado secretos. Contigo he compartido mis miedos más profundos: el miedo al fracaso, el
+                miedo a la soledad, el miedo a no ser suficiente. Y tú siempre, siempre, has estado ahí para escucharme,
+                para sostenerme, para recordarme que soy suficiente, que soy valioso, que soy amado.</p>
 
-            <p>Contigo he compartido mis sueños más locos. Esos que a otros les parecerían imposibles. Y tú nunca te has reído, nunca has dicho "no se puede". Siempre has dicho "¿y por qué no?" o "vamos a intentarlo" o "si tú lo sueñas, yo te ayudo a cumplirlo". Porque eso es lo que haces: creer en mí cuando yo dejo de creer. Verte mis alas cuando olvido que puedo volar.</p>
+            <p>Contigo he compartido mis sueños más locos. Esos que a otros les parecerían imposibles. Y tú nunca te has
+                reído, nunca has dicho "no se puede". Siempre has dicho "¿y por qué no?" o "vamos a intentarlo" o "si tú
+                lo sueñas, yo te ayudo a cumplirlo". Porque eso es lo que haces: creer en mí cuando yo dejo de creer.
+                Verte mis alas cuando olvido que puedo volar.</p>
 
-            <p>Tú eres mi hogar. Porque hogar no es un lugar, no son cuatro paredes, no es una dirección. Hogar eres tú. Da igual que estemos en tu casa, en la mía, en un parque, en un país extranjero. Si estás tú, estoy en casa. Tu olor es mi hogar. Tu risa es mi hogar. Tus brazos son mi hogar. Tu pecho es mi almohada favorita. Tu regazo es mi lugar seguro. Y cuando no estás, todo me parece extraño, todo me parece lejano, todo me parece frío. Porque mi hogar está donde tú estás, y si tú no estás, no hay hogar posible.</p>
+            <p>Tú eres mi hogar. Porque hogar no es un lugar, no son cuatro paredes, no es una dirección. Hogar eres tú.
+                Da igual que estemos en tu casa, en la mía, en un parque, en un país extranjero. Si estás tú, estoy en
+                casa. Tu olor es mi hogar. Tu risa es mi hogar. Tus brazos son mi hogar. Tu pecho es mi almohada
+                favorita. Tu regazo es mi lugar seguro. Y cuando no estás, todo me parece extraño, todo me parece
+                lejano, todo me parece frío. Porque mi hogar está donde tú estás, y si tú no estás, no hay hogar
+                posible.</p>
 
-            <p>Tú eres mi mayor inspiración. Cada cosa bonita que he escrito desde que te conozco, tiene tu nombre escrito en alguna parte. Cada canción que he escuchado de forma diferente, tiene tu melodía de fondo. Cada atardecer que he fotografiado, tiene tu luz reflejada. Me haces querer ser mejor persona, mejor novio, mejor ser humano. No por presión, no por obligación, no porque me lo pidas. Sino porque tú mereces lo mejor del mundo, y quiero ser yo quien te lo dé. Porque verte sonreír es mi mayor recompensa. Porque hacerte feliz es mi mayor logro.</p>
+            <p>Tú eres mi mayor inspiración. Cada cosa bonita que he escrito desde que te conozco, tiene tu nombre
+                escrito en alguna parte. Cada canción que he escuchado de forma diferente, tiene tu melodía de fondo.
+                Cada atardecer que he fotografiado, tiene tu luz reflejada. Me haces querer ser mejor persona, mejor
+                novio, mejor ser humano. No por presión, no por obligación, no porque me lo pidas. Sino porque tú
+                mereces lo mejor del mundo, y quiero ser yo quien te lo dé. Porque verte sonreír es mi mayor recompensa.
+                Porque hacerte feliz es mi mayor logro.</p>
 
-            <p>Tú eres la primera persona en mi vida que me ha aceptado tal como soy, sin querer cambiarme, sin intentar moldearme a su imagen y semejanza. Has visto mis luces y mis sombras, mis virtudes y mis defectos, mis días buenos y mis días malos. Y a pesar de todo, te has quedado. No, no a pesar de todo: con todo. Te has quedado con todo el paquete, con toda la persona, con todo lo que soy. Y eso, mi gordita, es el regalo más grande que nadie me ha hecho nunca.</p>
+            <p>Tú eres la primera persona en mi vida que me ha aceptado tal como soy, sin querer cambiarme, sin intentar
+                moldearme a su imagen y semejanza. Has visto mis luces y mis sombras, mis virtudes y mis defectos, mis
+                días buenos y mis días malos. Y a pesar de todo, te has quedado. No, no a pesar de todo: con todo. Te
+                has quedado con todo el paquete, con toda la persona, con todo lo que soy. Y eso, mi gordita, es el
+                regalo más grande que nadie me ha hecho nunca.</p>
 
-            <p>Tú eres mi gordita. Mi Estrella. Mi vida. Mi todo. Y no hay título en el mundo que pueda abarcar todo lo que significas para mí. No hay palabra que pueda contener la inmensidad de lo que siento. Solo puedo decirlo así, simple y llanamente: tú eres lo mejor que me ha pasado nunca. Y lo sabes.</p>
+            <p>Tú eres mi gordita. Mi Estrella. Mi vida. Mi todo. Y no hay título en el mundo que pueda abarcar todo lo
+                que significas para mí. No hay palabra que pueda contener la inmensidad de lo que siento. Solo puedo
+                decirlo así, simple y llanamente: tú eres lo mejor que me ha pasado nunca. Y lo sabes.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 5 - LO QUE ADMIRO DE TI (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>🌟 Las infinitas razones por las que te admiro</h3>
 
-            <p>Admiro tu fortaleza, esa capacidad tuya de levantarte una y otra vez, incluso cuando la vida te ha puesto pruebas que a otros habrían derrumbado. He visto cómo has superado obstáculos, cómo has enfrentado dificultades, cómo has salido adelante cuando todo parecía estar en tu contra. Y tú siempre, siempre, encuentras la manera de seguir adelante. No sabes lo orgulloso que estoy de ti, de la mujer que eres, de cómo afrontas la vida con esa mezcla de determinación y dulzura que solo tú tienes. Eres un ejemplo de resiliencia, de fuerza, de coraje.</p>
+            <p>Admiro tu fortaleza, esa capacidad tuya de levantarte una y otra vez, incluso cuando la vida te ha puesto
+                pruebas que a otros habrían derrumbado. He visto cómo has superado obstáculos, cómo has enfrentado
+                dificultades, cómo has salido adelante cuando todo parecía estar en tu contra. Y tú siempre, siempre,
+                encuentras la manera de seguir adelante. No sabes lo orgulloso que estoy de ti, de la mujer que eres, de
+                cómo afrontas la vida con esa mezcla de determinación y dulzura que solo tú tienes. Eres un ejemplo de
+                resiliencia, de fuerza, de coraje.</p>
 
-            <p>Admiro tu inteligencia, la forma en que ves el mundo desde ángulos que a nadie más se le ocurren. Me encanta cuando me explicas cosas, cuando me cuentas lo que has aprendido, cuando discutimos sobre cualquier tema y me das tu punto de vista, siempre tan agudo, tan brillante, tan diferente. Me encanta verte concentrada en algo que te apasiona, con esa intensidad que pones en todo lo que haces, con esa mirada de "no me molestes que estoy en mi mundo". Eres tan increíblemente inteligente, mi gordita, y a veces no te das ni cuenta. Subestimas tu capacidad, tu talento, tu genio. Pero yo lo veo. Yo lo sé. Y estoy aquí para recordártelo siempre.</p>
+            <p>Admiro tu inteligencia, la forma en que ves el mundo desde ángulos que a nadie más se le ocurren. Me
+                encanta cuando me explicas cosas, cuando me cuentas lo que has aprendido, cuando discutimos sobre
+                cualquier tema y me das tu punto de vista, siempre tan agudo, tan brillante, tan diferente. Me encanta
+                verte concentrada en algo que te apasiona, con esa intensidad que pones en todo lo que haces, con esa
+                mirada de "no me molestes que estoy en mi mundo". Eres tan increíblemente inteligente, mi gordita, y a
+                veces no te das ni cuenta. Subestimas tu capacidad, tu talento, tu genio. Pero yo lo veo. Yo lo sé. Y
+                estoy aquí para recordártelo siempre.</p>
 
-            <p>Admiro tu sentido del humor, cómo me haces reír hasta dolerme la barriga con ocurrencias que solo tú podrías tener. Ese ingenio rápido, esa capacidad para encontrar lo gracioso en cualquier situación, ese talento para imitar, para exagerar, para convertir lo cotidiano en comedia. Me encanta cuando te ríes de verdad, con esa risa contagiosa que llena cualquier habitación, que hace que los demás se rían solo de oírte. Me encanta cuando hacemos el tonto juntos, cuando nos inventamos idiomas, cuando bailamos mal canciones malas, cuando nos da un ataque de risa por algo que solo nosotros entendemos. Contigo he descubierto que la felicidad está en las pequeñas tonterías compartidas, en los momentos absurdos, en las risas sin motivo.</p>
+            <p>Admiro tu sentido del humor, cómo me haces reír hasta dolerme la barriga con ocurrencias que solo tú
+                podrías tener. Ese ingenio rápido, esa capacidad para encontrar lo gracioso en cualquier situación, ese
+                talento para imitar, para exagerar, para convertir lo cotidiano en comedia. Me encanta cuando te ríes de
+                verdad, con esa risa contagiosa que llena cualquier habitación, que hace que los demás se rían solo de
+                oírte. Me encanta cuando hacemos el tonto juntos, cuando nos inventamos idiomas, cuando bailamos mal
+                canciones malas, cuando nos da un ataque de risa por algo que solo nosotros entendemos. Contigo he
+                descubierto que la felicidad está en las pequeñas tonterías compartidas, en los momentos absurdos, en
+                las risas sin motivo.</p>
 
-            <p>Admiro tu sensibilidad, esa manera tan tuya de conectar con las emociones, de entender sin necesidad de explicaciones. Me encanta cómo percibes lo que siento antes incluso de que yo mismo lo sepa. Cómo sabes cuándo necesito un abrazo, cuándo necesito espacio, cuándo necesito que me escuches sin juzgarme, cuándo necesito que me digas las cosas claras aunque duelan. Esa empatía tuya es un don, un regalo que tienes y que usas para hacer mejores a quienes te rodean. Y yo tengo la suerte de ser el destinatario principal de esa sensibilidad tuya.</p>
+            <p>Admiro tu sensibilidad, esa manera tan tuya de conectar con las emociones, de entender sin necesidad de
+                explicaciones. Me encanta cómo percibes lo que siento antes incluso de que yo mismo lo sepa. Cómo sabes
+                cuándo necesito un abrazo, cuándo necesito espacio, cuándo necesito que me escuches sin juzgarme, cuándo
+                necesito que me digas las cosas claras aunque duelan. Esa empatía tuya es un don, un regalo que tienes y
+                que usas para hacer mejores a quienes te rodean. Y yo tengo la suerte de ser el destinatario principal
+                de esa sensibilidad tuya.</p>
 
-            <p>Admiro tu bondad genuina, esa que no espera nada a cambio. La forma en que tratas a la gente, con respeto, con cariño, con atención. Cómo te preocupas por los demás, cómo te alegras de sus logros, cómo te duele su dolor. He visto cómo ayudas sin que nadie te lo pida, cómo das sin esperar recibir, cómo amas sin condiciones. El mundo sería un lugar mucho mejor si hubiera más personas como tú. De hecho, mi mundo es mucho mejor desde que tú estás en él.</p>
+            <p>Admiro tu bondad genuina, esa que no espera nada a cambio. La forma en que tratas a la gente, con
+                respeto, con cariño, con atención. Cómo te preocupas por los demás, cómo te alegras de sus logros, cómo
+                te duele su dolor. He visto cómo ayudas sin que nadie te lo pida, cómo das sin esperar recibir, cómo
+                amas sin condiciones. El mundo sería un lugar mucho mejor si hubiera más personas como tú. De hecho, mi
+                mundo es mucho mejor desde que tú estás en él.</p>
 
-            <p>Admiro cómo tratas a las personas que quieres. A tu familia, con ese amor profundo y constante. A tus amigos, con esa lealtad inquebrantable. A mí, con esa entrega total. Sabes querer bien, sabes cuidar, sabes estar. Y lo haces con una naturalidad, con una autenticidad, que enamora. He aprendido tanto de ti sobre el amor verdadero, sobre la amistad sincera, sobre la familia elegida, que no sé ni por dónde empezar a darte las gracias.</p>
+            <p>Admiro cómo tratas a las personas que quieres. A tu familia, con ese amor profundo y constante. A tus
+                amigos, con esa lealtad inquebrantable. A mí, con esa entrega total. Sabes querer bien, sabes cuidar,
+                sabes estar. Y lo haces con una naturalidad, con una autenticidad, que enamora. He aprendido tanto de ti
+                sobre el amor verdadero, sobre la amistad sincera, sobre la familia elegida, que no sé ni por dónde
+                empezar a darte las gracias.</p>
 
-            <p>Admiro tu forma de bailar cuando crees que nadie te mira. Esos movimientos libres, sin vergüenza, sin coreografía, solo tú y la música. Me quedo embobado viéndote.</p>
+            <p>Admiro tu forma de bailar cuando crees que nadie te mira. Esos movimientos libres, sin vergüenza, sin
+                coreografía, solo tú y la música. Me quedo embobado viéndote.</p>
 
-            <p>Admiro tu forma de cantar en la ducha. Ese desparpajo, esa pasión, aunque desafines un poquito (no te enfades, lo digo con el mayor de los cariños). Me encanta escucharte, saber que estás ahí, en tu mundo, feliz.</p>
+            <p>Admiro tu forma de cantar en la ducha. Ese desparpajo, esa pasión, aunque desafines un poquito (no te
+                enfades, lo digo con el mayor de los cariños). Me encanta escucharte, saber que estás ahí, en tu mundo,
+                feliz.</p>
 
-            <p>Admiro tu forma de mirar al horizonte cuando sueñas despierta. Esa mirada perdida, llena de esperanza, de ilusión, de futuro. Me encanta preguntarte "¿en qué piensas?" y verte volver de ese mundo tuyo para contarme tus sueños.</p>
+            <p>Admiro tu forma de mirar al horizonte cuando sueñas despierta. Esa mirada perdida, llena de esperanza, de
+                ilusión, de futuro. Me encanta preguntarte "¿en qué piensas?" y verte volver de ese mundo tuyo para
+                contarme tus sueños.</p>
 
-            <p>Admiro cada una de tus imperfecciones, porque son las que te hacen real, humana, única. No eres un ideal, no eres una fantasía, eres una persona de carne y hueso, con tus manías y tus rarezas, con tus días malos y tus inseguridades. Y te quiero exactamente por eso. Porque eres real. Porque eres tú.</p>
+            <p>Admiro cada una de tus imperfecciones, porque son las que te hacen real, humana, única. No eres un ideal,
+                no eres una fantasía, eres una persona de carne y hueso, con tus manías y tus rarezas, con tus días
+                malos y tus inseguridades. Y te quiero exactamente por eso. Porque eres real. Porque eres tú.</p>
 
-            <p>Admiro la forma en que me aceptas a mí con todas las mías. Sin querer cambiarme, sin juzgarme, solo amándome tal como soy. Con mis rarezas, mis silencios, mis momentos difíciles. Con mis virtudes y mis defectos. Con todo. Y eso, mi gordita, es lo más valioso que alguien puede hacer por otra persona.</p>
+            <p>Admiro la forma en que me aceptas a mí con todas las mías. Sin querer cambiarme, sin juzgarme, solo
+                amándome tal como soy. Con mis rarezas, mis silencios, mis momentos difíciles. Con mis virtudes y mis
+                defectos. Con todo. Y eso, mi gordita, es lo más valioso que alguien puede hacer por otra persona.</p>
 
-            <p>Podría pasarme horas escribiendo todo lo que admiro de ti. Horas, días, semanas. Porque no hay un solo detalle tuyo que no me parezca extraordinario. Porque no hay una sola faceta tuya que no me enamore un poquito más cada día. Eres, simplemente, la persona más increíble que conozco. Y tengo la suerte de llamarte mía.</p>
+            <p>Podría pasarme horas escribiendo todo lo que admiro de ti. Horas, días, semanas. Porque no hay un solo
+                detalle tuyo que no me parezca extraordinario. Porque no hay una sola faceta tuya que no me enamore un
+                poquito más cada día. Eres, simplemente, la persona más increíble que conozco. Y tengo la suerte de
+                llamarte mía.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 6 - NUESTRO FUTURO (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>🌅 Lo que quiero construir contigo (el resto de mi vida)</h3>
 
-            <p>Quiero despertarme cada mañana a tu lado, con tu pelo revuelto y tu cara de sueño, con esa expresión de "cinco minutos más" que me parece la cosa más adorable del mundo. Quiero abrir los ojos y verte ahí, respirando, existiendo, siendo la primera imagen de mi día. Quiero hacerte café mientras tú te arreglas, prepararte el desayuno, dejar que te tomes tu tiempo. Quiero dejarte notas de amor en la nevera, en el espejo del baño, en la almohada. "Buenos días, mi gordita". "Hoy va a ser un gran día". "Te quiero".</p>
+            <p>Quiero despertarme cada mañana a tu lado, con tu pelo revuelto y tu cara de sueño, con esa expresión de
+                "cinco minutos más" que me parece la cosa más adorable del mundo. Quiero abrir los ojos y verte ahí,
+                respirando, existiendo, siendo la primera imagen de mi día. Quiero hacerte café mientras tú te arreglas,
+                prepararte el desayuno, dejar que te tomes tu tiempo. Quiero dejarte notas de amor en la nevera, en el
+                espejo del baño, en la almohada. "Buenos días, mi gordita". "Hoy va a ser un gran día". "Te quiero".</p>
 
-            <p>Quiero discutir sobre qué serie vemos esta noche, aunque siempre terminemos viendo la tuya. Porque sé que te hace feliz, y verte feliz me hace feliz a mí. Quiero discutir de verdad también, porque las discusiones son parte de la convivencia, y luego quiero hacer las paces, y que esos abrazos de reconciliación sean más fuertes que cualquier enfado.</p>
+            <p>Quiero discutir sobre qué serie vemos esta noche, aunque siempre terminemos viendo la tuya. Porque sé que
+                te hace feliz, y verte feliz me hace feliz a mí. Quiero discutir de verdad también, porque las
+                discusiones son parte de la convivencia, y luego quiero hacer las paces, y que esos abrazos de
+                reconciliación sean más fuertes que cualquier enfado.</p>
 
-            <p>Quiero desayunar contigo los domingos, con pijama y sin prisa, con el sol entrando por la ventana, con la radio de fondo, con horas por delante para no hacer nada. Quiero leer el periódico mientras tú hojeas una revista, quiero compartir las tostadas, quiero que me robes el último trozo de tu plato aunque ya te hayas comido el tuyo.</p>
+            <p>Quiero desayunar contigo los domingos, con pijama y sin prisa, con el sol entrando por la ventana, con la
+                radio de fondo, con horas por delante para no hacer nada. Quiero leer el periódico mientras tú hojeas
+                una revista, quiero compartir las tostadas, quiero que me robes el último trozo de tu plato aunque ya te
+                hayas comido el tuyo.</p>
 
-            <p>Quiero viajar contigo a todos esos lugares que hemos anotado en nuestra lista interminable. París para ver la Torre Eiffel de noche, con todas sus luces parpadeando, y besarte justo en el momento en que empieza el espectáculo. Tokio para perdernos entre sus luces de neón, para comer cosas raras, para sentirnos en otro planeta. Nueva York para pasear por Central Park en otoño, con las hojas cayendo, para subir al Empire State, para ver un musical en Broadway. Los fiordos noruegos para sentirnos pequeños ante la naturaleza, para navegar entre montañas, para ver auroras boreales. Las playas de Tailandia para ver atardeceres de ensueño, para dormir en cabañas sobre el agua, para bucear entre peces de colores.</p>
+            <p>Quiero viajar contigo a todos esos lugares que hemos anotado en nuestra lista interminable. París para
+                ver la Torre Eiffel de noche, con todas sus luces parpadeando, y besarte justo en el momento en que
+                empieza el espectáculo. Tokio para perdernos entre sus luces de neón, para comer cosas raras, para
+                sentirnos en otro planeta. Nueva York para pasear por Central Park en otoño, con las hojas cayendo, para
+                subir al Empire State, para ver un musical en Broadway. Los fiordos noruegos para sentirnos pequeños
+                ante la naturaleza, para navegar entre montañas, para ver auroras boreales. Las playas de Tailandia para
+                ver atardeceres de ensueño, para dormir en cabañas sobre el agua, para bucear entre peces de colores.
+            </p>
 
-            <p>Quiero hacerte una foto en cada uno de esos lugares. Quiero que tengamos un álbum físico, de esos que se hojean con los dedos, de esos que huelen a papel, de esos que pasaremos a nuestros hijos. Quiero que nuestras paredes estén llenas de recuerdos, de fotos enmarcadas, de postales, de entradas de cine, de pequeños tesoros de nuestra historia.</p>
+            <p>Quiero hacerte una foto en cada uno de esos lugares. Quiero que tengamos un álbum físico, de esos que se
+                hojean con los dedos, de esos que huelen a papel, de esos que pasaremos a nuestros hijos. Quiero que
+                nuestras paredes estén llenas de recuerdos, de fotos enmarcadas, de postales, de entradas de cine, de
+                pequeños tesoros de nuestra historia.</p>
 
-            <p>Quiero vivir contigo. No solo convivir, que también. Quiero compartir gastos y alegrías, quiero discutir por quién pone el lavavajillas y reconciliarme contigo en el sofá. Quiero tener una casa con nuestras cosas, con nuestros muebles elegidos juntos, con nuestra decoración, con ese olor a hogar que solo tú sabes crear. Quiero que tengamos una estantería llena de libros que hemos leído juntos, y otra con los que cada uno ha leído por su cuenta y luego recomendamos al otro.</p>
+            <p>Quiero vivir contigo. No solo convivir, que también. Quiero compartir gastos y alegrías, quiero discutir
+                por quién pone el lavavajillas y reconciliarme contigo en el sofá. Quiero tener una casa con nuestras
+                cosas, con nuestros muebles elegidos juntos, con nuestra decoración, con ese olor a hogar que solo tú
+                sabes crear. Quiero que tengamos una estantería llena de libros que hemos leído juntos, y otra con los
+                que cada uno ha leído por su cuenta y luego recomendamos al otro.</p>
 
-            <p>Quiero celebrar tus éxitos como si fueran míos, porque de alguna forma lo son. Quiero estar ahí cuando consigas ese trabajo que tanto deseas, cuando logres esa meta que te has propuesto, cuando cumplas esos sueños que me has contado al oído. Quiero ser el primero en felicitarte, el que más fuerte aplauda, el que más orgulloso se sienta. Porque cada logro tuyo es también un logro nuestro, un paso más en este camino que recorremos juntos.</p>
+            <p>Quiero celebrar tus éxitos como si fueran míos, porque de alguna forma lo son. Quiero estar ahí cuando
+                consigas ese trabajo que tanto deseas, cuando logres esa meta que te has propuesto, cuando cumplas esos
+                sueños que me has contado al oído. Quiero ser el primero en felicitarte, el que más fuerte aplauda, el
+                que más orgulloso se sienta. Porque cada logro tuyo es también un logro nuestro, un paso más en este
+                camino que recorremos juntos.</p>
 
-            <p>Quiero sostenerme fuerte cuando lleguen los malos momentos, y sé que llegarán. Porque la vida no es un camino de rosas siempre, y habrá días grises, semanas difíciles, meses complicados. Habrá pérdidas, habrá decepciones, habrá momentos en que todo parezca oscuro. Pero quiero que los enfrentemos juntos, de la mano, sin soltarnos. Quiero ser tu apoyo cuando flaquees, tu hombro cuando llores, tu fuerza cuando sientas que no puedes más. Y quiero que tú seas la mía cuando yo necesite lo mismo. Porque eso es una relación, ¿verdad? Caminar juntos, sostenernos mutuamente, no soltarnos nunca, pase lo que pase.</p>
+            <p>Quiero sostenerme fuerte cuando lleguen los malos momentos, y sé que llegarán. Porque la vida no es un
+                camino de rosas siempre, y habrá días grises, semanas difíciles, meses complicados. Habrá pérdidas,
+                habrá decepciones, habrá momentos en que todo parezca oscuro. Pero quiero que los enfrentemos juntos, de
+                la mano, sin soltarnos. Quiero ser tu apoyo cuando flaquees, tu hombro cuando llores, tu fuerza cuando
+                sientas que no puedes más. Y quiero que tú seas la mía cuando yo necesite lo mismo. Porque eso es una
+                relación, ¿verdad? Caminar juntos, sostenernos mutuamente, no soltarnos nunca, pase lo que pase.</p>
 
-            <p>Quiero formar una familia contigo, si es lo que deseas. Quiero verte como madre de mis hijos, quiero heredarles tu sonrisa y tus ojos, tu bondad y tu inteligencia. Quiero ver cómo les cantas, cómo les cuentas cuentos, cómo les enseñas a ser buenas personas. Quiero ver cómo los miras con ese amor infinito que tienes para dar. Quiero que nuestros hijos tengan la suerte de tenerte como madre, y yo la suerte de tenerte como compañera en esta aventura.</p>
+            <p>Quiero formar una familia contigo, si es lo que deseas. Quiero verte como madre de mis hijos, quiero
+                heredarles tu sonrisa y tus ojos, tu bondad y tu inteligencia. Quiero ver cómo les cantas, cómo les
+                cuentas cuentos, cómo les enseñas a ser buenas personas. Quiero ver cómo los miras con ese amor infinito
+                que tienes para dar. Quiero que nuestros hijos tengan la suerte de tenerte como madre, y yo la suerte de
+                tenerte como compañera en esta aventura.</p>
 
-            <p>Quiero envejecer a tu lado. Quiero que el tiempo decore nuestras sienes con canas, que las arrugas cuenten nuestra historia, que nuestras manos mantengan la misma fuerza para cogerse cuando ya no tengan la misma firmeza. Quiero seguir cogido de tu mano cuando tengamos ochenta años, paseando por el mismo parque donde paseábamos con veinte, recordando cómo empezó todo, sonriendo cómplices. Quiero mirarte y seguir viendo a esa chica de la que me enamoré aquel 13 de julio, aunque el tiempo haya pasado para los dos, aunque nuestros cuerpos hayan cambiado, aunque el mundo sea diferente.</p>
+            <p>Quiero envejecer a tu lado. Quiero que el tiempo decore nuestras sienes con canas, que las arrugas
+                cuenten nuestra historia, que nuestras manos mantengan la misma fuerza para cogerse cuando ya no tengan
+                la misma firmeza. Quiero seguir cogido de tu mano cuando tengamos ochenta años, paseando por el mismo
+                parque donde paseábamos con veinte, recordando cómo empezó todo, sonriendo cómplices. Quiero mirarte y
+                seguir viendo a esa chica de la que me enamoré aquel 13 de julio, aunque el tiempo haya pasado para los
+                dos, aunque nuestros cuerpos hayan cambiado, aunque el mundo sea diferente.</p>
 
-            <p>Quiero seguir enamorándome de ti cada día. Quiero que dentro de cincuenta años me mires y aún sientas ese cosquilleo en el estómago. Quiero que nuestros nietos se cansen de escuchar la historia de cómo nos conocimos un 13 de julio, y que aún así nosotros la contemos con la misma emoción del primer día, con los mismos detalles, con la misma ilusión. Quiero que nuestro amor sea leyenda, de esas que la gente cuenta como ejemplo de que sí, existe el amor para siempre, de que sí, se puede amar a la misma persona toda la vida, de que sí, merece la pena.</p>
+            <p>Quiero seguir enamorándome de ti cada día. Quiero que dentro de cincuenta años me mires y aún sientas ese
+                cosquilleo en el estómago. Quiero que nuestros nietos se cansen de escuchar la historia de cómo nos
+                conocimos un 13 de julio, y que aún así nosotros la contemos con la misma emoción del primer día, con
+                los mismos detalles, con la misma ilusión. Quiero que nuestro amor sea leyenda, de esas que la gente
+                cuenta como ejemplo de que sí, existe el amor para siempre, de que sí, se puede amar a la misma persona
+                toda la vida, de que sí, merece la pena.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 7 - LA CANCIÓN (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>🎵 Nuestra canción (y todas las que nos recuerdan)</h3>
 
-            <p>Hay canciones que se escuchan, y hay canciones que se sienten. La nuestra la siento en cada fibra de mi ser. Cada vez que suena, el mundo se paraliza y solo existes tú. Esa canción que un día compartimos y que desde entonces es nuestra. La que suena en mi cabeza cuando pienso en ti, la que tarareo cuando te extraño, la que bailamos agarrados en la cocina mientras se quema la cena, riéndonos como niños.</p>
+            <p>Hay canciones que se escuchan, y hay canciones que se sienten. La nuestra la siento en cada fibra de mi
+                ser. Cada vez que suena, el mundo se paraliza y solo existes tú. Esa canción que un día compartimos y
+                que desde entonces es nuestra. La que suena en mi cabeza cuando pienso en ti, la que tarareo cuando te
+                extraño, la que bailamos agarrados en la cocina mientras se quema la cena, riéndonos como niños.</p>
 
-            <p>Recuerdo la primera vez que la escuchamos juntos. Íbamos en el coche, de noche, volviendo de algún sitio. Sonó en la radio y los dos nos quedamos en silencio. Luego me miraste y dijiste: <span class="highlight">"Esta canción me recuerda a ti"</span>. Y yo te miré y pensé: "Esta canción soy yo, queriéndote siempre, pase lo que pase". Desde entonces, cada vez que suena, me acuerdo de esa noche, de tu mirada, de cómo apretaste mi mano. Y sonrío.</p>
+            <p>Recuerdo la primera vez que la escuchamos juntos. Íbamos en el coche, de noche, volviendo de algún sitio.
+                Sonó en la radio y los dos nos quedamos en silencio. Luego me miraste y dijiste: <span
+                    class="highlight">"Esta canción me recuerda a ti"</span>. Y yo te miré y pensé: "Esta canción soy
+                yo, queriéndote siempre, pase lo que pase". Desde entonces, cada vez que suena, me acuerdo de esa noche,
+                de tu mirada, de cómo apretaste mi mano. Y sonrío.</p>
 
-            <p>Pero no es solo una canción. Son muchas. Porque cada momento especial tiene su banda sonora. La canción que sonaba cuando nos besamos por primera vez. La que sonó en nuestro primer viaje. La que escuchábamos una y otra vez aquel verano. La que nos hizo llorar. La que nos hizo reír. La que bailamos en aquella boda. La que cantamos a gritos en el coche con las ventanillas bajadas.</p>
+            <p>Pero no es solo una canción. Son muchas. Porque cada momento especial tiene su banda sonora. La canción
+                que sonaba cuando nos besamos por primera vez. La que sonó en nuestro primer viaje. La que escuchábamos
+                una y otra vez aquel verano. La que nos hizo llorar. La que nos hizo reír. La que bailamos en aquella
+                boda. La que cantamos a gritos en el coche con las ventanillas bajadas.</p>
 
-            <p>Quiero que cuando las escuches, incluso dentro de muchos años, incluso si yo no estoy, te acuerdes de lo mucho que te quiero. Quiero que sean nuestras canciones para siempre. Quiero que cuando nuestros hijos pregunten "¿cuál es la canción de papá y mamá?" podamos ponerla y sonreírnos cómplices, con ese secreto compartido. Quiero que cuando tengamos ochenta años y la pongan en una fiesta, nos miremos y bailemos agarrados como si el tiempo no hubiera pasado, como si fuéramos los mismos chicos que se enamoraron aquel 13 de julio.</p>
+            <p>Quiero que cuando las escuches, incluso dentro de muchos años, incluso si yo no estoy, te acuerdes de lo
+                mucho que te quiero. Quiero que sean nuestras canciones para siempre. Quiero que cuando nuestros hijos
+                pregunten "¿cuál es la canción de papá y mamá?" podamos ponerla y sonreírnos cómplices, con ese secreto
+                compartido. Quiero que cuando tengamos ochenta años y la pongan en una fiesta, nos miremos y bailemos
+                agarrados como si el tiempo no hubiera pasado, como si fuéramos los mismos chicos que se enamoraron
+                aquel 13 de julio.</p>
 
             <div class="quote">
                 "Y si alguna vez el mundo se queda en silencio,<br>
@@ -516,146 +853,326 @@
             <!-- ============================================== -->
             <h3>✨ Las pequeñas cosas que hacen grande nuestro amor</h3>
 
-            <p>El amor no está solo en los grandes gestos, en los viajes espectaculares o en las declaraciones épicas. El amor está en las pequeñas cosas. En el mensaje de buenos días que me mandas sin falta, incluso cuando estás de mal humor, incluso cuando no sabes qué escribir. En cómo me ajustas la bufanda cuando hace frío, con ese gesto tan maternal, tan tuyo. En la forma en que pones tus pies sobre los míos mientras vemos una película, buscando calor, buscando contacto, buscándome.</p>
+            <p>El amor no está solo en los grandes gestos, en los viajes espectaculares o en las declaraciones épicas.
+                El amor está en las pequeñas cosas. En el mensaje de buenos días que me mandas sin falta, incluso cuando
+                estás de mal humor, incluso cuando no sabes qué escribir. En cómo me ajustas la bufanda cuando hace
+                frío, con ese gesto tan maternal, tan tuyo. En la forma en que pones tus pies sobre los míos mientras
+                vemos una película, buscando calor, buscando contacto, buscándome.</p>
 
-            <p>El amor está en cómo sabes cuándo he tenido un mal día solo por el tono de mi voz, por cómo entro por la puerta, por cómo dejo las llaves. Y en cómo entonces no preguntas, solo me abrazas. En cómo me preparas algo de comer sin que te lo pida, en cómo me preguntas "¿qué necesitas?" sin esperar respuesta.</p>
+            <p>El amor está en cómo sabes cuándo he tenido un mal día solo por el tono de mi voz, por cómo entro por la
+                puerta, por cómo dejo las llaves. Y en cómo entonces no preguntas, solo me abrazas. En cómo me preparas
+                algo de comer sin que te lo pida, en cómo me preguntas "¿qué necesitas?" sin esperar respuesta.</p>
 
-            <p>El amor está en la mermelada de fresa que compras porque sabes que es mi favorita, aunque a ti te guste más la de melocotón. En las risas tontas de madrugada, cuando deberíamos estar durmiendo y estamos hablando de tonterías, riéndonos como críos. En los silencios cómodos que no necesitan ser llenados, en los que estamos juntos sin hablar y es suficiente.</p>
+            <p>El amor está en la mermelada de fresa que compras porque sabes que es mi favorita, aunque a ti te guste
+                más la de melocotón. En las risas tontas de madrugada, cuando deberíamos estar durmiendo y estamos
+                hablando de tonterías, riéndonos como críos. En los silencios cómodos que no necesitan ser llenados, en
+                los que estamos juntos sin hablar y es suficiente.</p>
 
-            <p>El amor está en cómo me miras cuando crees que no me doy cuenta. En esas miradas robadas que guardo en mi memoria, en las que veo todo el amor que sientes. En la paciencia infinita con la que me explicas algo por quinta vez, sin enfadarte, sin desesperarte, solo con la intención de que lo entienda. En los abrazos largos, muy largos, de esos que parecen detener el tiempo, de esos en los que el mundo desaparece y solo existimos nosotros.</p>
+            <p>El amor está en cómo me miras cuando crees que no me doy cuenta. En esas miradas robadas que guardo en mi
+                memoria, en las que veo todo el amor que sientes. En la paciencia infinita con la que me explicas algo
+                por quinta vez, sin enfadarte, sin desesperarte, solo con la intención de que lo entienda. En los
+                abrazos largos, muy largos, de esos que parecen detener el tiempo, de esos en los que el mundo
+                desaparece y solo existimos nosotros.</p>
 
-            <p>El amor está en cómo dices "Javi" cuando te despiertas, con esa voz rota de sueño, con esa mezcla de cariño y necesidad. En cómo me buscas en la cama cuando no estoy, en cómo te acurrucas donde debería estar mi cuerpo. En cómo te encojes cuando tienes frío y te quejas hasta que te tapo. En cómo te ríes de mis bromas malas solo porque sabes que me hace ilusión, porque sabes que lo intento, porque sabes que me encanta verte sonreír.</p>
+            <p>El amor está en cómo dices "Javi" cuando te despiertas, con esa voz rota de sueño, con esa mezcla de
+                cariño y necesidad. En cómo me buscas en la cama cuando no estoy, en cómo te acurrucas donde debería
+                estar mi cuerpo. En cómo te encojes cuando tienes frío y te quejas hasta que te tapo. En cómo te ríes de
+                mis bromas malas solo porque sabes que me hace ilusión, porque sabes que lo intento, porque sabes que me
+                encanta verte sonreír.</p>
 
-            <p>El amor está en las tardes de domingo viendo la tele sin hacer nada. En los sábados de planes improvisados, de "¿y si nos vamos a...?" sin destino fijo. En los viernes de pizza y peli, en los que elegimos la misma película de siempre. En los jueves de "¿qué cenamos?" y "lo que tú quieras", y al final siempre pedimos lo mismo. En los miércoles de media semana, de "ya queda menos para el finde". En los lunes difíciles y los martes eternos. En todos los días, en todos los momentos, en todas las pequeñas cosas que hacen que la vida a tu lado sea tan extraordinaria.</p>
+            <p>El amor está en las tardes de domingo viendo la tele sin hacer nada. En los sábados de planes
+                improvisados, de "¿y si nos vamos a...?" sin destino fijo. En los viernes de pizza y peli, en los que
+                elegimos la misma película de siempre. En los jueves de "¿qué cenamos?" y "lo que tú quieras", y al
+                final siempre pedimos lo mismo. En los miércoles de media semana, de "ya queda menos para el finde". En
+                los lunes difíciles y los martes eternos. En todos los días, en todos los momentos, en todas las
+                pequeñas cosas que hacen que la vida a tu lado sea tan extraordinaria.</p>
 
-            <p>El amor está en la forma en que me miras cuando llego después de un día largo, y en cómo ese simple gesto borra todo el cansancio. En cómo me preguntas qué tal me ha ido, y en cómo escuchas de verdad, sin distracciones, sin mirar el móvil, sin pensar en otra cosa. En cómo me animas cuando estoy desanimado, con frases hechas que en tu boca suenan a verdad absoluta. En cómo me celebras cuando consigo algo, como si fuera el logro más importante del mundo.</p>
+            <p>El amor está en la forma en que me miras cuando llego después de un día largo, y en cómo ese simple gesto
+                borra todo el cansancio. En cómo me preguntas qué tal me ha ido, y en cómo escuchas de verdad, sin
+                distracciones, sin mirar el móvil, sin pensar en otra cosa. En cómo me animas cuando estoy desanimado,
+                con frases hechas que en tu boca suenan a verdad absoluta. En cómo me celebras cuando consigo algo, como
+                si fuera el logro más importante del mundo.</p>
 
-            <p>El amor está en las discusiones que tenemos y en cómo las solucionamos. En los "lo siento" sinceros, en los "no volverá a pasar" que cumplimos, en los abrazos de reconciliación que son más fuertes que cualquier enfado. El amor está en saber que podemos enfadarnos, que podemos estar molestos, que podemos tener razones para no hablarnos, pero que nunca, nunca, dejaremos de querernos. Que el amor es más grande que cualquier conflicto.</p>
+            <p>El amor está en las discusiones que tenemos y en cómo las solucionamos. En los "lo siento" sinceros, en
+                los "no volverá a pasar" que cumplimos, en los abrazos de reconciliación que son más fuertes que
+                cualquier enfado. El amor está en saber que podemos enfadarnos, que podemos estar molestos, que podemos
+                tener razones para no hablarnos, pero que nunca, nunca, dejaremos de querernos. Que el amor es más
+                grande que cualquier conflicto.</p>
 
-            <p>El amor está en todo eso, mi gordita. En las pequeñas cosas que hacen grande nuestro amor. Y yo me doy cuenta de cada una de ellas, y las atesoro, y te lo agradezco con todo mi corazón. Porque no todo el mundo tiene la suerte de tener a alguien que haga especiales las cosas cotidianas. Yo sí. Te tengo a ti.</p>
+            <p>El amor está en todo eso, mi gordita. En las pequeñas cosas que hacen grande nuestro amor. Y yo me doy
+                cuenta de cada una de ellas, y las atesoro, y te lo agradezco con todo mi corazón. Porque no todo el
+                mundo tiene la suerte de tener a alguien que haga especiales las cosas cotidianas. Yo sí. Te tengo a ti.
+            </p>
 
             <!-- ============================================== -->
             <!-- CARTA 9 - PERDÓN Y GRATITUD (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>🕊️ Perdón y gratitud (lo que siento en lo más profundo)</h3>
 
-            <p>Quiero pedirte perdón por todas las veces que no estuve a la altura en este año. Por los días en que mi cabeza no estaba con vosotros, en que el trabajo, el estrés, las preocupaciones me nublaron y no supe ver lo que tenía delante. Por los momentos en que llegué a casa y no supe desconectar, y te hablé con brusquedad sin merecerlo. Por las palabras que dije sin pensar, hirientes aunque no quisiera, y por los silencios que fueron más dañinos que cualquier grito.</p>
+            <p>Quiero pedirte perdón por todas las veces que no estuve a la altura en este año. Por los días en que mi
+                cabeza no estaba con vosotros, en que el trabajo, el estrés, las preocupaciones me nublaron y no supe
+                ver lo que tenía delante. Por los momentos en que llegué a casa y no supe desconectar, y te hablé con
+                brusquedad sin merecerlo. Por las palabras que dije sin pensar, hirientes aunque no quisiera, y por los
+                silencios que fueron más dañinos que cualquier grito.</p>
 
-            <p>Perdón por las veces que no supe escucharte de verdad. Por esas en que mientras me hablabas, yo estaba pensando en otra cosa. Por esas en que no capté la importancia de lo que me contabas, y te respondí con indiferencia. Por esas en que necesitabas que te escuchara y yo solo te oía.</p>
+            <p>Perdón por las veces que no supe escucharte de verdad. Por esas en que mientras me hablabas, yo estaba
+                pensando en otra cosa. Por esas en que no capté la importancia de lo que me contabas, y te respondí con
+                indiferencia. Por esas en que necesitabas que te escuchara y yo solo te oía.</p>
 
-            <p>Perdón por los planes que cancelé a última hora, por las llamadas que no devolví, por los mensajes a los que respondí con prisas y sin cariño. Perdón por las veces que antepuse mis cosas a las nuestras, por las que no supe priorizarte como merecías.</p>
+            <p>Perdón por los planes que cancelé a última hora, por las llamadas que no devolví, por los mensajes a los
+                que respondí con prisas y sin cariño. Perdón por las veces que antepuse mis cosas a las nuestras, por
+                las que no supe priorizarte como merecías.</p>
 
-            <p>Perdón por mis manías, mis rarezas, mis días malos. Por esos en que me encierro en mí mismo y no dejo que entres. Por esos en que estoy de mal humor sin razón aparente y lo pagas tú. Por esos en que soy difícil de querer. Porque sé que no soy fácil, que tengo mi carácter, que a veces me cuesta mostrar lo que siento. Pero gracias por quedarte. Gracias por entenderme sin que tenga que explicarlo. Gracias por esperarme siempre con los brazos abiertos, con esa sonrisa tuya que lo cura todo.</p>
+            <p>Perdón por mis manías, mis rarezas, mis días malos. Por esos en que me encierro en mí mismo y no dejo que
+                entres. Por esos en que estoy de mal humor sin razón aparente y lo pagas tú. Por esos en que soy difícil
+                de querer. Porque sé que no soy fácil, que tengo mi carácter, que a veces me cuesta mostrar lo que
+                siento. Pero gracias por quedarte. Gracias por entenderme sin que tenga que explicarlo. Gracias por
+                esperarme siempre con los brazos abiertos, con esa sonrisa tuya que lo cura todo.</p>
 
-            <p>Y ahora, la gratitud. Quiero darte las gracias. Gracias por quedarte a pesar de mis imperfecciones. Gracias por ver en mí algo que ni yo mismo veía, por sacar lo mejor de mí, por confiar en mí cuando ni yo confiaba. Gracias por creer en nosotros cuando yo dudaba, por tener fe en este amor cuando las cosas se ponían difíciles.</p>
+            <p>Y ahora, la gratitud. Quiero darte las gracias. Gracias por quedarte a pesar de mis imperfecciones.
+                Gracias por ver en mí algo que ni yo mismo veía, por sacar lo mejor de mí, por confiar en mí cuando ni
+                yo confiaba. Gracias por creer en nosotros cuando yo dudaba, por tener fe en este amor cuando las cosas
+                se ponían difíciles.</p>
 
-            <p>Gracias por tu paciencia infinita. Por esperarme, por comprenderme, por no rendirte. Gracias por tu ternura, por tus caricias, por tus besos inesperados. Gracias por tu fe inquebrantable en que podíamos con todo, en que éramos más fuertes que cualquier obstáculo. Gracias por cada sonrisa, cada abrazo, cada te quiero susurrado al oído en la oscuridad.</p>
+            <p>Gracias por tu paciencia infinita. Por esperarme, por comprenderme, por no rendirte. Gracias por tu
+                ternura, por tus caricias, por tus besos inesperados. Gracias por tu fe inquebrantable en que podíamos
+                con todo, en que éramos más fuertes que cualquier obstáculo. Gracias por cada sonrisa, cada abrazo, cada
+                te quiero susurrado al oído en la oscuridad.</p>
 
-            <p>Gracias por enseñarme a querer bien. Porque antes de ti, el amor era para mí algo confuso, algo que no terminaba de entender, algo que siempre venía con condiciones. Contigo he aprendido que el amor es sencillo cuando es de verdad. Que no hay que complicarlo, que no hay que merecerlo, que no hay que ganárselo. Que simplemente fluye, como el agua, como el aire, como la vida misma.</p>
+            <p>Gracias por enseñarme a querer bien. Porque antes de ti, el amor era para mí algo confuso, algo que no
+                terminaba de entender, algo que siempre venía con condiciones. Contigo he aprendido que el amor es
+                sencillo cuando es de verdad. Que no hay que complicarlo, que no hay que merecerlo, que no hay que
+                ganárselo. Que simplemente fluye, como el agua, como el aire, como la vida misma.</p>
 
-            <p>Gracias por enseñarme a ser mejor persona. Por inspirarme cada día a ser más paciente, más comprensivo, más generoso. Por mostrarme con tu ejemplo cómo se trata a los demás, cómo se quiere sin condiciones, cómo se vive con el corazón abierto.</p>
+            <p>Gracias por enseñarme a ser mejor persona. Por inspirarme cada día a ser más paciente, más comprensivo,
+                más generoso. Por mostrarme con tu ejemplo cómo se trata a los demás, cómo se quiere sin condiciones,
+                cómo se vive con el corazón abierto.</p>
 
-            <p>Gracias por existir, gordita. Porque desde que lo haces, mi vida tiene un color que nunca supe que existía. Porque me has dado momentos de felicidad que ni siquiera sabía que podía sentir. Porque me has hecho reír, llorar, soñar, vivir. Porque me has hecho sentir vivo, de verdad vivo, por primera vez en mucho tiempo.</p>
+            <p>Gracias por existir, gordita. Porque desde que lo haces, mi vida tiene un color que nunca supe que
+                existía. Porque me has dado momentos de felicidad que ni siquiera sabía que podía sentir. Porque me has
+                hecho reír, llorar, soñar, vivir. Porque me has hecho sentir vivo, de verdad vivo, por primera vez en
+                mucho tiempo.</p>
 
-            <p>Gracias por cada uno de los 365 días que hemos compartido. Por cada hora, cada minuto, cada segundo. Por todo lo bueno y también por lo malo, porque hasta lo malo nos ha hecho más fuertes, nos ha enseñado, nos ha unido. Gracias por ser mi compañera, mi amiga, mi cómplice, mi amor. Gracias por ser mi gordita. Por ser mi Estrella. Por ser tú. Por ser nuestra.</p>
+            <p>Gracias por cada uno de los 365 días que hemos compartido. Por cada hora, cada minuto, cada segundo. Por
+                todo lo bueno y también por lo malo, porque hasta lo malo nos ha hecho más fuertes, nos ha enseñado, nos
+                ha unido. Gracias por ser mi compañera, mi amiga, mi cómplice, mi amor. Gracias por ser mi gordita. Por
+                ser mi Estrella. Por ser tú. Por ser nuestra.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 10 - 365 DETALLES (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>📋 365 detalles que adoro de ti (uno por cada día del año)</h3>
 
-            <p>1. Tu sonrisa cuando te despiertas, esa media sonrisa aún con los ojos cerrados. 2. Cómo dices "Javi" por las mañanas, con esa voz ronca de sueño. 3. Tu olor nada más levantarte, ese olor tan tuyo que reconozco entre mil. 4. La forma en que te estiras en la cama, arqueando la espalda como un gato. 5. Cómo te encojes cuando tienes frío, hecha un ovillo. 6. Tu paciencia conmigo, infinita, inagotable. 7. Cómo me miras cuando hablo de algo que me apasiona, con atención genuina. 8. Tus ojos verdes, el espejo de tu alma. 9. Cómo cambian de color según la luz, a veces miel, a veces esmeralda. 10. Tu pelo revuelto, esa melena indomable. 11. Cómo te lo recoges cuando estás concentrada, en ese moño tan característico. 12. Tus manos, suaves, cálidas, que tanto me han acariciado. 13. Cómo entrelazas tus dedos con los míos, como si no quisieras soltarte nunca. 14. Tus pies fríos por la noche, que buscan los míos para calentarse. 15. Cómo te ríes, con esa risa que llena habitaciones. 16. Tu risa contagiosa, que hace que los demás se rían solo de oírte. 17. Cuando te ríes tanto que no te sale la voz, que solo se escucha un resuello divertido. 18. Cuando te ríes con la boca llena y luego te da vergüenza. 19. Cómo te pones colorada cuando te da vergüenza, ese rubor tan bonito. 20. Tu forma de andar, ese caminar tan característico. 21. Cómo mueves las manos cuando hablas, expresiva, apasionada. 22. Tus gestos cuando estás nerviosa, jugando con tu pelo, mordiéndote los labios. 23. Cómo te muerdes el labio cuando piensas, cuando dudas, cuando deseas. 24. Tu forma de concentrarte, con esa intensidad. 25. Cómo frunces el ceño cuando algo no te gusta. 26. Tu forma de leer, absorta en el libro, ajena al mundo. 27. Cómo pasas las páginas, delicadamente. 28. Tus expresiones cuando ves una película, cómo sufres, cómo te alegras. 29. Cómo lloras con las películas tristes, sin vergüenza, dejándote llevar. 30. Cómo te tapas los ojos en las escenas de miedo. 31. Tu forma de bailar, libre, sin complejos. 32. Cómo te mueves cuando nadie te ve, cuando crees que estás sola. 33. Tu forma de cantar en la ducha, desafinando con pasión. 34. Cómo sales del baño con el pelo mojado, envuelta en la toalla. 35. Tu olor después de la ducha, limpio, fresco, a ti. 36. La forma en que te pones crema, con mimo, con cuidado. 37. Cómo te maquillas, ese ritual tan femenino. 38. Tu elegancia natural, incluso con ropa de andar por casa. 39. Cómo eliges la ropa, tu estilo, tu gusto. 40. Tus conjuntos favoritos, esos que sé que te gustan y te sientan tan bien. 41. Cómo te miras al espejo y haces gestos. 42. Tu forma de andar cuando llevas tacones, más segura, más poderosa. 43. Cómo te quitas los tacones nada más llegar a casa. 44. Tus pies descalzos por la casa. 45. La forma en que te sientas en el sofá, a veces recogida, a veces estirada. 46. Tu sitio favorito en el sofá, ese que has reclamado como tuyo. 47. Cómo te tapas con la manta aunque haga calor. 48. Tu forma de ver la tele, comentándolo todo. 49. Tus teorías sobre las series, siempre originales. 50. Cómo te duermes en el sofá y luego dices que no estabas dormida.</p>
+            <p>1. Tu sonrisa cuando te despiertas, esa media sonrisa aún con los ojos cerrados. 2. Cómo dices "Javi" por
+                las mañanas, con esa voz ronca de sueño. 3. Tu olor nada más levantarte, ese olor tan tuyo que reconozco
+                entre mil. 4. La forma en que te estiras en la cama, arqueando la espalda como un gato. 5. Cómo te
+                encojes cuando tienes frío, hecha un ovillo. 6. Tu paciencia conmigo, infinita, inagotable. 7. Cómo me
+                miras cuando hablo de algo que me apasiona, con atención genuina. 8. Tus ojos verdes, el espejo de tu
+                alma. 9. Cómo cambian de color según la luz, a veces miel, a veces esmeralda. 10. Tu pelo revuelto, esa
+                melena indomable. 11. Cómo te lo recoges cuando estás concentrada, en ese moño tan característico. 12.
+                Tus manos, suaves, cálidas, que tanto me han acariciado. 13. Cómo entrelazas tus dedos con los míos,
+                como si no quisieras soltarte nunca. 14. Tus pies fríos por la noche, que buscan los míos para
+                calentarse. 15. Cómo te ríes, con esa risa que llena habitaciones. 16. Tu risa contagiosa, que hace que
+                los demás se rían solo de oírte. 17. Cuando te ríes tanto que no te sale la voz, que solo se escucha un
+                resuello divertido. 18. Cuando te ríes con la boca llena y luego te da vergüenza. 19. Cómo te pones
+                colorada cuando te da vergüenza, ese rubor tan bonito. 20. Tu forma de andar, ese caminar tan
+                característico. 21. Cómo mueves las manos cuando hablas, expresiva, apasionada. 22. Tus gestos cuando
+                estás nerviosa, jugando con tu pelo, mordiéndote los labios. 23. Cómo te muerdes el labio cuando
+                piensas, cuando dudas, cuando deseas. 24. Tu forma de concentrarte, con esa intensidad. 25. Cómo frunces
+                el ceño cuando algo no te gusta. 26. Tu forma de leer, absorta en el libro, ajena al mundo. 27. Cómo
+                pasas las páginas, delicadamente. 28. Tus expresiones cuando ves una película, cómo sufres, cómo te
+                alegras. 29. Cómo lloras con las películas tristes, sin vergüenza, dejándote llevar. 30. Cómo te tapas
+                los ojos en las escenas de miedo. 31. Tu forma de bailar, libre, sin complejos. 32. Cómo te mueves
+                cuando nadie te ve, cuando crees que estás sola. 33. Tu forma de cantar en la ducha, desafinando con
+                pasión. 34. Cómo sales del baño con el pelo mojado, envuelta en la toalla. 35. Tu olor después de la
+                ducha, limpio, fresco, a ti. 36. La forma en que te pones crema, con mimo, con cuidado. 37. Cómo te
+                maquillas, ese ritual tan femenino. 38. Tu elegancia natural, incluso con ropa de andar por casa. 39.
+                Cómo eliges la ropa, tu estilo, tu gusto. 40. Tus conjuntos favoritos, esos que sé que te gustan y te
+                sientan tan bien. 41. Cómo te miras al espejo y haces gestos. 42. Tu forma de andar cuando llevas
+                tacones, más segura, más poderosa. 43. Cómo te quitas los tacones nada más llegar a casa. 44. Tus pies
+                descalzos por la casa. 45. La forma en que te sientas en el sofá, a veces recogida, a veces estirada.
+                46. Tu sitio favorito en el sofá, ese que has reclamado como tuyo. 47. Cómo te tapas con la manta aunque
+                haga calor. 48. Tu forma de ver la tele, comentándolo todo. 49. Tus teorías sobre las series, siempre
+                originales. 50. Cómo te duermes en el sofá y luego dices que no estabas dormida.</p>
 
-            <p>Podría seguir hasta el 365. De verdad que podría. Porque no hay un solo detalle tuyo que no me parezca adorable. Porque te he observado durante 365 días y cada día he descubierto algo nuevo que me ha hecho amarte más. Tu forma de respirar cuando duermes. La manera en que te quejas cuando tienes hambre. Cómo pones los ojos en blanco cuando digo algo que te parece absurdo. Tu risa cuando te hago cosquillas. La forma en que te escondes cuando quieres evitar algo. Cómo te emocionas con las cosas pequeñas. Tu generosidad, tu entrega, tu forma de darlo todo sin esperar nada a cambio.</p>
+            <p>Podría seguir hasta el 365. De verdad que podría. Porque no hay un solo detalle tuyo que no me parezca
+                adorable. Porque te he observado durante 365 días y cada día he descubierto algo nuevo que me ha hecho
+                amarte más. Tu forma de respirar cuando duermes. La manera en que te quejas cuando tienes hambre. Cómo
+                pones los ojos en blanco cuando digo algo que te parece absurdo. Tu risa cuando te hago cosquillas. La
+                forma en que te escondes cuando quieres evitar algo. Cómo te emocionas con las cosas pequeñas. Tu
+                generosidad, tu entrega, tu forma de darlo todo sin esperar nada a cambio.</p>
 
-            <p>Eres un universo entero por descubrir, y yo quiero pasarme el resto de mi vida haciéndolo. Porque 365 días han sido solo el principio. Porque me quedan 365 más, y 365 más, y 365 más. Porque quiero llegar a los 3650, a los 36500, a todos los días que me queden. Descubriéndote, aprendiéndote, amándote.</p>
+            <p>Eres un universo entero por descubrir, y yo quiero pasarme el resto de mi vida haciéndolo. Porque 365
+                días han sido solo el principio. Porque me quedan 365 más, y 365 más, y 365 más. Porque quiero llegar a
+                los 3650, a los 36500, a todos los días que me queden. Descubriéndote, aprendiéndote, amándote.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 11 - LAS PROMESAS (26 EXTENDIDAS) -->
             <!-- ============================================== -->
             <h3>🤝 26 promesas para nuestro amor (13+13, como nuestra fecha)</h3>
 
-            <p><span class="highlight">1.</span> Prometo escucharte siempre, de verdad, con atención plena, aunque esté cansado o preocupado. Prometo mirarte a los ojos cuando me hables, dejar el móvil, apartar las distracciones. Porque lo que me dices es importante, y tú eres importante.</p>
+            <p><span class="highlight">1.</span> Prometo escucharte siempre, de verdad, con atención plena, aunque esté
+                cansado o preocupado. Prometo mirarte a los ojos cuando me hables, dejar el móvil, apartar las
+                distracciones. Porque lo que me dices es importante, y tú eres importante.</p>
 
-            <p><span class="highlight">2.</span> Prometo celebrar tus logros como si fueran míos, porque lo son. Prometo estar orgulloso de ti siempre, y decírtelo. Prometo ser tu mayor fan, tu animador personal, el que más fuerte aplaude.</p>
+            <p><span class="highlight">2.</span> Prometo celebrar tus logros como si fueran míos, porque lo son. Prometo
+                estar orgulloso de ti siempre, y decírtelo. Prometo ser tu mayor fan, tu animador personal, el que más
+                fuerte aplaude.</p>
 
-            <p><span class="highlight">3.</span> Prometo estar a tu lado en los días grises, en los tormentosos, en los que parecen no tener salida. Prometo no huir cuando las cosas se pongan difíciles, sino quedarme, agarrarte fuerte, y esperar juntos a que pase la tormenta.</p>
+            <p><span class="highlight">3.</span> Prometo estar a tu lado en los días grises, en los tormentosos, en los
+                que parecen no tener salida. Prometo no huir cuando las cosas se pongan difíciles, sino quedarme,
+                agarrarte fuerte, y esperar juntos a que pase la tormenta.</p>
 
-            <p><span class="highlight">4.</span> Prometo reírme contigo hasta que duela la barriga, al menos una vez al día. Prometo buscar el humor en lo cotidiano, hacerte reír cuando estés triste, y reírme yo de tus ocurrencias.</p>
+            <p><span class="highlight">4.</span> Prometo reírme contigo hasta que duela la barriga, al menos una vez al
+                día. Prometo buscar el humor en lo cotidiano, hacerte reír cuando estés triste, y reírme yo de tus
+                ocurrencias.</p>
 
-            <p><span class="highlight">5.</span> Prometo seguir sorprendiéndote cada día. Prometo no caer en la rutina, no dar por sentado lo que tenemos. Prometo buscar maneras de hacerte sentir especial, cada día, siempre.</p>
+            <p><span class="highlight">5.</span> Prometo seguir sorprendiéndote cada día. Prometo no caer en la rutina,
+                no dar por sentado lo que tenemos. Prometo buscar maneras de hacerte sentir especial, cada día, siempre.
+            </p>
 
-            <p><span class="highlight">6.</span> Prometo pedir perdón cuando me equivoque, y hacerlo de corazón. Prometo reconocer mis errores, no justificarme, no echar balones fuera. Y prometo aprender de ellos para no volver a cometerlos.</p>
+            <p><span class="highlight">6.</span> Prometo pedir perdón cuando me equivoque, y hacerlo de corazón. Prometo
+                reconocer mis errores, no justificarme, no echar balones fuera. Y prometo aprender de ellos para no
+                volver a cometerlos.</p>
 
-            <p><span class="highlight">7.</span> Prometo no irme nunca a dormir sin decirte te quiero. Pase lo que pase, estemos como estemos, aunque estemos enfadados. Porque por encima de todo, siempre te quiero.</p>
+            <p><span class="highlight">7.</span> Prometo no irme nunca a dormir sin decirte te quiero. Pase lo que pase,
+                estemos como estemos, aunque estemos enfadados. Porque por encima de todo, siempre te quiero.</p>
 
-            <p><span class="highlight">8.</span> Prometo recordar las fechas importantes, pero sobre todo el 13 de julio. Prometo que ese día siempre será especial, siempre será nuestro, siempre lo celebraremos como merece.</p>
+            <p><span class="highlight">8.</span> Prometo recordar las fechas importantes, pero sobre todo el 13 de
+                julio. Prometo que ese día siempre será especial, siempre será nuestro, siempre lo celebraremos como
+                merece.</p>
 
-            <p><span class="highlight">9.</span> Prometo cuidar de ti cuando estés enferma, cuando estés cansada, cuando solo necesites un abrazo. Prometo ser tu enfermero, tu soporte, tu refugio. Prometo estar ahí.</p>
+            <p><span class="highlight">9.</span> Prometo cuidar de ti cuando estés enferma, cuando estés cansada, cuando
+                solo necesites un abrazo. Prometo ser tu enfermero, tu soporte, tu refugio. Prometo estar ahí.</p>
 
-            <p><span class="highlight">10.</span> Prometo respetar tu espacio, tu tiempo, tu individualidad. Prometo no invadirte, no agobiarte, no hacerte sentir atrapada. Prometo entender que necesitas tu mundo, como yo el mío, y que está bien.</p>
+            <p><span class="highlight">10.</span> Prometo respetar tu espacio, tu tiempo, tu individualidad. Prometo no
+                invadirte, no agobiarte, no hacerte sentir atrapada. Prometo entender que necesitas tu mundo, como yo el
+                mío, y que está bien.</p>
 
-            <p><span class="highlight">11.</span> Prometo seguir aprendiendo de ti, contigo, para ti. Prometo no estancarme, no creérmelo, no pensar que ya lo sé todo. Porque contigo siempre hay algo nuevo que aprender.</p>
+            <p><span class="highlight">11.</span> Prometo seguir aprendiendo de ti, contigo, para ti. Prometo no
+                estancarme, no creérmelo, no pensar que ya lo sé todo. Porque contigo siempre hay algo nuevo que
+                aprender.</p>
 
-            <p><span class="highlight">12.</span> Prometo no dejar que la rutina apague nuestra chispa. Prometo luchar cada día por mantener viva la ilusión, la pasión, las ganas. Prometo no conformarme, no acomodarme, no dejar de cortejarte.</p>
+            <p><span class="highlight">12.</span> Prometo no dejar que la rutina apague nuestra chispa. Prometo luchar
+                cada día por mantener viva la ilusión, la pasión, las ganas. Prometo no conformarme, no acomodarme, no
+                dejar de cortejarte.</p>
 
-            <p><span class="highlight">13.</span> Prometo amarte hoy, mañana y siempre, en los buenos y malos momentos, en la salud y en la enfermedad, en la alegría y en la tristeza, hasta que la muerte nos separe. Y prometo que si hay algo después, te seguiré amando allí también.</p>
+            <p><span class="highlight">13.</span> Prometo amarte hoy, mañana y siempre, en los buenos y malos momentos,
+                en la salud y en la enfermedad, en la alegría y en la tristeza, hasta que la muerte nos separe. Y
+                prometo que si hay algo después, te seguiré amando allí también.</p>
 
-            <p style="margin-top: 30px;"><span class="highlight">14.</span> Prometo seguir llamándote gordita aunque a veces finjas enfadarte. Porque es nuestro, porque me sale del corazón, porque es la palabra más bonita que te puedo decir.</p>
+            <p style="margin-top: 30px;"><span class="highlight">14.</span> Prometo seguir llamándote gordita aunque a
+                veces finjas enfadarte. Porque es nuestro, porque me sale del corazón, porque es la palabra más bonita
+                que te puedo decir.</p>
 
-            <p><span class="highlight">15.</span> Prometo hacerte reír cuando estés triste, aunque tenga que hacer el ridículo, aunque tenga que contar los chistes más malos, aunque tenga que disfrazarme de payaso. Verte sonreír lo merece todo.</p>
+            <p><span class="highlight">15.</span> Prometo hacerte reír cuando estés triste, aunque tenga que hacer el
+                ridículo, aunque tenga que contar los chistes más malos, aunque tenga que disfrazarme de payaso. Verte
+                sonreír lo merece todo.</p>
 
-            <p><span class="highlight">16.</span> Prometo secar tus lágrimas cuando llores, con mis dedos, con mis labios, con lo que haga falta. Prometo no dejar que llores sola, no dejar que el dolor te abrume sin estar yo ahí.</p>
+            <p><span class="highlight">16.</span> Prometo secar tus lágrimas cuando llores, con mis dedos, con mis
+                labios, con lo que haga falta. Prometo no dejar que llores sola, no dejar que el dolor te abrume sin
+                estar yo ahí.</p>
 
-            <p><span class="highlight">17.</span> Prometo celebrar cada pequeño logro tuyo. Desde el café que te sale bien hasta el proyecto que terminas. Porque todo en ti merece ser celebrado.</p>
+            <p><span class="highlight">17.</span> Prometo celebrar cada pequeño logro tuyo. Desde el café que te sale
+                bien hasta el proyecto que terminas. Porque todo en ti merece ser celebrado.</p>
 
-            <p><span class="highlight">18.</span> Prometo sorprenderte sin motivo. Porque no hace falta una ocasión especial para demostrarte lo mucho que te quiero. Porque cualquier día es bueno para hacerte sentir especial.</p>
+            <p><span class="highlight">18.</span> Prometo sorprenderte sin motivo. Porque no hace falta una ocasión
+                especial para demostrarte lo mucho que te quiero. Porque cualquier día es bueno para hacerte sentir
+                especial.</p>
 
-            <p><span class="highlight">19.</span> Prometo quererte más cada día. Parece imposible, porque ya te quiero muchísimo, pero cada día descubro algo nuevo que me hace quererte más. Y prometo que ese crecimiento no tiene fin.</p>
+            <p><span class="highlight">19.</span> Prometo quererte más cada día. Parece imposible, porque ya te quiero
+                muchísimo, pero cada día descubro algo nuevo que me hace quererte más. Y prometo que ese crecimiento no
+                tiene fin.</p>
 
-            <p><span class="highlight">20.</span> Prometo ser paciente cuando tú no lo seas. Prometo entender tus momentos, tus cambios de humor, tus días malos. Prometo no tomármelo como algo personal, sino como parte de ti.</p>
+            <p><span class="highlight">20.</span> Prometo ser paciente cuando tú no lo seas. Prometo entender tus
+                momentos, tus cambios de humor, tus días malos. Prometo no tomármelo como algo personal, sino como parte
+                de ti.</p>
 
-            <p><span class="highlight">21.</span> Prometo recordar por qué me enamoré de ti. Prometo no olvidarlo nunca, incluso en los momentos difíciles. Prometo tener siempre presente a esa chica que conocí aquel 13 de julio.</p>
+            <p><span class="highlight">21.</span> Prometo recordar por qué me enamoré de ti. Prometo no olvidarlo nunca,
+                incluso en los momentos difíciles. Prometo tener siempre presente a esa chica que conocí aquel 13 de
+                julio.</p>
 
-            <p><span class="highlight">22.</span> Prometo no dar nada por sentado. Prometo no pensar que ya te tengo asegurada, que ya no tengo que esforzarme. Porque el amor se cultiva cada día, y yo quiero cultivarlo siempre.</p>
+            <p><span class="highlight">22.</span> Prometo no dar nada por sentado. Prometo no pensar que ya te tengo
+                asegurada, que ya no tengo que esforzarme. Porque el amor se cultiva cada día, y yo quiero cultivarlo
+                siempre.</p>
 
-            <p><span class="highlight">23.</span> Prometo seguir eligiéndote cada día. Porque el amor no es un sentimiento estático, es una elección activa. Y cada mañana, al despertar, te elijo a ti. Y te elegiré siempre.</p>
+            <p><span class="highlight">23.</span> Prometo seguir eligiéndote cada día. Porque el amor no es un
+                sentimiento estático, es una elección activa. Y cada mañana, al despertar, te elijo a ti. Y te elegiré
+                siempre.</p>
 
-            <p><span class="highlight">24.</span> Prometo envejecer a tu lado. Prometo que nuestras canas crecerán juntas, que nuestras arrugas se parecerán, que nuestras manos seguirán entrelazadas cuando ya no tengan fuerza.</p>
+            <p><span class="highlight">24.</span> Prometo envejecer a tu lado. Prometo que nuestras canas crecerán
+                juntas, que nuestras arrugas se parecerán, que nuestras manos seguirán entrelazadas cuando ya no tengan
+                fuerza.</p>
 
-            <p><span class="highlight">25.</span> Prometo que el 13 de julio sea siempre nuestro día especial. Pase lo que pase, estemos donde estemos, ese día será sagrado. Para celebrarnos, para recordarnos, para querernos un poquito más.</p>
+            <p><span class="highlight">25.</span> Prometo que el 13 de julio sea siempre nuestro día especial. Pase lo
+                que pase, estemos donde estemos, ese día será sagrado. Para celebrarnos, para recordarnos, para
+                querernos un poquito más.</p>
 
-            <p><span class="highlight">26.</span> Prometo amarte en silencio y a gritos, de día y de noche, aquí y en cualquier lugar, ahora y siempre. Prometo que no habrá un solo día de mi vida en que no te ame. Prometo que mi amor por ti será eterno mientras yo exista.</p>
+            <p><span class="highlight">26.</span> Prometo amarte en silencio y a gritos, de día y de noche, aquí y en
+                cualquier lugar, ahora y siempre. Prometo que no habrá un solo día de mi vida en que no te ame. Prometo
+                que mi amor por ti será eterno mientras yo exista.</p>
 
             <!-- ============================================== -->
             <!-- CARTA 12 - DECLARACIÓN FINAL (MUY EXTENDIDA) -->
             <!-- ============================================== -->
             <h3>💍 Lo que quiero decirte en nuestro primer aniversario</h3>
 
-            <p>Hoy, 13 de julio de 2026, escribo estas palabras con el corazón en la mano y los ojos humedecidos. Han pasado 365 días desde aquella noche mágica. Un año. Doce meses. Cincuenta y dos semanas. Ocho mil setecientas sesenta horas. Quinientos veinticinco mil seiscientos minutos. Treinta y un millones quinientos treinta y seis mil segundos. Y en cada uno de ellos, en cada instante, has estado presente. No ha habido un solo momento en que no haya pensado en ti, en que no te haya sentido cerca, en que no haya agradecido tenerte en mi vida.</p>
+            <p>Hoy, 13 de julio de 2026, escribo estas palabras con el corazón en la mano y los ojos humedecidos. Han
+                pasado 365 días desde aquella noche mágica. Un año. Doce meses. Cincuenta y dos semanas. Ocho mil
+                setecientas sesenta horas. Quinientos veinticinco mil seiscientos minutos. Treinta y un millones
+                quinientos treinta y seis mil segundos. Y en cada uno de ellos, en cada instante, has estado presente.
+                No ha habido un solo momento en que no haya pensado en ti, en que no te haya sentido cerca, en que no
+                haya agradecido tenerte en mi vida.</p>
 
-            <p>Y lo más increíble de todo es que, lejos de disminuir, mi amor por ti no ha hecho más que crecer. Cada día que pasa te quiero más. Cada día encuentro una nueva razón para amarte. Cada día me sorprendes con algo nuevo. Cada día me confirmas que sí, que el amor de verdad existe, que el amor para siempre es posible, que todo lo que siempre soñé sobre el amor era cierto, solo que no había encontrado a la persona adecuada hasta que te encontré a ti.</p>
+            <p>Y lo más increíble de todo es que, lejos de disminuir, mi amor por ti no ha hecho más que crecer. Cada
+                día que pasa te quiero más. Cada día encuentro una nueva razón para amarte. Cada día me sorprendes con
+                algo nuevo. Cada día me confirmas que sí, que el amor de verdad existe, que el amor para siempre es
+                posible, que todo lo que siempre soñé sobre el amor era cierto, solo que no había encontrado a la
+                persona adecuada hasta que te encontré a ti.</p>
 
-            <p>No sé cuánto tiempo nos queda en esta vida. Nadie lo sabe. Pero quiero que sepas que cada minuto a tu lado ha valido la pena. Que no cambiaría ni uno solo de nuestros días juntos por nada del mundo. Que no hay riqueza, ni éxito, ni logro que pueda compararse con lo que siento cuando estoy contigo. Que has sido, eres y serás el amor de mi vida. No me importa si suena a tópico. No me importa si parece exagerado. No me importa si alguien pudiera pensar que es demasiado. Es la verdad más absoluta que conozco, y la diré siempre con orgullo.</p>
+            <p>No sé cuánto tiempo nos queda en esta vida. Nadie lo sabe. Pero quiero que sepas que cada minuto a tu
+                lado ha valido la pena. Que no cambiaría ni uno solo de nuestros días juntos por nada del mundo. Que no
+                hay riqueza, ni éxito, ni logro que pueda compararse con lo que siento cuando estoy contigo. Que has
+                sido, eres y serás el amor de mi vida. No me importa si suena a tópico. No me importa si parece
+                exagerado. No me importa si alguien pudiera pensar que es demasiado. Es la verdad más absoluta que
+                conozco, y la diré siempre con orgullo.</p>
 
-            <p>Quiero que sepas que en este año has sido mi refugio. En los días buenos, para celebrar juntos. En los días malos, para apoyarme. En los días grises, para pintarlos de color. En los días oscuros, para ser mi luz. Siempre has estado ahí, incondicionalmente, sin pedir nada a cambio. Y espero que sepas que yo también quiero estar siempre ahí para ti. En las buenas y en las malas. En la salud y en la enfermedad. En la alegría y en la tristeza. Siempre. Sin condiciones. Para siempre.</p>
+            <p>Quiero que sepas que en este año has sido mi refugio. En los días buenos, para celebrar juntos. En los
+                días malos, para apoyarme. En los días grises, para pintarlos de color. En los días oscuros, para ser mi
+                luz. Siempre has estado ahí, incondicionalmente, sin pedir nada a cambio. Y espero que sepas que yo
+                también quiero estar siempre ahí para ti. En las buenas y en las malas. En la salud y en la enfermedad.
+                En la alegría y en la tristeza. Siempre. Sin condiciones. Para siempre.</p>
 
-            <p>Quiero que sepas que no hay un solo plan de futuro que no te incluya. Que cuando pienso en los próximos años, en la década que viene, en el resto de mi vida, siempre, siempre, estás tú. No concibo mi vida sin ti, mi gordita. No quiero ni imaginármelo. Porque tú eres parte de mí, parte de mi identidad, parte de quien soy. Y sin ti, no sería el mismo. Sería una versión incompleta, un boceto a medio terminar, una canción sin melodía.</p>
+            <p>Quiero que sepas que no hay un solo plan de futuro que no te incluya. Que cuando pienso en los próximos
+                años, en la década que viene, en el resto de mi vida, siempre, siempre, estás tú. No concibo mi vida sin
+                ti, mi gordita. No quiero ni imaginármelo. Porque tú eres parte de mí, parte de mi identidad, parte de
+                quien soy. Y sin ti, no sería el mismo. Sería una versión incompleta, un boceto a medio terminar, una
+                canción sin melodía.</p>
 
-            <p>Quiero que sepas que no hay distancia que pueda separarnos, no hay obstáculo que no podamos superar, no hay problema que no podamos resolver juntos. Porque lo nuestro es más fuerte que todo eso. Porque lo nuestro está construido sobre cimientos sólidos: respeto, confianza, admiración, amistad, y un amor inmenso que lo abarca todo.</p>
+            <p>Quiero que sepas que no hay distancia que pueda separarnos, no hay obstáculo que no podamos superar, no
+                hay problema que no podamos resolver juntos. Porque lo nuestro es más fuerte que todo eso. Porque lo
+                nuestro está construido sobre cimientos sólidos: respeto, confianza, admiración, amistad, y un amor
+                inmenso que lo abarca todo.</p>
 
             <p>Así que esto es lo que quiero decirte en nuestro primer aniversario:</p>
 
-            <p style="font-size: 2rem; font-family: 'Georgia', serif; text-align: center; margin: 60px 0; color: gold; line-height: 1.4;">
+            <p
+                style="font-size: 2rem; font-family: 'Georgia', serif; text-align: center; margin: 60px 0; color: gold; line-height: 1.4;">
                 Te amo. Te amo con todo lo que soy.<br>
                 Te amo con todo lo que tengo.<br>
                 Te amo con todas mis fuerzas, con toda mi alma, con todo mi corazón.<br>
                 Te amo y te amaré siempre.
             </p>
 
-            <p>Te amo, mi gordita. Te amo, mi Estrella. Te amo, mi vida entera. Te amo en silencio cuando no puedo decirlo, y a gritos cuando me desbordo. Te amo en la distancia cuando no estás, y más cerca cuando te tengo. Te amo en presente, pasado y futuro. Te amo en todas las versiones de mí, en todas las etapas de mi vida, en todos los universos posibles.</p>
+            <p>Te amo, mi gordita. Te amo, mi Estrella. Te amo, mi vida entera. Te amo en silencio cuando no puedo
+                decirlo, y a gritos cuando me desbordo. Te amo en la distancia cuando no estás, y más cerca cuando te
+                tengo. Te amo en presente, pasado y futuro. Te amo en todas las versiones de mí, en todas las etapas de
+                mi vida, en todos los universos posibles.</p>
 
-            <p>Y no hay palabras suficientes para expresarlo, pero espero que con estas miles de palabras haya conseguido transmitirte aunque sea una pequeña parte de lo que siento. Porque lo que siento es tan inmenso que no cabe en ningún idioma, en ningún poema, en ninguna carta por muy larga que sea. Lo que siento solo cabe en el corazón, y el mío está tan lleno de ti que a veces creo que va a estallar.</p>
+            <p>Y no hay palabras suficientes para expresarlo, pero espero que con estas miles de palabras haya
+                conseguido transmitirte aunque sea una pequeña parte de lo que siento. Porque lo que siento es tan
+                inmenso que no cabe en ningún idioma, en ningún poema, en ninguna carta por muy larga que sea. Lo que
+                siento solo cabe en el corazón, y el mío está tan lleno de ti que a veces creo que va a estallar.</p>
 
             <!-- CIERRE -->
             <div style="text-align: center; margin: 70px 0 30px;">
@@ -663,7 +1180,8 @@
                 <span style="font-size: 4rem; margin: 0 20px;">13·07·25 - 13·07·26</span>
                 <span style="font-size: 3rem;">✨</span>
             </div>
-            <div style="text-align: center; font-size: 1.8rem; font-family: 'Georgia', serif; color: #ffb6c1; margin-bottom: 40px;">
+            <div
+                style="text-align: center; font-size: 1.8rem; font-family: 'Georgia', serif; color: #ffb6c1; margin-bottom: 40px;">
                 365 días · 1 amor · Para toda la eternidad
             </div>
 
@@ -702,20 +1220,25 @@
             <div class="countdown-box">
                 <div class="countdown-title">Para nuestro segundo aniversario</div>
                 <div class="countdown-number" id="countdown">365 días</div>
-                <div style="margin-top: 20px; font-size: 1.2rem; opacity: 0.9;">13 de julio de 2027 · Te espero con el corazón ❤️</div>
-                <div style="margin-top: 10px; font-size: 1rem; opacity: 0.7;">Y luego el tercero, y el cuarto, y todos los que nos queden</div>
+                <div style="margin-top: 20px; font-size: 1.2rem; opacity: 0.9;">13 de julio de 2027 · Te espero con el
+                    corazón ❤️</div>
+                <div style="margin-top: 10px; font-size: 1rem; opacity: 0.7;">Y luego el tercero, y el cuarto, y todos
+                    los que nos queden</div>
             </div>
 
             <!-- POSTDATA MÚLTIPLE -->
             <div style="margin-top: 80px; padding-top: 40px; border-top: 2px dashed rgba(255, 215, 0, 0.3);">
                 <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
-                    PD: Hoy es 13 de julio de 2026. Hoy cumplimos un año. Y hoy, más que nunca, quiero que sepas que eres lo mejor que me ha pasado nunca. Lo mejor. Lo más grande. Lo más importante.
+                    PD: Hoy es 13 de julio de 2026. Hoy cumplimos un año. Y hoy, más que nunca, quiero que sepas que
+                    eres lo mejor que me ha pasado nunca. Lo mejor. Lo más grande. Lo más importante.
                 </p>
                 <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
-                    PD2: Cuando termines de leer esto, mírame a los ojos. Verás en ellos todo lo que no he podido escribir. Todo lo que las palabras no pueden expresar. Todo lo que solo se puede sentir.
+                    PD2: Cuando termines de leer esto, mírame a los ojos. Verás en ellos todo lo que no he podido
+                    escribir. Todo lo que las palabras no pueden expresar. Todo lo que solo se puede sentir.
                 </p>
                 <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
-                    PD3: Y luego abrázame. Abrázame fuerte, muy fuerte. Y no me sueltes. Porque en tus brazos está mi lugar favorito del mundo.
+                    PD3: Y luego abrázame. Abrázame fuerte, muy fuerte. Y no me sueltes. Porque en tus brazos está mi
+                    lugar favorito del mundo.
                 </p>
                 <p style="font-size: 1.3rem; text-align: center; font-style: italic;">
                     PD4: Te quiero, mi gordita. Te quiero, mi Estrella. Te quiero, mi vida entera. Siempre.
@@ -737,7 +1260,8 @@
             <div style="margin-top: 60px; text-align: center; font-size: 1rem; opacity: 0.6; line-height: 1.6;">
                 <p>Escrita con todo mi corazón durante meses · 13 de julio de 2026 · Para mi Estrella, mi gordita</p>
                 <p>Más de 7000 palabras · 12 cartas en una · 365 días resumidos · 1 amor infinito</p>
-                <p style="margin-top: 20px;">Javi ❤️ Estrella · 13·07·2025 - 13·07·2026 · El primer año de nuestra eternidad</p>
+                <p style="margin-top: 20px;">Javi ❤️ Estrella · 13·07·2025 - 13·07·2026 · El primer año de nuestra
+                    eternidad</p>
             </div>
         </div>
     </div>
@@ -752,7 +1276,7 @@
             const proximo = new Date('2027-07-13');
             const diferencia = proximo - hoy;
             const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            
+
             const contador = document.getElementById('countdown');
             if (contador) {
                 contador.textContent = dias + ' días';
@@ -763,7 +1287,7 @@
         setInterval(actualizarContador, 86400000); // Actualizar cada día
 
         // Efecto de corazones al hacer clic (más intenso)
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
@@ -778,7 +1302,7 @@
                     heart.style.animation = `floatHeart ${Math.random() * 2 + 1}s ease-out forwards`;
                     heart.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
                     document.body.appendChild(heart);
-                    
+
                     setTimeout(() => heart.remove(), 3000);
                 }, i * 50);
             }
@@ -799,4 +1323,5 @@
         console.log('📝 Más de 7000 palabras de amor para Estrella');
     </script>
 </body>
+
 </html>
