@@ -123,19 +123,118 @@
             box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
         }
 
+        /* ── HAMBURGER ── */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px 4px;
+            flex-shrink: 0;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 2px;
+            transition: all 0.3s;
+            transform-origin: center;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-drawer {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(8, 0, 22, 0.97);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 20px 24px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-drawer.open {
+            display: flex;
+            animation: mSlide 0.25s ease;
+        }
+
+        @keyframes mSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .mobile-drawer a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 13px 16px;
+            border-radius: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .mobile-drawer a:hover,
+        .mobile-drawer a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .mobile-drawer .drawer-cta {
+            margin-top: 8px;
+            background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px rgba(224, 64, 251, 0.4);
+        }
+
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-links,
+            .menu-vd {
+                display: none !important;
+            }
+
             .menu-logo .logo-date {
                 display: none;
             }
 
-            .menu-item {
-                font-size: 0.72rem;
-                padding: 5px 9px;
-            }
-
             .menu {
-                padding: 0 12px;
-                gap: 6px;
+                padding: 0 16px;
             }
         }
 
@@ -411,6 +510,8 @@
     <div class="menu-container">
         <nav class="menu">
             <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Menú"><span></span><span></span><span></span></button>
             <div class="menu-links">
                 <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
                 <a href="timeline.html" class="menu-item active">📅 Timeline</a>
@@ -421,6 +522,15 @@
             </div>
             <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
         </nav>
+    </div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <a href="Regalo1.html">🏠 Inicio</a>
+        <a href="timeline.html" class="active">📅 Timeline</a>
+        <a href="cartas.html">💌 Cartas</a>
+        <a href="Musica.html">🎵 Música</a>
+        <a href="Juegos.html">🎮 Juegos</a>
+        <a href="sorpresa.html">🎁 Sorpresa</a>
+        <a href="VD.html" class="drawer-cta">🎲 Verdad o Reto</a>
     </div>
     <div class="stars" id="stars"></div>
 
@@ -515,7 +625,6 @@
 
         let isPaused = false;
 
-        // Generar estrellas
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 200; i++) {
@@ -556,6 +665,44 @@
 
                 carousel.appendChild(item);
             });
+        }
+
+        // Abrir modal
+        function openModal(index) {
+            const moment = moments[index];
+            document.getElementById('modalImage').style.backgroundImage = `url('${moment.image}')`;
+            document.getElementById('modalTitle').textContent = moment.title;
+            document.getElementById('modalDate').textContent = moment.date;
+            document.getElementById('modalDescription').textContent = moment.description;
+            document.getElementById('modalSong').textContent = moment.song;
+            document.getElementById('momentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('momentModal').style.display = 'none';
+        }
+
+        function pauseRotation() {
+            document.getElementById('timelineCarousel').style.animationPlayState = 'paused';
+        }
+
+        function resumeRotation() {
+            document.getElementById('timelineCarousel').style.animationPlayState = 'running';
+        }
+
+        function addMoment() {
+            const newMoment = {
+                date: prompt("Fecha (ej: 13·07·2026):"),
+                title: prompt("Título del momento:"),
+                description: prompt("Descripción:"),
+                song: prompt("Canción relacionada:"),
+                image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400"
+            };
+
+            if (newMoment.date && newMoment.title) {
+                moments.push(newMoment);
+                renderTimeline();
+            }
         }
 
         // Abrir modal

@@ -22,124 +22,12 @@
             position: relative;
         }
 
-        /* ── NAV PROFESIONAL ── */
-        .menu-container {
-            background: rgba(10, 0, 30, 0.65);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-        }
-
-        .menu {
-            max-width: 1280px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 28px;
-            gap: 12px;
-        }
-
-        .menu-logo {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            flex-shrink: 0;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        .menu-logo:hover {
-            opacity: 1;
-        }
-
-        .menu-logo .logo-date {
-            color: #ffd700;
-        }
-
-        .menu-links {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            flex: 1;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .menu-item {
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 6px 13px;
-            border-radius: 8px;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
-        }
-
-        .menu-item:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .menu-item.active {
-            color: #ffd700;
-            background: rgba(255, 215, 0, 0.08);
-        }
-
-        .menu-vd {
-            font-size: 0.78rem;
-            font-weight: 800;
-            letter-spacing: 0.07em;
-            padding: 7px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            white-space: nowrap;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #e040fb, #ff5252);
-            color: white;
-            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
-            transition: all 0.25s;
-        }
-
-        .menu-vd:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
-        }
-
         @media (max-width: 768px) {
-            .menu-logo .logo-date {
-                display: none;
-            }
-
-            .menu-item {
-                font-size: 0.72rem;
-                padding: 5px 9px;
-            }
-
-            .menu {
-                padding: 0 12px;
-                gap: 6px;
+            .hero h1 {
+                font-size: 2.2rem;
             }
         }
+
 
         /* Efecto de estrellas */
         .stars {
@@ -697,21 +585,6 @@
 </head>
 
 <body>
-    <!-- MENÚ SUPERIOR -->
-    <div class="menu-container">
-        <nav class="menu">
-            <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
-            <div class="menu-links">
-                <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
-                <a href="timeline.html" class="menu-item">📅 Timeline</a>
-                <a href="cartas.html" class="menu-item">💌 Cartas</a>
-                <a href="Musica.html" class="menu-item">🎵 Música</a>
-                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
-                <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
-            </div>
-            <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
-        </nav>
-    </div>
 
     <!-- Fondo de estrellas -->
     <div class="stars"></div>

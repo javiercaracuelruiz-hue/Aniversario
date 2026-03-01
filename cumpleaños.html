@@ -217,7 +217,8 @@
             z-index: 1;
             max-width: 900px;
             margin: 0 auto;
-            padding: 100px 20px 80px;
+            padding: 120px 20px 80px;
+            /* Increased top padding to avoid nav overlap */
         }
 
         /* ── HERO ── */
@@ -283,6 +284,9 @@
             display: flex;
             justify-content: center;
             margin-bottom: 52px;
+            position: relative;
+            z-index: 2;
+            /* Ensures cake stays above background but below nav */
         }
 
         .cake-wrap {
