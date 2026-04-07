@@ -18,52 +18,55 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: radial-gradient(ellipse at 70% 30%, #5a0030 0%, #200010 45%, #0d0008 100%);
+            font-family: 'Outfit', 'Crimson Text', serif;
+            background: linear-gradient(120deg, #2d0020 0%, #5a0030 40%, #ffd6e0 100%);
             min-height: 100vh;
-            color: white;
+            color: #fff8fa;
             overflow-x: hidden;
+            letter-spacing: 0.01em;
         }
 
         /* ── BIRTHDAY NAV ── */
         .menu-container {
-            background: rgba(80, 5, 35, 0.75);
-            backdrop-filter: blur(24px) saturate(200%);
-            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            background: rgba(80, 5, 35, 0.82);
+            backdrop-filter: blur(32px) saturate(220%);
+            -webkit-backdrop-filter: blur(32px) saturate(220%);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            height: 64px;
+            height: 68px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 110, 160, 0.22);
+            border-bottom: 1.5px solid rgba(255, 110, 160, 0.25);
+            box-shadow: 0 4px 24px 0 rgba(255, 110, 180, 0.08);
         }
 
         .menu {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 28px;
-            gap: 12px;
+            padding: 0 32px;
+            gap: 16px;
         }
 
         .menu-logo {
-            color: white;
+            color: #fff8fa;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.08rem;
             font-weight: 900;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
             white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
-            transition: filter 0.2s;
+            transition: filter 0.2s, text-shadow 0.2s;
+            text-shadow: 0 2px 8px rgba(255, 110, 180, 0.12);
         }
 
         .menu-logo:hover {
@@ -72,6 +75,7 @@
 
         .menu-logo .logo-date {
             color: #ffd700;
+            text-shadow: 0 2px 8px #ffd70044;
         }
 
         .menu-links {
@@ -84,50 +88,54 @@
         }
 
         .menu-item {
-            color: rgba(255, 220, 235, 0.7);
+            color: rgba(255, 220, 235, 0.82);
             text-decoration: none;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            padding: 7px 14px;
+            padding: 8px 18px;
             border-radius: 50px;
-            letter-spacing: 0.07em;
+            letter-spacing: 0.09em;
             text-transform: uppercase;
-            transition: color 0.2s, background 0.2s;
+            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
             white-space: nowrap;
-            border: 1px solid transparent;
+            border: 1.5px solid transparent;
+            box-shadow: 0 2px 8px 0 rgba(255, 110, 180, 0.04);
         }
 
         .menu-item:hover {
-            color: white;
-            background: rgba(255, 110, 160, 0.18);
-            border-color: rgba(255, 110, 160, 0.3);
+            color: #fff8fa;
+            background: rgba(255, 110, 160, 0.22);
+            border-color: rgba(255, 110, 160, 0.38);
+            box-shadow: 0 4px 16px 0 rgba(255, 110, 180, 0.13);
         }
 
         .menu-item.active {
-            color: #ff8cba;
-            background: rgba(255, 110, 160, 0.15);
-            border-color: rgba(255, 110, 160, 0.4);
+            color: #ffb6d5;
+            background: rgba(255, 110, 160, 0.22);
+            border-color: rgba(255, 110, 160, 0.5);
+            box-shadow: 0 4px 16px 0 rgba(255, 110, 180, 0.18);
         }
 
         .menu-home {
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 900;
-            letter-spacing: 0.06em;
-            padding: 8px 22px;
+            letter-spacing: 0.07em;
+            padding: 10px 28px;
             border-radius: 50px;
             text-decoration: none;
             white-space: nowrap;
             flex-shrink: 0;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            background: linear-gradient(135deg, #ff6eb4 0%, #ffd700 100%);
             color: #1a0010;
-            box-shadow: 0 0 18px rgba(255, 110, 180, 0.5);
+            box-shadow: 0 0 24px rgba(255, 110, 180, 0.18);
             transition: all 0.25s;
+            border: none;
         }
 
         .menu-home:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 0 34px rgba(255, 110, 180, 0.8);
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 0 44px rgba(255, 110, 180, 0.22);
         }
 
         @media (max-width:768px) {
@@ -177,9 +185,9 @@
 
         /* ── PAGE ── */
         .page {
-            max-width: 780px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 100px 20px 80px;
+            padding: 110px 24px 90px;
             position: relative;
             z-index: 1;
         }
@@ -187,83 +195,91 @@
         /* ── HEADER ── */
         .letter-header {
             text-align: center;
-            margin-bottom: 52px;
+            margin-bottom: 60px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 182, 193, 0.13);
         }
 
         .letter-tag {
             display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: #ff8cba;
-            border: 1px solid rgba(255, 110, 160, 0.4);
-            padding: 5px 18px;
+            color: #ffd6e0;
+            border: 1.5px solid rgba(255, 110, 160, 0.5);
+            padding: 7px 26px;
             border-radius: 50px;
-            margin-bottom: 18px;
-            background: rgba(255, 110, 160, 0.08);
+            margin-bottom: 22px;
+            background: linear-gradient(90deg, rgba(255,110,160,0.13) 0%, rgba(255,215,0,0.10) 100%);
+            box-shadow: 0 2px 12px 0 rgba(255, 110, 180, 0.08);
         }
 
         .letter-title {
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 900;
-            line-height: 1.15;
-            background: linear-gradient(135deg, #fff 0%, #ff8cba 50%, #ffd700 100%);
+            line-height: 1.13;
+            background: linear-gradient(120deg, #fff 0%, #ff8cba 50%, #ffd700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 16px #ffd70022;
         }
 
         .letter-date {
-            color: rgba(255, 220, 235, 0.5);
-            font-size: 0.9rem;
-            font-weight: 300;
+            color: #ffe4f0;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
         }
 
         /* ── ENVELOPE ── */
         .envelope-wrap {
             display: flex;
             justify-content: center;
-            margin-bottom: 44px;
+            margin-bottom: 54px;
         }
 
         .envelope {
-            width: 340px;
+            width: 350px;
             cursor: pointer;
-            filter: drop-shadow(0 20px 50px rgba(255, 110, 160, 0.5));
-            transition: transform 0.3s;
+            filter: drop-shadow(0 20px 60px rgba(255, 110, 160, 0.6));
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 18px;
         }
 
         .envelope:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-10px) scale(1.04);
+            box-shadow: 0 8px 40px 0 rgba(255, 110, 180, 0.18);
         }
 
         .env-body {
-            background: linear-gradient(160deg, #7c1040, #40001c);
-            border-radius: 4px 4px 14px 14px;
-            height: 200px;
+            background: linear-gradient(160deg, #7c1040 0%, #40001c 100%);
+            border-radius: 8px 8px 18px 18px;
+            height: 210px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 110, 160, 0.3);
+            border: 2px solid rgba(255, 110, 160, 0.22);
+            box-shadow: 0 4px 32px 0 rgba(255, 110, 180, 0.10);
         }
 
         .env-flap {
             width: 0;
             height: 0;
-            border-left: 170px solid transparent;
-            border-right: 170px solid transparent;
-            border-top: 110px solid rgba(120, 10, 60, 0.9);
+            border-left: 175px solid transparent;
+            border-right: 175px solid transparent;
+            border-top: 120px solid rgba(120, 10, 60, 0.93);
             position: absolute;
             top: 0;
             left: 0;
-            transition: transform 0.6s ease;
+            transition: transform 0.6s cubic-bezier(.77,.2,.21,1.01);
             transform-origin: top center;
         }
 
         .envelope.open .env-flap {
             transform: rotateX(180deg);
-            border-top-color: rgba(180, 40, 90, 0.9);
+            border-top-color: rgba(180, 40, 90, 0.93);
         }
 
         .env-left {
@@ -291,16 +307,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #ff6eb4, #ffd700);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6eb4 0%, #ffd700 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 0 20px rgba(255, 110, 180, 0.7);
-            transition: opacity 0.4s;
+            font-size: 1.7rem;
+            box-shadow: 0 0 32px rgba(255, 110, 180, 0.18);
+            border: 2.5px solid #fff8fa;
+            transition: opacity 0.4s, box-shadow 0.3s;
         }
 
         .envelope.open .env-seal {
@@ -309,23 +326,27 @@
 
         .env-hint {
             text-align: center;
-            margin-top: 12px;
-            font-size: 0.82rem;
-            color: rgba(255, 200, 220, 0.5);
-            font-weight: 300;
+            margin-top: 16px;
+            font-size: 0.92rem;
+            color: #ffd6e0;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-shadow: 0 2px 8px #ffd70022;
         }
 
         /* ── CARTA ── */
         .carta-paper {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 110, 160, 0.2);
-            border-radius: 24px;
-            padding: 52px 56px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.09);
+            border: 2.5px solid rgba(255, 110, 160, 0.18);
+            border-radius: 32px;
+            padding: 60px 64px 56px 64px;
+            backdrop-filter: blur(16px) saturate(120%);
             position: relative;
             overflow: hidden;
             display: none;
-            animation: fadeSlideIn 0.8s ease forwards;
+            animation: fadeSlideIn 0.8s cubic-bezier(.77,.2,.21,1.01) forwards;
+            box-shadow: 0 8px 48px 0 rgba(255, 110, 180, 0.13);
+            text-align: center;
         }
 
         @keyframes fadeSlideIn {
@@ -343,31 +364,36 @@
         .carta-paper::before {
             content: '💌';
             position: absolute;
-            bottom: 20px;
-            right: 24px;
-            font-size: 120px;
-            opacity: 0.04;
+            bottom: 32px;
+            right: 36px;
+            font-size: 140px;
+            opacity: 0.06;
             pointer-events: none;
         }
 
         .carta-paper.visible {
             display: block;
+            animation: fadeSlideIn 1.1s cubic-bezier(.77,.2,.21,1.01) forwards;
         }
 
         .carta-paper .saludo {
             font-family: 'Crimson Text', serif;
             font-style: italic;
-            font-size: 1.6rem;
-            color: #ff8cba;
-            margin-bottom: 28px;
+            font-size: 1.7rem;
+            color: #ffd6e0;
+            margin-bottom: 38px;
+            text-shadow: 0 2px 12px #ffd70022;
+            text-align: center;
         }
 
         .carta-paper p {
-            font-size: 1.12rem;
-            line-height: 2.0;
-            color: rgba(255, 235, 242, 0.9);
-            font-weight: 300;
-            margin-bottom: 22px;
+            font-size: 1.15rem;
+            line-height: 2.15;
+            color: #fff8fa;
+            font-weight: 400;
+            margin-bottom: 38px;
+            text-shadow: 0 2px 8px #ffd70011;
+            text-align: center;
         }
 
         .carta-paper p:last-of-type {
@@ -377,11 +403,12 @@
         .carta-firma {
             font-family: 'Crimson Text', serif;
             font-style: italic;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: #ffd700;
-            text-align: right;
-            margin-top: 36px;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            text-align: center;
+            margin-top: 54px;
+            filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.22));
+            text-shadow: 0 2px 12px #ffd70033;
         }
 
         /* ── STARS ── */
@@ -390,27 +417,75 @@
             inset: 0;
             pointer-events: none;
             z-index: 0;
+            filter: blur(0.5px) brightness(1.1);
         }
 
         .star {
             position: absolute;
-            background: white;
+            background: linear-gradient(120deg, #fff 60%, #ffd6e0 100%);
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: twinkle 3.5s infinite;
+            box-shadow: 0 0 8px 2px #ffd6e0cc, 0 0 2px 0 #fff8fa;
         }
 
         @keyframes twinkle {
 
             0%,
             100% {
-                opacity: 0.15;
+                opacity: 0.13;
                 transform: scale(1);
             }
-
             50% {
-                opacity: 0.8;
-                transform: scale(1.3);
+                opacity: 0.85;
+                transform: scale(1.35);
             }
+        }
+        .quote {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.18rem;
+            color: #ffd6e0;
+            background: rgba(255, 110, 160, 0.10);
+            border-left: 4px solid #ffd700;
+            padding: 18px 28px;
+            margin: 48px auto 48px auto;
+            border-radius: 0 18px 18px 0;
+            box-shadow: 0 2px 16px 0 rgba(255, 110, 180, 0.07);
+            text-shadow: 0 2px 8px #ffd70022;
+            text-align: center;
+            display: block;
+            max-width: 90%;
+        }
+        h3 {
+            font-family: 'Outfit', 'Crimson Text', serif;
+            font-size: 1.35rem;
+            color: #ffd700;
+            margin: 48px 0 28px 0;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-shadow: 0 2px 12px #ffd70033;
+            text-align: center;
+        }
+        ol {
+            margin-left: 0;
+            margin: 0 auto 32px auto;
+            color: #fff8fa;
+            text-align: center;
+            display: block;
+            max-width: 90%;
+        }
+        ol li {
+            margin-bottom: 16px;
+            font-size: 1.13rem;
+            line-height: 1.9;
+            font-family: 'Outfit', 'Crimson Text', serif;
+            text-align: left;
+        }
+        .highlight {
+            color: #ffd700;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffd70022 0%, #ff8cba22 100%);
+            border-radius: 6px;
+            padding: 0 4px;
         }
     </style>
 </head>
@@ -418,10 +493,10 @@
 <body>
     <div class="star-bg" id="starBg"></div>
 
-    <!-- NAV CUMPLEAÑOS -->
+    <!-- MENÚ FIJO -->
     <div class="menu-container">
         <nav class="menu">
-            <a href="cumpleaños.html" class="menu-logo">🎂 <span class="logo-date">¡Feliz Cumple!</span></a>
+            <a href="cumpleaños.html" class="menu-logo">🎂 <span class="logo-date">¡Feliz Cumple, Estrella!</span></a>
             <div class="menu-links">
                 <a href="cumpleaños.html" class="menu-item">🎉 Inicio</a>
                 <a href="cartaC.html" class="menu-item active">💌 Carta</a>
@@ -435,9 +510,9 @@
 
     <div class="page">
         <div class="letter-header">
-            <div class="letter-tag">💌 Solo para ti · Con todo mi amor</div>
-            <h1 class="letter-title">Una carta de<br>cumpleaños</h1>
-            <p class="letter-date">Escrita con el corazón · Javi ❤️</p>
+            <div class="letter-tag">🌟 20 velas · 20 sueños · TODO mi amor 🌟</div>
+            <h1 class="letter-title">Una carta infinita para<br>mis 20 años contigo</h1>
+            <p class="letter-date">15 de abril de 2026 · Estrella · Javi ❤️</p>
         </div>
 
         <!-- SOBRE -->
@@ -448,54 +523,121 @@
                         <div class="env-flap"></div>
                         <div class="env-left"></div>
                         <div class="env-right"></div>
-                        <div class="env-seal">💌</div>
+                        <div class="env-seal">💌✨</div>
                     </div>
                 </div>
-                <p class="env-hint">Haz clic en el sobre para abrir la carta 🎀</p>
+                <p class="env-hint">Haz clic en el sobre, mi Estrella · Abre tu carta de 20 años 💖</p>
             </div>
         </div>
 
-        <!-- CARTA (oculta hasta abrir) -->
+        <!-- CARTA MEGA EXTENSA -->
         <div class="carta-paper" id="cartaPaper">
-            <p class="saludo">Mi amor, mi gordita, mi Estrella ✨</p>
+            <p class="saludo">Mi Estrella, mi niña hermosa, mi amor de 20 primaveras ✨</p>
 
-            <p>
-                Hoy es tu día. Y aunque cada día que amanece contigo ya es especial, hoy tiene
-                algo diferente — es el día en que el mundo recibió a la persona más bonita,
-                más buena y más mía que existe. Así que el mundo debería estarme eternamente
-                agradecido. 😄
-            </p>
-            <p>
-                Cada año que pasa a tu lado me confirma lo que ya sé: que elegirte fue la mejor
-                decisión de mi vida. Me haces reír cuando no quiero hacerlo, me aguantas cuando
-                soy imposible, y me quieres con una intensidad que todavía me sorprende y me
-                derrite cada vez.
-            </p>
-            <p>
-                Quiero que este cumpleaños lo sientas especial. No por los regalos, ni por las
-                sorpresas, sino porque sepas — de verdad — lo mucho que significas para mí.
-                Eres mi calma, mi cómplice y mi persona favorita en todo el universo.
-            </p>
-            <p>
-                Que este año que empieza hoy venga cargado de todo lo que mereces: salud,
-                risas, viajes, logros, y por supuesto... muchísimo amor mío.
-            </p>
-            <p>
-                Gracias por existir, gordi. Gracias por dejarme quererte.
-                Hoy, mañana, siempre. ❤️
-            </p>
+            <p>Hoy es <span class="highlight">15 de abril de 2026</span>. El día más especial del año, porque hace exactamente 20 años, un 15 de abril de 2006, el universo decidió regalarle al mundo a la persona más bonita, más buena y más importante de mi vida: <strong>tú, Estrella</strong>. No sé si las estrellas se alinearon aquel día, o si fue simplemente magia, pero lo que sí sé es que desde que naciste, algo en el cosmos cambió para siempre. Y años después, sin saberlo, tu luz me iba a encontrar a mí.</p>
 
+            <p>Veinte años, mi amor. Dos décadas enteras. Veinte abriles que te han ido moldeando, con tus caídas y tus victorias, con tus sonrisas y tus lágrimas, hasta convertirte en la mujer increíble que hoy tengo el privilegio de abrazar. No pude estar en tus primeros pasos, ni ver cuando aprendiste a leer, ni secar tus lágrimas de niña cuando te raspabas la rodilla. Pero te prometo, con cada fibra de mi ser, que quiero estar en todos tus pasos de ahora en adelante. Quiero celebrar tus 21, tus 30, tus 50, tus 80. Quiero ser el que sople las burbujas contigo, el que te sostenga la mano cuando soples las velas, el que te mire y piense "cada año que pasa la quiero más".</p>
+
+            <div class="quote">
+                "Tus 20 años no son un adiós a la niña que fuiste, son el hola más bonito a la mujer que siempre soñaste ser. Y yo, afortunado, estaré a tu lado en cada capítulo."
+            </div>
+
+            <!-- ========== PARTE 1: LO QUE SIENTO ========= -->
+            <h3>✨ Lo que siento cada vez que pienso en ti (que es siempre)</h3>
+            <p>Cuando pienso en ti, mi Estrella, el mundo se detiene. Literal. El ruido de la calle se apaga, las preocupaciones desaparecen, las prisas se olvidan. Y solo existes tú, con tu pelo revuelto, con tu risa contagiosa, con esa forma tuya de decir "Javi" que me desarma por completo. Puedo estar en el peor día, en el metro lleno, bajo la lluvia, en una reunión eterna... pero si pienso en ti, de repente estoy en nuestro lugar favorito, sintiendo el calor de tu mano en la mía.</p>
+            <p>Te amo de tantas formas que a veces siento que las palabras se quedan ridículas, pequeñas, insuficientes. Te amo con la intensidad de una canción que no quieres que termine. Te amo con la ternura de un domingo sin prisa. Te amo con la paciencia de quien sabe que tiene toda una vida para seguir descubriéndote, y que aún así no será suficiente. Te amo en español, en inglés, en el idioma secreto que solo nosotros entendemos. Te amo en silencio cuando duermes, viendo cómo tu pecho sube y baja. Y te amo en voz alta cuando despiertas, cuando te lo susurro al oído, cuando lo grito sin vergüenza.</p>
+            <p>Y luego está la palabra <span class="highlight">"gordita"</span>. Esa que solo existe entre nosotros, que nació un día sin querer, entre risas en la cocina, y que ahora es el apodo más sagrado que tengo para ti. Porque cuando te digo gordita, no estoy viendo tu cuerpo, estoy viendo tu alma. Estoy viendo a la niña de trenzas que fuiste, a la mujer fuerte que eres, a la anciana sabia que serás. Y cada vez que lo digo, es como un abrazo disfrazado de palabra, un "te quiero" en clave secreta.</p>
+
+            <!-- ========== PARTE 2: QUIÉN ERES TÚ ========= -->
+            <h3>💫 Quién eres tú en mi vida (mi todo, mi hogar)</h3>
+            <p>Tú eres la persona que me enseñó que el amor de verdad no duele. Antes de ti, yo creía que querer a alguien implicaba sacrificio, incertidumbre, miedo. Creía que el amor era complicado, que había que merecerlo, ganarlo, conquistarlo. Y entonces llegaste tú, con tu forma de mirarme, con tu paciencia infinita, y me demostraste que no. Que el amor de verdad fluye como el agua, que calma, que sostiene, que da paz. Contigo aprendí que no hay que luchar por el amor, sino disfrutarlo, cuidarlo, celebrarlo.</p>
+            <p>Tú eres mi paz en medio del caos. Cuando el mundo se vuelve ruidoso, cuando todo va mal, cierro los ojos y pienso en tu risa. En cómo frunces el ceño cuando te concentras. En cómo dices mi nombre cuando me necesitas. En cómo te mueves cuando bailas sin que nadie te mire. Y de repente, todo vuelve a su sitio. Tú eres mi centro, mi punto fijo, mi hogar. Porque hogar no es un lugar, no son cuatro paredes. Hogar eres tú. Da igual que estemos en tu casa, en la mía, en un parque o en un país extraño. Si estás tú, estoy en casa. Tu olor es mi hogar. Tus brazos son mi hogar. Tu pecho es mi almohada favorita.</p>
+            <p>Tú eres mi confidente, mi cómplice, mi mejor amiga. Contigo he llorado como un niño, he reído como un loco, he susurrado secretos que jamás le había contado a nadie. Contigo he compartido mis miedos más profundos: el miedo a no ser suficiente, a fracasar, a la soledad. Y tú nunca te has reído, nunca me has juzgado. Solo me has abrazado y me has dicho "estoy aquí". Y eso, mi Estrella, es el regalo más grande que alguien me ha hecho nunca.</p>
+
+            <!-- ========== PARTE 3: 20 RAZONES (una por cada año) ========= -->
+            <h3>🌟 20 razones por las que te amo hoy, en tus 20 años</h3>
+            <p>1. Por tu sonrisa, esa que ilumina cualquier habitación oscura. 2. Por cómo me miras, como si yo fuera importante. 3. Por tu risa contagiosa, que hace que los demás se rían solo de oírte. 4. Porque eres buena, de verdad buena, sin esperar nada a cambio. 5. Por tu fuerza cuando la vida se pone difícil. 6. Por tu fragilidad, que me permites abrazar. 7. Por cómo te emocionas con las cosas pequeñas. 8. Por tu inteligencia, esa forma única de ver el mundo. 9. Porque me aceptas con mis manías y mis días grises. 10. Porque eres leal, fiel, de las de antes. 11. Por cómo te muerdes el labio cuando algo te gusta. 12. Porque sueñas en grande y luchas por ello. 13. Por tu paciencia infinita conmigo. 14. Por cómo bailas cuando nadie te ve. 15. Por cómo cantas en la ducha, aunque desafines un poquito. 16. Porque me eliges cada día. 17. Por tu forma de caminar, tan tuya. 18. Porque me haces querer ser mejor persona. 19. Porque haces que hasta el martes más aburrido sea especial. 20. Porque eres TÚ, única, mi Estrella, mi amor de 20 primaveras.</p>
+
+            <!-- ========== PARTE 4: MOMENTOS GUARDADOS ========= -->
+            <h3>📆 Los momentos que guardo en mi corazón (uno por cada día)</h3>
+            <p>Guardo cada momento como un tesoro. La primera vez que te tomé de la mano y sentí electricidad desde los dedos hasta el alma. La primera vez que me dijiste "te quiero", con esa voz temblorosa y esa honestidad que tanto admiro en ti. Aquel atardecer en la playa, cuando el sol se escondía pintando el cielo de naranja y rosa, y tú apoyaste tu cabeza en mi hombro sin decir nada. Nuestra primera discusión, y cómo después de horas de tensión nos fundimos en un abrazo que lo curó todo. Aquel día que estabas triste y no querías hablar, y yo me senté a tu lado en silencio, y al cabo de un rato susurraste "gracias por quedarte". Esos son los momentos que atesoro, los que me recuerdan que el amor está en los detalles, en las pequeñas cosas, en estar ahí siempre.</p>
+            <p>Guardo todos tus mensajes de buenos días, todos y cada uno. Hay una carpeta en mi teléfono solo con ellos, y la abro cuando te extraño, que es básicamente cada día. Algunos son solo un "buenos días, gordi", otros son párrafos enteros, otros llevan audios con tu voz dormida. Todos son especiales. Todos son tuyos. Guardo las fotos que nos hemos hecho: las bonitas, las ridículas, las espontáneas, las de viaje, las de casa. Todas forman el álbum de nuestra historia, el que algún día miraremos cuando seamos viejos y recordaremos lo jóvenes y enamorados que estábamos.</p>
+
+            <!-- ========== PARTE 5: LO QUE ADMIRO ========= -->
+            <h3>💎 Las infinitas razones por las que te admiro</h3>
+            <p>Admiro tu fortaleza, esa capacidad tuya de levantarte una y otra vez, incluso cuando la vida te ha puesto pruebas que a otros habrían derrumbado. He visto cómo has superado obstáculos, cómo has enfrentado dificultades, cómo has salido adelante cuando todo parecía estar en tu contra. Y tú siempre, siempre, encuentras la manera de seguir adelante. No sabes lo orgulloso que estoy de ti, de la mujer que eres, de cómo afrontas la vida con esa mezcla de determinación y dulzura que solo tú tienes.</p>
+            <p>Admiro tu inteligencia, la forma en que ves el mundo desde ángulos que a nadie más se le ocurren. Me encanta cuando me explicas cosas, cuando me cuentas lo que has aprendido, cuando discutimos sobre cualquier tema y me das tu punto de vista, siempre tan agudo, tan brillante. Admiro tu sentido del humor, cómo me haces reír hasta dolerme la barriga con ocurrencias que solo tú podrías tener. Admiro tu sensibilidad, esa manera tuya de conectar con las emociones, de saber cómo me siento antes incluso de que yo lo sepa. Admiro tu bondad genuina, la forma en que tratas a la gente, cómo te preocupas por los demás, cómo das sin esperar recibir. El mundo sería mucho mejor si hubiera más personas como tú. Mi mundo es mucho mejor desde que tú estás en él.</p>
+
+            <!-- ========== PARTE 6: NUESTRO FUTURO ========= -->
+            <h3>🌅 Lo que quiero construir contigo (el resto de mi vida)</h3>
+            <p>Quiero despertarme cada mañana a tu lado, con tu pelo revuelto y tu cara de sueño, con esa expresión de "cinco minutos más" que me parece la cosa más adorable del mundo. Quiero hacerte café mientras tú te arreglas, prepararte el desayuno, dejar que te tomes tu tiempo. Quiero dejarte notas de amor en la nevera, en el espejo del baño, en la almohada. "Buenos días, mi Estrella". "Hoy va a ser un gran día". "Te quiero".</p>
+            <p>Quiero viajar contigo a todos esos lugares que hemos anotado en nuestra lista interminable. París para ver la Torre Eiffel de noche y besarte justo cuando empiecen las luces. Tokio para perdernos entre sus neones. Los fiordos noruegos para sentirnos pequeños ante la naturaleza. Las playas de Tailandia para ver atardeceres de ensueño. Quiero hacerte una foto en cada uno de esos lugares, llenar un álbum físico que huela a papel y a recuerdos, que algún día pasaremos a nuestros hijos.</p>
+            <p>Quiero formar una familia contigo, si es lo que deseas. Quiero verte como madre, heredarles tu sonrisa y tus ojos, tu bondad y tu inteligencia. Quiero ver cómo les cantas, cómo les cuentas cuentos, cómo les enseñas a ser buenas personas. Y quiero envejecer a tu lado, que el tiempo decore nuestras sienes con canas, que las arrugas cuenten nuestra historia, que nuestras manos mantengan la misma fuerza para cogerse cuando ya no tengan la misma firmeza. Quiero seguir cogido de tu mano cuando tengamos ochenta años, paseando por el mismo parque donde paseábamos con veinte, recordando cómo empezó todo, sonriendo cómplices.</p>
+
+            <!-- ========== PARTE 7: LAS PEQUEÑAS COSAS ========= -->
+            <h3>✨ Las pequeñas cosas que hacen grande nuestro amor</h3>
+            <p>El amor no está solo en los grandes gestos. Está en cómo me ajustas la bufanda cuando hace frío. En cómo pones tus pies sobre los míos mientras vemos una película. En cómo sabes cuándo he tenido un mal día solo por el tono de mi voz. En cómo me preparas algo de comer sin que te lo pida. En la mermelada de fresa que compras porque sabes que es mi favorita, aunque a ti te guste más la de melocotón. En las risas tontas de madrugada, cuando deberíamos estar durmiendo y estamos hablando de tonterías. En los silencios cómodos que no necesitan ser llenados. En cómo me miras cuando crees que no me doy cuenta. En los abrazos largos, muy largos, de esos que parecen detener el tiempo. El amor está en todo eso, mi Estrella. En las pequeñas cosas que hacen grande nuestro amor. Y yo me doy cuenta de cada una de ellas, y las atesoro, y te lo agradezco con todo mi corazón.</p>
+
+            <!-- ========== PARTE 8: PERDÓN Y GRATITUD (MUY IMPORTANTE) ========= -->
+            <h3>🕊️ Perdón y gratitud (de corazón, con todas mis letras)</h3>
+            <p>Mi amor, hoy, en el día de tus 20 velas, quiero ser completamente honesto contigo. He reflexionado mucho estas últimas semanas, y me duele reconocer que no siempre he sido el novio que mereces. He fallado en pequeños gestos, he tenido días en los que no supe escucharte de verdad, he dejado que el estrés y mis miedos me nublen y a veces no he estado tan presente como debería. He llegado tarde a alguna cita, he olvidado cosas importantes para ti, he puesto excusas tontas, he callado cuando debía hablar y he hablado cuando debía callar. Y sobre todo, no siempre te he demostrado con hechos lo infinitamente importante que eres para mí. Y eso me duele, porque tú te mereces el mundo entero, te mereces un amor constante, sin grietas, que te cuide cada segundo, cada minuto, cada día.</p>
+            <p>Te pido perdón, mi Estrella. Perdón por las veces que pude haberte abrazado más fuerte y no lo hice. Por los silencios que no debieron existir. Por los momentos en que no supe verte llorar detrás de una sonrisa. Por las palabras que dije sin pensar, hirientes aunque no quisiera. Por los días en que llegué a casa cansado y te hablé con brusquedad sin merecerlo. Perdón por no ser perfecto, por tener mis sombras, por fallarte a veces. Pero gracias, gracias infinitas, por quedarte. Por amarme a pesar de mis errores. Por verme con ojos de amor cuando yo no me veo ni a mí mismo. Gracias por tu paciencia, tu ternura, tu fe inquebrantable en nosotros. Gracias por cada te quiero susurrado al oído, por cada abrazo inesperado, por cada vez que me elegiste a pesar de todo.</p>
+            <p>Prometo mejorar, mi vida. No solo con palabras bonitas, sino con actos. Quiero ser el novio que siempre soñaste, el que te haga sentir la mujer más segura, deseada y amada del universo. Porque tú eres mi prioridad, y quiero que cada día de tus 20 años, y de los que vengan, lo sientas así. Perdón, de verdad, desde lo más hondo de mi corazón. Y gracias por ser mi Estrella.</p>
+
+            <div class="quote">
+                "No nací sabiendo amarte, pero contigo aprendo cada día. Perdón por los errores, gracias por la paciencia, y gracias, sobre todo, por seguir siendo mi luz."
+            </div>
+
+            <!-- ========== PARTE 9: PROMESAS ========= -->
+            <h3>🤝 20 promesas para tus 20 años (y para siempre)</h3>
+            <p><span class="highlight">1.</span> Prometo escucharte siempre, de verdad, con atención plena, aunque esté cansado. <span class="highlight">2.</span> Prometo celebrar tus logros como si fueran míos, porque lo son. <span class="highlight">3.</span> Prometo estar a tu lado en los días grises, en los tormentosos, sin huir. <span class="highlight">4.</span> Prometo reírme contigo hasta que duela la barriga, al menos una vez al día. <span class="highlight">5.</span> Prometo seguir sorprendiéndote cada día, no dar por sentado lo que tenemos. <span class="highlight">6.</span> Prometo pedir perdón cuando me equivoque, y hacerlo de corazón. <span class="highlight">7.</span> Prometo no irme nunca a dormir sin decirte te quiero. <span class="highlight">8.</span> Prometo recordar siempre el 15 de abril como el día más sagrado. <span class="highlight">9.</span> Prometo cuidar de ti cuando estés enferma, cansada, o solo necesites un abrazo. <span class="highlight">10.</span> Prometo respetar tu espacio, tu tiempo, tu individualidad. <span class="highlight">11.</span> Prometo seguir aprendiendo de ti, contigo, para ti. <span class="highlight">12.</span> Prometo no dejar que la rutina apague nuestra chispa. <span class="highlight">13.</span> Prometo amarte hoy, mañana y siempre, hasta que la muerte nos separe, y si hay algo después, te seguiré amando allí también. <span class="highlight">14.</span> Prometo seguir llamándote gordita aunque finjas enfadarte. <span class="highlight">15.</span> Prometo hacerte reír cuando estés triste, aunque tenga que hacer el ridículo. <span class="highlight">16.</span> Prometo secar tus lágrimas cuando llores, con mis dedos, con mis labios. <span class="highlight">17.</span> Prometo celebrar cada pequeño logro tuyo. <span class="highlight">18.</span> Prometo quererte más cada día, aunque parezca imposible. <span class="highlight">19.</span> Prometo no dar nada por sentado, cultivar nuestro amor cada día. <span class="highlight">20.</span> Prometo que el 15 de abril de 2027, y el de 2028, y todos los que Dios nos dé, seguiré aquí, a tu lado, más enamorado que nunca.</p>
+
+            <!-- ========== PARTE 10: DECLARACIÓN FINAL ========= -->
+            <h3>💌 Lo que más quiero que sepas hoy, en tus 20 años</h3>
+            <p>Estrella, hoy cumples 20 años. Y quiero que sepas, con la certeza más absoluta que tengo, que eres lo mejor que me ha pasado en la vida. No hay dinero, ni éxito, ni logro que pueda compararse con lo que siento cuando estoy contigo. Has sido, eres y serás el amor de mi vida. No me importa si suena a tópico, no me importa si parece exagerado. Es la verdad más grande que conozco, y la diré siempre con orgullo.</p>
+            <p>Quiero que sepas que no hay un solo plan de futuro que no te incluya. Cuando pienso en los próximos años, en la década que viene, en el resto de mi vida, siempre, siempre, estás tú. No concibo mi vida sin ti, mi Estrella. No quiero ni imaginármelo. Porque tú eres parte de mí, parte de mi identidad, parte de quien soy. Y sin ti, sería una versión incompleta, un boceto a medio terminar, una canción sin melodía.</p>
+            <p>Así que hoy, 15 de abril de 2026, en el día de tus 20 velas, solo quiero decirte esto: gracias por nacer. Gracias por existir. Gracias por ser tan increíblemente tú. Gracias por dejarme quererte. Gracias por cada sonrisa, cada abrazo, cada te quiero. Gracias por los días buenos y por los malos, porque hasta los malos nos han enseñado y nos han unido más. Gracias por ser mi compañera, mi amiga, mi cómplice, mi amor. Gracias por ser mi Estrella. Gracias por ser mi gordita. Gracias por ser nuestra.</p>
+
+            <div style="text-align: center; margin: 70px 0 30px;">
+                <span style="font-size: 3rem;">⭐</span>
+                <span style="font-size: 4rem; margin: 0 20px;">15·04·06 - 15·04·26</span>
+                <span style="font-size: 3rem;">⭐</span>
+            </div>
+            <div style="text-align: center; font-size: 1.8rem; font-family: 'Georgia', serif; color: #ffb6c1; margin-bottom: 40px;">
+                20 años · 1 amor · Para toda la eternidad
+            </div>
+
+            <!-- FIRMA -->
             <div class="carta-firma">
-                Con todo mi amor,<br>
-                Javi ❤️
+                Siempre tuyo, siempre tu Javi,<br>
+                el que te llama gordita y te ama con locura,<br>
+                el que no concibe la vida sin ti,<br>
+                el que da gracias cada día por haberte encontrado.<br>
+                ❤️
+            </div>
+
+            <!-- POSTDATA MÚLTIPLE CON PERDÓN FINAL REFORZADO -->
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 2px dashed rgba(255, 215, 0, 0.4);">
+                <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
+                    PD: Quiero que guardes esta carta como un tesoro, porque cada palabra salió de mi corazón cuando pensaba en tus ojos, en tu sonrisa, en tu forma de decir "Javi".
+                </p>
+                <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
+                    PD2: Cuando cumplas 80 años y leas esto de nuevo, quiero que sepas que en 2026, cuando tenías 20, ya te amaba con la misma fuerza con la que te amaré siempre.
+                </p>
+                <p style="font-size: 1.3rem; text-align: center; font-style: italic; margin-bottom: 20px;">
+                    PD3: TE PIDO PERDÓN OTRA VEZ, desde lo más hondo, por cada vez que fui menos de lo que esperabas. Pero también te prometo, delante de estas letras, que lucharé cada día para ser el hombre que tú mereces. Te quiero, mi Estrella. Felices 20 años.
+                </p>
+                <p style="font-size: 1.3rem; text-align: center; font-style: italic;">
+                    PD4: Eres, fuiste y serás mi primer amor verdadero. Gracias por nacer un 15 de abril de 2006. Gracias por ser tú. Gracias por ser mía. 🌟💖
+                </p>
             </div>
         </div>
     </div>
 
     <script>
-        // Estrellas
+        // Estrellas de fondo
         const bg = document.getElementById('starBg');
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < 150; i++) {
             const s = document.createElement('div');
             s.className = 'star';
             const sz = Math.random() * 2.5 + 1;
@@ -504,8 +646,8 @@
         }
 
         // Corazones flotantes
-        const hearts = ['💗', '💖', '💝', '💕', '🌸', '✨'];
-        for (let i = 0; i < 18; i++) {
+        const hearts = ['💗', '💖', '💝', '💕', '🌸', '✨', '⭐', '🌟', '🎂', '🎈'];
+        for (let i = 0; i < 25; i++) {
             const h = document.createElement('div');
             h.className = 'heart';
             h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
@@ -525,5 +667,4 @@
         }
     </script>
 </body>
-
 </html>
