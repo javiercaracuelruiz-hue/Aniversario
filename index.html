@@ -5,58 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario Mi Amor ❤️ - 13/07/2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --gold: #ffd700;
+            --pink: #ff6ea8;
+            --pink2: #ff4757;
+            --purple: #a855f7;
+            --violet: #7c3aed;
+            --glass: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.14);
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Outfit', sans-serif;
-            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
+            background: #0a0416;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-
-        /* Efecto de estrellas */
-        .stars {
+        /* ── FONDO CON PROFUNDIDAD ── */
+        .bg-layer {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            z-index: 0;
             pointer-events: none;
-            background: transparent;
-            animation: stars 200s linear infinite;
+            background:
+                radial-gradient(ellipse 60% 45% at 20% 15%, rgba(168, 85, 247, .32) 0%, transparent 65%),
+                radial-gradient(ellipse 55% 50% at 85% 20%, rgba(255, 110, 168, .22) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 55% at 75% 90%, rgba(124, 58, 237, .28) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 50% at 10% 85%, rgba(255, 71, 87, .16) 0%, transparent 65%),
+                linear-gradient(180deg, #10061f 0%, #0a0416 50%, #12071f 100%);
+            animation: bgDrift 22s ease-in-out infinite alternate;
         }
 
-        .stars::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(2px 2px at 10px 10px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 80px 90px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 120px 140px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 180px 200px, #fff, rgba(0, 0, 0, 0));
-            background-repeat: repeat;
-            opacity: 0.5;
+        @keyframes bgDrift {
+            from { filter: brightness(1) saturate(1); }
+            to { filter: brightness(1.12) saturate(1.2); }
+        }
+
+        canvas#starCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* Corazones flotantes */
@@ -73,183 +75,225 @@
         .heart {
             position: absolute;
             font-size: 20px;
-            color: rgba(255, 105, 180, 0.6);
+            filter: drop-shadow(0 0 6px rgba(255, 110, 168, 0.5));
             animation: float 6s ease-in infinite;
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 20px 20px;
+            padding: 70px 20px 40px;
             position: relative;
             z-index: 2;
         }
 
-        /* Hero section */
+        /* ── HERO ── */
         .hero {
             text-align: center;
-            padding: 50px 20px;
-            animation: fadeIn 2s;
+            padding: 60px 20px 30px;
+            animation: fadeIn 1.4s ease both;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .glitch {
-            font-size: 5rem;
-            font-weight: bold;
-            position: relative;
-            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                0.025em 0.04em 0 #fffc00;
-            animation: glitch 725ms infinite;
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
+            opacity: .9;
         }
 
-        @keyframes glitch {
-            0% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: '';
+            width: 46px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
 
-            15% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
+        .hero-eyebrow::after { background: linear-gradient(90deg, var(--gold), transparent); }
 
-            16% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
+        .date-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: clamp(2.8rem, 8vw, 5.2rem);
+            line-height: 1.05;
+            background: linear-gradient(135deg, #fff 0%, var(--gold) 45%, var(--pink) 80%, var(--purple) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 40px rgba(255, 110, 168, .35));
+            animation: shimmer 6s ease-in-out infinite;
+        }
 
-            49% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
-
-            50% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-
-            99% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-
-            100% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.15rem;
             margin-top: 20px;
-            opacity: 0.9;
+            opacity: 0.75;
+            font-weight: 300;
+            letter-spacing: .02em;
         }
 
-        /* Password Panel - REGALO SECRETO */
-        .password-section {
+        .subtitle strong { color: var(--gold); font-weight: 700; }
+
+        /* ── SECCIÓN GENÉRICA (glass) ── */
+        .glass-section {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border-radius: 32px;
+            padding: 56px 36px;
+            margin: 44px 0;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255,255,255,.06);
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 30px;
-            margin: 40px 0;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
         }
 
-        .password-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: gold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .glass-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-section > p.lead {
+            color: rgba(255,255,255,.6);
+            font-weight: 300;
+            font-size: 1.02rem;
+            margin-bottom: 10px;
+        }
+
+        /* ── PASSWORD PANEL ── */
+        .password-section {
+            border-color: rgba(255, 215, 0, 0.28);
+            box-shadow: 0 30px 70px rgba(0,0,0,.35), 0 0 60px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255,255,255,.06);
+        }
+
+        .password-section::before {
+            content: '🎁';
+            position: absolute;
+            font-size: 220px;
+            opacity: .04;
+            top: -40px;
+            right: -30px;
+            pointer-events: none;
+            transform: rotate(12deg);
+        }
+
+        .password-badge {
+            display: inline-block;
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #1a0010;
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            box-shadow: 0 0 24px rgba(255, 215, 0, .45);
         }
 
         .password-container {
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 520px;
+            margin: 26px auto 0;
+            position: relative;
+            z-index: 1;
         }
 
         .password-input-group {
             display: flex;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 10px 0;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         #passwordInput {
             flex: 1;
-            min-width: 250px;
-            padding: 18px 25px;
-            font-size: 1.2rem;
-            border: none;
+            min-width: 240px;
+            padding: 18px 26px;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
+            background: rgba(255, 255, 255, 0.97);
+            color: #2a2a2a;
             outline: none;
             transition: all 0.3s;
-            border: 2px solid transparent;
+            font-family: 'Outfit', sans-serif;
         }
 
         #passwordInput:focus {
-            border-color: gold;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-            transform: scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.18), 0 0 30px rgba(255, 215, 0, .3);
+            transform: scale(1.015);
         }
 
         #passwordBtn {
-            padding: 18px 35px;
-            font-size: 1.2rem;
+            padding: 18px 38px;
+            font-size: 1.05rem;
             border: none;
             border-radius: 50px;
-            background: linear-gradient(45deg, #ffd700, #ffa500);
-            color: #333;
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            color: #2a1600;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: bold;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: .06em;
+            box-shadow: 0 10px 26px rgba(255, 165, 0, .35);
         }
 
         #passwordBtn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 18px 40px rgba(255, 215, 0, 0.5);
         }
 
         .message-bubble {
             background: rgba(255, 255, 255, 0.98);
             color: #333;
-            padding: 25px;
-            border-radius: 25px;
+            padding: 24px;
+            border-radius: 22px;
             position: relative;
-            margin-top: 25px;
+            margin-top: 22px;
             display: none;
             animation: bounceIn 0.5s;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border: 2px solid gold;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border: 2px solid var(--gold);
         }
 
         .message-bubble::before {
@@ -258,123 +302,87 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
+            width: 0; height: 0;
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
-            border-bottom: 15px solid gold;
+            border-bottom: 15px solid var(--gold);
         }
 
-        .message-bubble.show {
-            display: block;
-        }
-
-        .message-bubble.error {
-            background: #fff5f5;
-            border-color: #ff6b6b;
-        }
-
-        .message-bubble.error::before {
-            border-bottom-color: #ff6b6b;
-        }
-
-        .message-bubble.success {
-            background: #f0fff4;
-            border-color: #51cf66;
-        }
-
-        .message-bubble.success::before {
-            border-bottom-color: #51cf66;
-        }
+        .message-bubble.show { display: block; }
+        .message-bubble.error { background: #fff5f5; border-color: #ff6b6b; }
+        .message-bubble.error::before { border-bottom-color: #ff6b6b; }
+        .message-bubble.success { background: #f0fff4; border-color: #51cf66; }
+        .message-bubble.success::before { border-bottom-color: #51cf66; }
 
         .countdown-small {
-            font-size: 1.4rem;
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 700;
             color: #ff4757;
-            margin-top: 15px;
+            margin-top: 14px;
             padding: 10px;
             background: rgba(255, 71, 87, 0.1);
             border-radius: 15px;
         }
 
         @keyframes bounceIn {
-            0% {
-                transform: scale(0.3);
-                opacity: 0;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Countdown section */
-        .countdown-section {
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin: 40px 0;
-            backdrop-filter: blur(10px);
-        }
-
+        /* ── CONTADOR ── */
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 20px;
+            margin-top: 34px;
             flex-wrap: wrap;
         }
 
         .countdown-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 15px;
-            min-width: 120px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
+            background: linear-gradient(160deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+            border: 1px solid rgba(255,255,255,.14);
+            padding: 22px 10px;
+            border-radius: 20px;
+            min-width: 110px;
+            box-shadow: 0 14px 34px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
+        .countdown-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,215,0,.08), transparent 60%);
+            pointer-events: none;
         }
 
         .countdown-box span:first-child {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 2.8rem;
+            font-weight: 900;
             display: block;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-variant-numeric: tabular-nums;
         }
 
         .countdown-box span:last-child {
-            font-size: 1.2rem;
-            opacity: 0.8;
+            font-size: 0.78rem;
+            opacity: 0.65;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 600;
         }
 
-        /* Love letter */
-        .love-letter-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
+        /* ── CARTA ── */
         .letter-container {
             display: flex;
             justify-content: center;
-            perspective: 1000px;
-            margin-top: 30px;
+            perspective: 1400px;
+            margin-top: 34px;
         }
 
         .letter {
@@ -384,226 +392,199 @@
             cursor: pointer;
             transform-style: preserve-3d;
             transform: rotateY(0deg);
-            transition: transform 0.8s;
+            transition: transform 0.9s cubic-bezier(.2,.8,.2,1);
         }
 
-        .letter.opened {
-            transform: rotateY(180deg);
-        }
+        .letter:hover { transform: rotateY(-8deg) scale(1.02); }
+        .letter.opened { transform: rotateY(180deg); }
+        .letter.opened:hover { transform: rotateY(180deg) scale(1.02); }
 
-        .letter-front,
-        .letter-inside {
+        .letter-front, .letter-inside {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
         }
 
         .letter-front {
-            background: linear-gradient(145deg, #ff6b6b, #ff4757);
+            background: linear-gradient(155deg, var(--pink), var(--pink2) 60%, #c2185b);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            gap: 14px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,.25);
+        }
+
+        .letter-front .env-icon {
+            font-size: 3rem;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
         }
 
         .letter-inside {
-            background: white;
-            color: #333;
+            background: linear-gradient(180deg, #fffaf5, #fff);
+            color: #3a2a2a;
             transform: rotateY(180deg);
             overflow-y: auto;
             text-align: left;
+            font-family: 'Outfit', sans-serif;
         }
 
         .letter-inside p {
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 14px;
+            line-height: 1.65;
+            font-size: .95rem;
         }
 
         .signature {
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            margin-top: 30px;
+            font-size: 1.1rem;
+            margin-top: 26px;
             text-align: right;
+            color: #b8860b;
         }
 
-        /* Balloons */
-        .balloons-section {
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin: 40px 0;
-        }
-
+        /* ── GLOBOS ── */
         .balloons-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin-top: 30px;
-            min-height: 200px;
+            margin-top: 34px;
+            min-height: 220px;
+            align-items: flex-end;
         }
 
         .balloon {
-            width: 60px;
-            height: 80px;
-            background: red;
-            border-radius: 50%;
+            width: 62px;
+            height: 82px;
+            border-radius: 50% 50% 50% 50% / 58% 58% 42% 42%;
             position: relative;
             cursor: pointer;
-            animation: bounce 1s ease infinite;
+            animation: bounce 2.6s ease-in-out infinite;
             transition: all 0.3s;
+            box-shadow: inset -8px -10px 18px rgba(0,0,0,.18), inset 8px 8px 16px rgba(255,255,255,.35), 0 10px 24px rgba(0,0,0,.3);
         }
 
         .balloon::before {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -26px;
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
             height: 30px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.4);
         }
 
         .balloon::after {
-            content: '';
+            content: '▲';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
+            transform: translateX(-50%) rotate(180deg) scale(0.5,0.7);
+            font-size: 10px;
+            color: inherit;
+            opacity: .9;
         }
 
-        .balloon:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-
-        .balloon.popped {
-            opacity: 0;
-            pointer-events: none;
-            animation: none;
-        }
+        .balloon:hover { transform: scale(1.12) rotate(-3deg); filter: brightness(1.15); }
+        .balloon.popped { opacity: 0; pointer-events: none; animation: none; transform: scale(1.4); transition: all .25s ease; }
 
         @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-22px) rotate(2deg); }
         }
 
-        /* Final message */
-        .final-message {
-            text-align: center;
-            padding: 80px 20px;
-        }
+        /* ── FINAL ── */
+        .final-message { padding-bottom: 20px; }
 
         .heart-animation {
-            font-size: 5rem;
-            animation: heartbeat 1.5s ease infinite;
-            margin-bottom: 20px;
+            font-size: 4.6rem;
+            animation: heartbeat 1.6s ease infinite;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 30px rgba(255,110,168,.5));
         }
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.3);
-            }
-
-            35% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.2);
-            }
-
-            55% {
-                transform: scale(1);
-            }
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.28); }
+            35% { transform: scale(1); }
+            45% { transform: scale(1.18); }
+            55% { transform: scale(1); }
         }
 
         .surprise-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            background: linear-gradient(135deg, var(--pink), var(--pink2));
             color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 17px 46px;
+            font-size: 1.1rem;
+            font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 26px;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 75, 75, 0.4);
+            box-shadow: 0 12px 34px rgba(255, 75, 87, 0.45);
+            letter-spacing: .02em;
         }
 
         .surprise-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 75, 75, 0.6);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 20px 50px rgba(255, 75, 87, 0.65);
         }
 
-        .surprise-btn:active {
-            transform: translateY(0);
+        .surprise-btn:active { transform: translateY(0); }
+
+        .footer-note {
+            text-align: center;
+            font-size: .8rem;
+            color: rgba(255,255,255,.3);
+            padding: 30px 20px 10px;
+            letter-spacing: .04em;
         }
 
-        /* Responsive */
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .glitch {
-                font-size: 3rem;
-            }
-
-            .countdown-box {
-                min-width: 80px;
-                padding: 15px;
-            }
-
-            .countdown-box span:first-child {
-                font-size: 2rem;
-            }
-
-            .password-section h2 {
-                font-size: 2rem;
-            }
+            .glass-section { padding: 38px 22px; border-radius: 24px; }
+            .countdown-box { min-width: 78px; padding: 16px 6px; }
+            .countdown-box span:first-child { font-size: 2rem; }
+            .letter { width: 260px; height: 360px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Fondo de estrellas -->
-    <div class="stars"></div>
-
-    <!-- Corazones flotantes -->
+    <div class="bg-layer"></div>
+    <canvas id="starCanvas"></canvas>
     <div class="floating-hearts"></div>
 
-    <!-- Contenido principal -->
     <div class="container">
-        <!-- Header con título -->
+
+        <!-- HERO -->
         <header class="hero">
-            <h1 class="glitch" data-text="13/07/2026">13/07/2026</h1>
-            <p class="subtitle">Hecho con ❤️ por Javi para ti</p>
+            <div class="hero-eyebrow">13 de julio · 2025 – 2026</div>
+            <h1 class="date-title">13/07/2026</h1>
+            <p class="subtitle">Hecho con ❤️ por <strong>Javi</strong> para ti</p>
         </header>
 
-        <!-- Panel de REGALO SECRETO -->
-        <section class="password-section">
-            <h2>🎁 REGALO SECRETO 🎁</h2>
-            <p>Introduce la contraseña para descubrir tu regalo especial...</p>
+        <!-- REGALO SECRETO -->
+        <section class="glass-section password-section">
+            <span class="password-badge">🎁 Acceso especial</span>
+            <h2>Tu regalo secreto</h2>
+            <p class="lead">Introduce la contraseña para descubrirlo...</p>
 
             <div class="password-container">
                 <div class="password-input-group">
@@ -611,7 +592,6 @@
                     <button id="passwordBtn">¡Descubrir!</button>
                 </div>
 
-                <!-- Bocadillo de mensajes -->
                 <div id="messageBubble" class="message-bubble">
                     <p id="messageText"></p>
                     <div id="countdownDisplay" class="countdown-small"></div>
@@ -619,36 +599,27 @@
             </div>
         </section>
 
-        <!-- Contador regresivo -->
-        <section class="countdown-section">
+        <!-- CONTADOR -->
+        <section class="glass-section">
             <h2>Tiempo para celebrar nuestro amor</h2>
+            <p class="lead">La cuenta atrás hacia nuestro gran día</p>
             <div class="countdown-container">
-                <div class="countdown-box">
-                    <span id="days">00</span>
-                    <span>Días</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="hours">00</span>
-                    <span>Horas</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="minutes">00</span>
-                    <span>Minutos</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="seconds">00</span>
-                    <span>Segundos</span>
-                </div>
+                <div class="countdown-box"><span id="days">00</span><span>Días</span></div>
+                <div class="countdown-box"><span id="hours">00</span><span>Horas</span></div>
+                <div class="countdown-box"><span id="minutes">00</span><span>Minutos</span></div>
+                <div class="countdown-box"><span id="seconds">00</span><span>Segundos</span></div>
             </div>
         </section>
 
-        <!-- Carta de amor interactiva -->
-        <section class="love-letter-section">
+        <!-- CARTA -->
+        <section class="glass-section love-letter-section">
             <h2>Una carta para ti</h2>
+            <p class="lead">Haz clic en el sobre para abrirla</p>
             <div class="letter-container">
                 <div class="letter" id="loveLetter">
                     <div class="letter-front">
-                        <p>💌 Haz clic para abrir</p>
+                        <div class="env-icon">💌</div>
+                        <p>Haz clic para abrir</p>
                     </div>
                     <div class="letter-inside">
                         <p>Mi amor,</p>
@@ -663,64 +634,56 @@
             </div>
         </section>
 
-        <!-- Globos interactivos -->
-        <section class="balloons-section">
+        <!-- GLOBOS -->
+        <section class="glass-section balloons-section">
             <h2>¡Explota los globos y pide un deseo!</h2>
+            <p class="lead">Cada uno esconde un poquito de magia</p>
             <div class="balloons-container" id="balloonsContainer"></div>
         </section>
 
-        <!-- Mensaje final -->
-        <section class="final-message">
+        <!-- MENSAJE FINAL -->
+        <section class="glass-section final-message">
             <div class="heart-animation">❤️</div>
             <h2>Te espero con todo mi corazón</h2>
-            <p>13 de Julio de 2026 - Un día para recordar siempre</p>
-            <button id="surpriseBtn" class="surprise-btn">Haz clic para una sorpresa</button>
+            <p class="lead">13 de Julio de 2026 · Un día para recordar siempre</p>
+            <button id="surpriseBtn" class="surprise-btn">✨ Haz clic para una sorpresa</button>
         </section>
+
+        <p class="footer-note">Página hecha con amor · Javi ❤️ para siempre</p>
     </div>
 
     <script>
-        // Configuración de contraseñas
-        const JAVI_PASSWORD = "Patito2026-.-";  // Tu contraseña (acceso inmediato)
-        const ELLA_PASSWORD = "Patito2025";   // La contraseña de ella (verifica fecha)
-        const CUMPLE_PASSWORD = "cumpleaños1234";  // Contraseña cumpleaños → cumpleaños.html
+        // ══════════════════════════════════════
+        //  CONFIGURACIÓN (sin cambios funcionales)
+        // ══════════════════════════════════════
+        const JAVI_PASSWORD = "Patito2026-.-";
+        const ELLA_PASSWORD = "Patito2025";
+        const CUMPLE_PASSWORD = "cumpleaños1234";
         const targetDate = new Date('July 13, 2026 00:00:00').getTime();
 
-        // Elementos del DOM
         const passwordInput = document.getElementById('passwordInput');
         const passwordBtn = document.getElementById('passwordBtn');
         const messageBubble = document.getElementById('messageBubble');
         const messageText = document.getElementById('messageText');
         const countdownDisplay = document.getElementById('countdownDisplay');
 
-        // Función para calcular días restantes
         function getDaysRemaining() {
             const now = new Date().getTime();
             const distance = targetDate - now;
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
             return { days, hours, minutes, distance };
         }
 
-        // Función para mostrar mensaje en el bocadillo
         function showMessage(message, isError = false, isSuccess = false) {
             messageBubble.className = 'message-bubble show';
-
-            if (isError) {
-                messageBubble.classList.add('error');
-                messageBubble.classList.remove('success');
-            } else if (isSuccess) {
-                messageBubble.classList.add('success');
-                messageBubble.classList.remove('error');
-            } else {
-                messageBubble.classList.remove('error', 'success');
-            }
-
+            if (isError) { messageBubble.classList.add('error'); messageBubble.classList.remove('success'); }
+            else if (isSuccess) { messageBubble.classList.add('success'); messageBubble.classList.remove('error'); }
+            else { messageBubble.classList.remove('error', 'success'); }
             messageText.textContent = message;
         }
 
-        // Función para redirigir a Regalo1.html
         function goToRegalo() {
             document.body.style.opacity = '0';
             document.body.style.transform = 'scale(0.95)';
@@ -728,7 +691,6 @@
             setTimeout(() => { window.location.href = 'Regalo1.html'; }, 500);
         }
 
-        // Función para redirigir a cumpleaños.html
         function goToCumple() {
             document.body.style.opacity = '0';
             document.body.style.transform = 'scale(0.95)';
@@ -736,108 +698,73 @@
             setTimeout(() => { window.location.href = 'cumpleaños.html'; }, 500);
         }
 
-        // Manejar clic en el botón de contraseña
         passwordBtn.addEventListener('click', function () {
             const enteredPassword = passwordInput.value;
             const remaining = getDaysRemaining();
 
-            // Caso 0: Contraseña de cumpleaños → cumpleaños.html
             if (enteredPassword === CUMPLE_PASSWORD) {
                 showMessage('🎂 ¡Feliz Cumpleaños! Redirigiendo...', false, true);
                 countdownDisplay.innerHTML = '';
                 setTimeout(goToCumple, 1500);
-
-                // Caso 1: Contraseña correcta de Javi (acceso inmediato al regalo)
             } else if (enteredPassword === JAVI_PASSWORD) {
                 showMessage('✅ ¡Acceso concedido! Redirigiendo a tu regalo...', false, true);
                 countdownDisplay.innerHTML = '';
-
-                // Pequeña pausa para mostrar el mensaje antes de redirigir
                 setTimeout(goToRegalo, 1500);
-
-                // Caso 2: Contraseña correcta de ella (verificar fecha)
             } else if (enteredPassword === ELLA_PASSWORD) {
                 const now = new Date().getTime();
-
                 if (now >= targetDate) {
-                    // Ya puede acceder al regalo
                     showMessage('✨ ¡FELIZ ANIVERSARIO MI AMOR! ✨', false, true);
                     countdownDisplay.innerHTML = 'Redirigiendo a tu regalo especial...';
-
                     setTimeout(goToRegalo, 2000);
                 } else {
-                    // Mostrar días que faltan
                     showMessage('📅 Regalo no disponible hasta el 13/07/2026', true, false);
                     countdownDisplay.innerHTML = `Te quedan ${remaining.days} días, ${remaining.hours} horas y ${remaining.minutes} minutos... 💝`;
                 }
-
-                // Caso 3: Contraseña incorrecta
             } else {
                 showMessage('❌ Contraseña incorrecta', true, false);
                 countdownDisplay.innerHTML = '';
-
-                // Animación de error
                 passwordInput.style.transform = 'translateX(5px)';
                 setTimeout(() => passwordInput.style.transform = 'translateX(-5px)', 50);
                 setTimeout(() => passwordInput.style.transform = 'translateX(5px)', 100);
                 setTimeout(() => passwordInput.style.transform = 'translateX(0)', 150);
             }
-
-            // Limpiar input
             passwordInput.value = '';
         });
 
-        // Permitir acceder con Enter
         passwordInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                passwordBtn.click();
-            }
+            if (e.key === 'Enter') passwordBtn.click();
         });
 
-        // INICIALIZAR TODAS LAS FUNCIONES DE LA PÁGINA PRINCIPAL
         function initializeMainPage() {
-            // Cuenta regresiva
             updateCountdown();
             setInterval(updateCountdown, 1000);
-
-            // Corazones flotantes
             setInterval(createHeart, 500);
 
-            // Carta interactiva
             document.getElementById('loveLetter').addEventListener('click', function () {
                 this.classList.toggle('opened');
             });
 
-            // Globos
             createBalloons(12);
 
-            // Botón sorpresa
             document.getElementById('surpriseBtn').addEventListener('click', function () {
                 for (let i = 0; i < 50; i++) {
-                    setTimeout(() => {
-                        createHeart();
-                    }, i * 50);
+                    setTimeout(() => { createHeart(); }, i * 50);
                 }
-
                 alert('¡TE AMO! ❤️ Prepárate para el 13/07/2026');
-
                 document.body.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%)';
                 setTimeout(() => {
-                    document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    document.body.style.background = '#0a0416';
                 }, 1000);
             });
         }
 
-        // Funciones existentes
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             document.getElementById('days').innerHTML = String(days).padStart(2, '0');
             document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
             document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
@@ -847,27 +774,32 @@
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '❤️';
+            heart.innerHTML = ['❤️','💜','💗','✨'][Math.floor(Math.random()*4)];
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 4 + 's';
             heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-
             document.querySelector('.floating-hearts').appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 10000);
+            setTimeout(() => { heart.remove(); }, 10000);
         }
 
         function createBalloons(count) {
-            const balloonColors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#fd79a8'];
+            const balloonGradients = [
+                'linear-gradient(160deg,#ff8fab,#ff4757)',
+                'linear-gradient(160deg,#7ee8fa,#45b7d1)',
+                'linear-gradient(160deg,#b993ff,#7c3aed)',
+                'linear-gradient(160deg,#ffe07a,#ffa500)',
+                'linear-gradient(160deg,#9dffce,#22c55e)',
+                'linear-gradient(160deg,#ffb3e6,#ec4899)',
+            ];
             const balloonsContainer = document.getElementById('balloonsContainer');
-
             balloonsContainer.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const balloon = document.createElement('div');
                 balloon.classList.add('balloon');
-                balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+                const g = balloonGradients[Math.floor(Math.random() * balloonGradients.length)];
+                balloon.style.background = g;
+                balloon.style.color = '#fff';
+                balloon.style.animationDelay = (Math.random() * 1.5) + 's';
 
                 balloon.addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -880,26 +812,76 @@
         }
 
         function createConfetti() {
-            for (let i = 0; i < 10; i++) {
+            const colors = ['#ff6ea8','#ffd700','#a855f7','#7ee8fa','#ff4757'];
+            for (let i = 0; i < 16; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.top = '-10px';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.width = '9px';
+                confetti.style.height = '9px';
+                confetti.style.background = colors[Math.floor(Math.random()*colors.length)];
                 confetti.style.borderRadius = '50%';
                 confetti.style.zIndex = '9999';
                 confetti.style.animation = `float ${Math.random() * 3 + 2}s linear`;
                 confetti.style.pointerEvents = 'none';
-
                 document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
+                setTimeout(() => { confetti.remove(); }, 5000);
             }
         }
+
+        // ══════════════════════════════════════
+        //  NUEVO: estrellas de fondo en canvas
+        // ══════════════════════════════════════
+        (function initStars() {
+            const canvas = document.getElementById('starCanvas');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            for (let i = 0; i < 140; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.4 + 0.3,
+                    p: Math.random() * Math.PI * 2,
+                    speed: Math.random() * 0.4 + 0.1
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const t = Date.now() / 900;
+                stars.forEach(s => {
+                    const b = 0.35 + 0.5 * Math.sin(t * s.speed + s.p);
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${b})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // ══════════════════════════════════════
+        //  NUEVO: aparición de secciones al hacer scroll
+        // ══════════════════════════════════════
+        (function initReveal() {
+            const sections = document.querySelectorAll('.glass-section');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add('in-view');
+                });
+            }, { threshold: 0.15 });
+            sections.forEach(s => obs.observe(s));
+        })();
 
         // Inicializar todo cuando carga la página
         window.onload = function () {
