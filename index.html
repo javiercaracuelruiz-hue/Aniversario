@@ -34,7 +34,6 @@
             position: relative;
         }
 
-        /* ── FONDO CON PROFUNDIDAD ── */
         .bg-layer {
             position: fixed;
             inset: 0;
@@ -61,7 +60,6 @@
             pointer-events: none;
         }
 
-        /* Corazones flotantes */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -92,7 +90,6 @@
             z-index: 2;
         }
 
-        /* ── HERO ── */
         .hero {
             text-align: center;
             padding: 60px 20px 30px;
@@ -156,7 +153,6 @@
 
         .subtitle strong { color: var(--gold); font-weight: 700; }
 
-        /* ── SECCIÓN GENÉRICA (glass) ── */
         .glass-section {
             background: var(--glass);
             border: 1px solid var(--border);
@@ -197,7 +193,6 @@
             margin-bottom: 10px;
         }
 
-        /* ── PASSWORD PANEL ── */
         .password-section {
             border-color: rgba(255, 215, 0, 0.28);
             box-shadow: 0 30px 70px rgba(0,0,0,.35), 0 0 60px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255,255,255,.06);
@@ -330,7 +325,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* ── CONTADOR ── */
         .countdown-container {
             display: flex;
             justify-content: center;
@@ -377,7 +371,6 @@
             font-weight: 600;
         }
 
-        /* ── CARTA ── */
         .letter-container {
             display: flex;
             justify-content: center;
@@ -455,7 +448,6 @@
             color: #b8860b;
         }
 
-        /* ── GLOBOS ── */
         .balloons-container {
             display: flex;
             justify-content: center;
@@ -507,7 +499,6 @@
             50% { transform: translateY(-22px) rotate(2deg); }
         }
 
-        /* ── FINAL ── */
         .final-message { padding-bottom: 20px; }
 
         .heart-animation {
@@ -555,12 +546,109 @@
             letter-spacing: .04em;
         }
 
-        /* ── RESPONSIVE ── */
+        .secret-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 2, 12, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity .5s ease;
+        }
+
+        .secret-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .secret-card {
+            max-width: 560px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            background: linear-gradient(165deg, rgba(30,10,45,.92), rgba(15,5,25,.96));
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            border-radius: 30px;
+            padding: 50px 42px 42px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 90px rgba(255, 215, 0, 0.15);
+            transform: scale(0.85) translateY(20px);
+            opacity: 0;
+            transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .6s ease;
+        }
+
+        .secret-overlay.show .secret-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .secret-card .secret-icon {
+            font-size: 2.6rem;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 18px rgba(255,215,0,.5));
+            animation: pulseIcon 2.4s ease-in-out infinite;
+        }
+
+        .secret-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 22px;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .secret-card p {
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,.88);
+            font-weight: 300;
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .secret-card .secret-signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .secret-close {
+            margin-top: 20px;
+            padding: 12px 34px;
+            border: 1px solid rgba(255,215,0,.4);
+            background: transparent;
+            color: var(--gold);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: .04em;
+            transition: all .25s;
+        }
+
+        .secret-close:hover {
+            background: rgba(255,215,0,.12);
+            box-shadow: 0 0 20px rgba(255,215,0,.25);
+        }
+
         @media (max-width: 768px) {
             .glass-section { padding: 38px 22px; border-radius: 24px; }
             .countdown-box { min-width: 78px; padding: 16px 6px; }
             .countdown-box span:first-child { font-size: 2rem; }
             .letter { width: 260px; height: 360px; }
+            .secret-card { padding: 40px 26px 32px; }
         }
     </style>
 </head>
@@ -573,14 +661,12 @@
 
     <div class="container">
 
-        <!-- HERO -->
         <header class="hero">
             <div class="hero-eyebrow">13 de julio · 2025 – 2026</div>
             <h1 class="date-title">13/07/2026</h1>
             <p class="subtitle">Hecho con ❤️ por <strong>Javi</strong> para ti</p>
         </header>
 
-        <!-- REGALO SECRETO -->
         <section class="glass-section password-section">
             <span class="password-badge">🎁 Acceso especial</span>
             <h2>Tu regalo secreto</h2>
@@ -599,7 +685,6 @@
             </div>
         </section>
 
-        <!-- CONTADOR -->
         <section class="glass-section">
             <h2>Tiempo para celebrar nuestro amor</h2>
             <p class="lead">La cuenta atrás hacia nuestro gran día</p>
@@ -611,7 +696,6 @@
             </div>
         </section>
 
-        <!-- CARTA -->
         <section class="glass-section love-letter-section">
             <h2>Una carta para ti</h2>
             <p class="lead">Haz clic en el sobre para abrirla</p>
@@ -634,14 +718,12 @@
             </div>
         </section>
 
-        <!-- GLOBOS -->
         <section class="glass-section balloons-section">
             <h2>¡Explota los globos y pide un deseo!</h2>
-            <p class="lead">Cada uno esconde un poquito de magia</p>
+            <p class="lead">Cada uno esconde un poquito de magia... y el último, algo más</p>
             <div class="balloons-container" id="balloonsContainer"></div>
         </section>
 
-        <!-- MENSAJE FINAL -->
         <section class="glass-section final-message">
             <div class="heart-animation">❤️</div>
             <h2>Te espero con todo mi corazón</h2>
@@ -652,10 +734,21 @@
         <p class="footer-note">Página hecha con amor · Javi ❤️ para siempre</p>
     </div>
 
+    <!-- NOTA SECRETA OCULTA: se muestra al reventar todos los globos -->
+    <div class="secret-overlay" id="secretOverlay">
+        <div class="secret-card">
+            <div class="secret-icon">🕯️</div>
+            <h3>Para ti, cuando revientes el último globo</h3>
+            <p>Hace apenas dos días estuve en una operación en la que, de verdad, pensé que podía no volver a verte. Y en ese momento, lo único que tenía en la cabeza no era el miedo, eras tú.</p>
+            <p>Así que quiero que esto quede escrito, para que lo tengas siempre que lo necesites: voy a estar a tu lado. En los días buenos y en los complicados, en los planes grandes y en los ratos de no hacer nada, siempre.</p>
+            <p>Y si algún día el destino decide que mi tiempo se acaba antes que el tuyo, quiero que sepas que ni la muerte va a poder conmigo. Te seguiré queriendo desde donde esté, te seguiré cuidando aunque no puedas verme, y te estaré esperando al otro lado, sea cuando sea. En esta vida y en la que venga después, si es que hay otra, mi sitio va a ser siempre junto a ti.</p>
+            <p>No quiero que esta nota te dé miedo ni te ponga triste. Quiero que te dé paz. Porque lo que siento por ti no depende de los años que tengamos, ni de la salud, ni de nada de eso. Es más grande que todo eso.</p>
+            <div class="secret-signature">Siempre tuyo, en esta vida y en la otra,<br>Javi ❤️</div>
+            <button class="secret-close" id="secretCloseBtn">Cerrar con cariño</button>
+        </div>
+    </div>
+
     <script>
-        // ══════════════════════════════════════
-        //  CONFIGURACIÓN (sin cambios funcionales)
-        // ══════════════════════════════════════
         const JAVI_PASSWORD = "Patito2026-.-";
         const ELLA_PASSWORD = "Patito2025";
         const CUMPLE_PASSWORD = "cumpleaños1234";
@@ -756,6 +849,11 @@
                     document.body.style.background = '#0a0416';
                 }, 1000);
             });
+
+            document.getElementById('secretCloseBtn').addEventListener('click', hideSecretNote);
+            document.getElementById('secretOverlay').addEventListener('click', function (e) {
+                if (e.target === this) hideSecretNote();
+            });
         }
 
         function updateCountdown() {
@@ -782,6 +880,9 @@
             setTimeout(() => { heart.remove(); }, 10000);
         }
 
+        let totalBalloons = 0;
+        let poppedBalloons = 0;
+
         function createBalloons(count) {
             const balloonGradients = [
                 'linear-gradient(160deg,#ff8fab,#ff4757)',
@@ -793,6 +894,9 @@
             ];
             const balloonsContainer = document.getElementById('balloonsContainer');
             balloonsContainer.innerHTML = '';
+            totalBalloons = count;
+            poppedBalloons = 0;
+
             for (let i = 0; i < count; i++) {
                 const balloon = document.createElement('div');
                 balloon.classList.add('balloon');
@@ -803,17 +907,36 @@
 
                 balloon.addEventListener('click', function (e) {
                     e.stopPropagation();
+                    if (this.classList.contains('popped')) return;
                     this.classList.add('popped');
                     createConfetti();
+                    poppedBalloons++;
+                    if (poppedBalloons >= totalBalloons) {
+                        setTimeout(showSecretNote, 700);
+                    }
                 });
 
                 balloonsContainer.appendChild(balloon);
             }
         }
 
-        function createConfetti() {
-            const colors = ['#ff6ea8','#ffd700','#a855f7','#7ee8fa','#ff4757'];
-            for (let i = 0; i < 16; i++) {
+        function showSecretNote() {
+            const overlay = document.getElementById('secretOverlay');
+            overlay.classList.add('show');
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createConfetti(true), i * 30);
+            }
+        }
+
+        function hideSecretNote() {
+            document.getElementById('secretOverlay').classList.remove('show');
+        }
+
+        function createConfetti(golden) {
+            const colors = golden
+                ? ['#ffd700', '#ffe07a', '#fffbe0']
+                : ['#ff6ea8','#ffd700','#a855f7','#7ee8fa','#ff4757'];
+            for (let i = 0; i < (golden ? 3 : 16); i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + 'vw';
@@ -830,9 +953,6 @@
             }
         }
 
-        // ══════════════════════════════════════
-        //  NUEVO: estrellas de fondo en canvas
-        // ══════════════════════════════════════
         (function initStars() {
             const canvas = document.getElementById('starCanvas');
             const ctx = canvas.getContext('2d');
@@ -870,9 +990,6 @@
             draw();
         })();
 
-        // ══════════════════════════════════════
-        //  NUEVO: aparición de secciones al hacer scroll
-        // ══════════════════════════════════════
         (function initReveal() {
             const sections = document.querySelectorAll('.glass-section');
             const obs = new IntersectionObserver((entries) => {
@@ -883,7 +1000,6 @@
             sections.forEach(s => obs.observe(s));
         })();
 
-        // Inicializar todo cuando carga la página
         window.onload = function () {
             initializeMainPage();
         };
