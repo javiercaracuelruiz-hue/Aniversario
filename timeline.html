@@ -3,521 +3,349 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>📆 Línea del Tiempo · Nuestra Historia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💘 Memorama del Amor · Modo Difícil · Para Estrella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #ffd700;
+            --pink: #ff6ea8;
+            --pink2: #ec4899;
+            --violet: #a855f7;
+            --red: #ff5252;
+            --muted: rgba(255,255,255,.5);
         }
 
         body {
-            background: radial-gradient(ellipse at 30% 20%, #3b0764 0%, #1a0533 40%, #0d0020 100%);
             font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 25% 15%, #4a0e3d 0%, #200a2e 45%, #0d0518 100%);
+            color: white;
             min-height: 100vh;
             overflow-x: hidden;
-            color: white;
         }
 
-        /* ── NAV PROFESIONAL ── */
+        /* ── NAV ── */
         .menu-container {
-            background: rgba(10, 0, 30, 0.65);
+            background: rgba(10, 8, 25, 0.65);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+            top: 0; left: 0; width: 100%;
+            z-index: 1000; height: 60px;
+            display: flex; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .menu {
-            max-width: 1280px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 28px;
-            gap: 12px;
+            max-width: 1280px; margin: 0 auto; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 28px; gap: 12px;
         }
 
         .menu-logo {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
+            color: white; text-decoration: none; font-size: 0.95rem; font-weight: 800;
+            letter-spacing: 0.04em; white-space: nowrap; display: flex; align-items: center;
+            gap: 7px; flex-shrink: 0; opacity: 0.9; transition: opacity .2s;
+        }
+        .menu-logo:hover { opacity: 1; }
+        .menu-logo .logo-date { color: gold; }
+
+        .menu-links { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; flex-wrap: wrap; }
+
+        .menu-item {
+            color: rgba(255, 255, 255, .65); text-decoration: none; font-size: .78rem; font-weight: 600;
+            padding: 6px 13px; border-radius: 8px; letter-spacing: .07em; text-transform: uppercase;
+            transition: color .2s, background .2s; white-space: nowrap;
+        }
+        .menu-item:hover { color: white; background: rgba(255, 255, 255, .1); }
+        .menu-item.active { color: gold; background: rgba(255, 215, 0, .08); }
+
+        .menu-vd {
+            font-size: .78rem; font-weight: 800; letter-spacing: .07em; padding: 7px 18px;
+            border-radius: 50px; text-decoration: none; white-space: nowrap; flex-shrink: 0;
+            text-transform: uppercase; background: linear-gradient(135deg, #e040fb, #ff5252);
+            color: white; box-shadow: 0 0 14px rgba(224, 64, 251, .4); transition: all .25s;
+        }
+        .menu-vd:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 26px rgba(224, 64, 251, .65); }
+
+        .menu-toggle {
+            display: none; flex-direction: column; gap: 6px; background: none; border: none;
+            cursor: pointer; padding: 8px 4px; flex-shrink: 0;
+        }
+        .menu-toggle span { display: block; width: 26px; height: 2.5px; background: rgba(255,255,255,.85); border-radius: 2px; transition: all .3s; transform-origin: center; }
+        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-drawer {
+            display: none; position: fixed; top: 60px; left: 0; right: 0;
+            background: rgba(8, 0, 22, 0.97); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,.08); padding: 14px 20px 24px; z-index: 999;
+            flex-direction: column; gap: 4px;
+        }
+        .mobile-drawer.open { display: flex; animation: mSlide .25s ease; }
+        @keyframes mSlide { from { opacity: 0; transform: translateY(-8px) } to { opacity: 1; transform: translateY(0) } }
+        .mobile-drawer a {
+            color: rgba(255,255,255,.75); text-decoration: none; font-size: .9rem; font-weight: 600;
+            padding: 13px 16px; border-radius: 12px; letter-spacing: .06em; text-transform: uppercase;
+            transition: all .2s; display: block;
+        }
+        .mobile-drawer a:hover, .mobile-drawer a.active { color: white; background: rgba(255,255,255,.07); }
+        .mobile-drawer .drawer-cta { margin-top: 8px; background: linear-gradient(135deg, #e040fb, #ff5252); color: white; text-align: center; border-radius: 50px; box-shadow: 0 4px 14px rgba(224,64,251,.4); }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .menu-links, .menu-vd { display: none !important; }
+            .menu-logo .logo-date { display: none; }
+            .menu { padding: 0 16px; }
+        }
+
+        /* ── PAGE ── */
+        .page {
+            position: relative;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 92px 20px 80px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 12px; font-size: .68rem; font-weight: 800;
+            letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 36px; height: 1px; background: linear-gradient(90deg, transparent, var(--red)); }
+        .hero-eyebrow::after { background: linear-gradient(90deg, var(--red), transparent); }
+
+        h1 {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3.1rem);
+            background: linear-gradient(135deg, #fff 0%, var(--pink) 50%, var(--gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            filter: drop-shadow(0 0 28px rgba(255,110,168,.35));
+            margin-bottom: 10px;
+        }
+
+        .subtitle { color: var(--muted); font-size: .94rem; font-weight: 300; margin-bottom: 28px; }
+
+        /* ── HUD ── */
+        .hud {
             display: flex;
-            align-items: center;
-            gap: 7px;
-            flex-shrink: 0;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        .menu-logo:hover {
-            opacity: 1;
-        }
-
-        .menu-logo .logo-date {
-            color: #ffd700;
-        }
-
-        .menu-links {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            flex: 1;
             justify-content: center;
+            gap: 12px;
+            margin-bottom: 22px;
             flex-wrap: wrap;
         }
 
-        .menu-item {
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 6px 13px;
-            border-radius: 8px;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
+        .hud-chip {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 16px;
+            padding: 9px 18px;
+            min-width: 86px;
         }
 
-        .menu-item:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-        }
+        .hud-chip.warn { border-color: rgba(255,82,82,.4); }
 
-        .menu-item.active {
-            color: #ffd700;
-            background: rgba(255, 215, 0, 0.08);
-        }
-
-        .menu-vd {
-            font-size: 0.78rem;
-            font-weight: 800;
-            letter-spacing: 0.07em;
-            padding: 7px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            white-space: nowrap;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #e040fb, #ff5252);
-            color: white;
-            box-shadow: 0 0 14px rgba(224, 64, 251, 0.4);
-            transition: all 0.25s;
-        }
-
-        .menu-vd:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 0 26px rgba(224, 64, 251, 0.65);
-        }
-
-        /* ── HAMBURGER ── */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px 4px;
-            flex-shrink: 0;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 26px;
-            height: 2.5px;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 2px;
-            transition: all 0.3s;
-            transform-origin: center;
-        }
-
-        .menu-toggle.open span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        .mobile-drawer {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: rgba(8, 0, 22, 0.97);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 20px 24px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .mobile-drawer.open {
-            display: flex;
-            animation: mSlide 0.25s ease;
-        }
-
-        @keyframes mSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-8px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .mobile-drawer a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 13px 16px;
-            border-radius: 12px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            transition: all 0.2s;
-            display: block;
-        }
-
-        .mobile-drawer a:hover,
-        .mobile-drawer a.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .mobile-drawer .drawer-cta {
-            margin-top: 8px;
-            background: linear-gradient(135deg, #e040fb, #ff5252);
-            color: white;
-            text-align: center;
-            border-radius: 50px;
-            box-shadow: 0 4px 14px rgba(224, 64, 251, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-links,
-            .menu-vd {
-                display: none !important;
-            }
-
-            .menu-logo .logo-date {
-                display: none;
-            }
-
-            .menu {
-                padding: 0 16px;
-            }
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 100px 20px 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #fff, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
-        }
-
-        /* Contenedor 3D */
-        .timeline-container {
-            position: relative;
-            height: 600px;
-            margin: 50px 0;
-            perspective: 2000px;
-            overflow: hidden;
-        }
-
-        .timeline-carousel {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            animation: autoRotate 30s infinite linear;
-            cursor: grab;
-        }
-
-        .timeline-carousel:active {
-            cursor: grabbing;
-            animation-play-state: paused;
-        }
-
-        @keyframes autoRotate {
-            from {
-                transform: rotateY(0deg) rotateX(5deg);
-            }
-
-            to {
-                transform: rotateY(360deg) rotateX(5deg);
-            }
-        }
-
-        /* Elementos de la línea */
-        .timeline-item {
-            position: absolute;
-            width: 280px;
-            height: 380px;
-            left: 50%;
-            top: 50%;
-            margin-left: -140px;
-            margin-top: -190px;
-            transform-style: preserve-3d;
-            transform: rotateY(calc(var(--i) * 30deg)) translateZ(500px);
-            transition: all 0.5s;
-        }
-
-        .timeline-item:hover {
-            transform: rotateY(calc(var(--i) * 30deg)) translateZ(550px) scale(1.1);
-        }
-
-        /* Tarjeta de momento */
-        .moment-card {
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            position: relative;
-            transform: rotateX(5deg);
-        }
-
-        .moment-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
-            pointer-events: none;
-        }
-
-        .moment-image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .moment-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-
-        .moment-date {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .moment-content {
-            padding: 20px;
-        }
-
-        .moment-title {
+        .hud-chip .val {
             font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hud-chip.warn .val {
+            background: linear-gradient(135deg, #fff, var(--red));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .hud-chip .lbl {
+            font-size: .6rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .restart-btn {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.18);
             color: white;
+            border-radius: 16px;
+            padding: 9px 18px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: .78rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .restart-btn:hover { background: rgba(255,255,255,.12); border-color: var(--pink); }
+
+        /* ── PREVIEW OVERLAY ── */
+        .preview-banner {
+            display: none;
+            margin: 0 auto 20px;
+            max-width: 420px;
+            padding: 12px 20px;
+            border-radius: 16px;
+            background: rgba(255, 215, 0, .1);
+            border: 1px solid rgba(255, 215, 0, .35);
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+        .preview-banner.show { display: block; animation: pulseBanner 1s ease-in-out infinite; }
+        @keyframes pulseBanner { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+        /* ── TABLERO ── */
+        .board {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            perspective: 1000px;
+            max-width: 620px;
+            margin: 0 auto;
         }
 
-        .moment-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.4;
+        @media (min-width: 640px) {
+            .board { grid-template-columns: repeat(8, 68px); justify-content: center; gap: 10px; }
         }
 
-        .moment-song {
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #a855f7;
-            font-size: 0.9rem;
-        }
+        .card { aspect-ratio: 1; position: relative; cursor: pointer; }
 
-        /* Controles */
-        .controls {
-            text-align: center;
-            margin-top: 20px;
+        .card-inner {
+            width: 100%; height: 100%;
             position: relative;
-            z-index: 20;
+            transform-style: preserve-3d;
+            transition: transform .4s cubic-bezier(.2,.8,.2,1);
+            border-radius: 12px;
         }
 
-        .control-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #a855f7;
-            color: white;
-            padding: 12px 30px;
-            margin: 0 10px;
+        .card.flipped .card-inner,
+        .card.matched .card-inner,
+        .card.preview .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute; inset: 0;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            backface-visibility: hidden;
+            font-size: 1.35rem;
+        }
+
+        .card-back {
+            background: linear-gradient(155deg, #7c1050, #3d0a2a);
+            border: 1px solid rgba(255,255,255,.14);
+            box-shadow: inset 0 2px 6px rgba(255,255,255,.08), 0 6px 16px rgba(0,0,0,.4);
+        }
+        .card-back::after { content: '💗'; opacity: .4; font-size: 1.05rem; }
+
+        .card-front {
+            background: linear-gradient(155deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+            border: 1px solid rgba(255,215,0,.35);
+            transform: rotateY(180deg);
+        }
+
+        .card.matched .card-front {
+            background: linear-gradient(155deg, rgba(255,215,0,.25), rgba(255,110,168,.15));
+            box-shadow: 0 0 20px rgba(255,215,0,.35);
+        }
+
+        .card.matched { animation: matchPop .45s ease; }
+        @keyframes matchPop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+        .card.wrong .card-back { animation: shakeCard .35s ease; border-color: rgba(255,82,82,.6); }
+        @keyframes shakeCard {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+
+        /* ── OVERLAYS (victoria / derrota) ── */
+        .end-overlay {
+            position: fixed; inset: 0;
+            background: rgba(5, 2, 12, .9);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity .5s ease;
+        }
+        .end-overlay.show { display: flex; opacity: 1; }
+
+        .end-card {
+            max-width: 480px;
+            width: 100%;
+            background: linear-gradient(165deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+            border: 1px solid rgba(255,215,0,.35);
+            border-radius: 30px;
+            padding: 46px 38px 38px;
+            text-align: center;
+            transform: scale(.85) translateY(20px);
+            opacity: 0;
+            transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s ease;
+            box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 80px rgba(255,215,0,.15);
+        }
+        .end-overlay.show .end-card { transform: scale(1) translateY(0); opacity: 1; }
+
+        .end-card.fail { border-color: rgba(255,82,82,.4); }
+
+        .end-card .end-icon { font-size: 2.6rem; margin-bottom: 14px; }
+        .end-card h2 {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: 1.6rem; margin-bottom: 14px;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .end-card p { font-size: .96rem; line-height: 1.8; color: rgba(255,255,255,.85); margin-bottom: 10px; }
+        .end-card .end-stats { font-size: .82rem; color: var(--pink); margin-bottom: 20px; }
+
+        .end-close {
+            padding: 12px 32px;
+            border: 1px solid rgba(255,215,0,.4);
+            background: transparent;
+            color: var(--gold);
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            transition: all .25s;
+            margin: 0 6px;
         }
+        .end-close:hover { background: rgba(255,215,0,.12); }
 
-        .control-btn:hover {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-            border-color: transparent;
-            transform: scale(1.05);
+        .back-button {
+            position: fixed; bottom: 22px; right: 22px;
+            background: rgba(15, 13, 30, .8);
+            backdrop-filter: blur(12px);
+            color: #fff; padding: 10px 22px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: .82rem;
+            border: 1px solid rgba(255,255,255,.14); transition: all .3s; z-index: 200;
         }
-
-        /* Estrellas de fondo */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
-        }
-
-        @keyframes twinkle {
-
-            0%,
-            100% {
-                opacity: 0.2;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        /* Modal de detalle */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1a1030, #2a1a40);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid #a855f7;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .modal-close:hover {
-            color: white;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .modal h2 {
-            color: #a855f7;
-            margin-bottom: 10px;
-        }
-
-        .modal p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
+        .back-button:hover { border-color: var(--pink); color: var(--pink); box-shadow: 0 0 18px rgba(255,110,168,.3); }
     </style>
 </head>
 
 <body>
-    <!-- MENÚ SUPERIOR -->
+
+    <!-- NAV -->
     <div class="menu-container">
         <nav class="menu">
             <a href="Regalo1.html" class="menu-logo">💝 <span class="logo-date">13·07·2026</span></a>
-            <button class="menu-toggle" id="menuToggle"
-                aria-label="Menú"><span></span><span></span><span></span></button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
             <div class="menu-links">
                 <a href="Regalo1.html" class="menu-item">🏠 Inicio</a>
-                <a href="timeline.html" class="menu-item active">📅 Timeline</a>
+                <a href="timeline.html" class="menu-item active">💘 Memorama</a>
                 <a href="cartas.html" class="menu-item">💌 Cartas</a>
                 <a href="Musica.html" class="menu-item">🎵 Música</a>
-                <a href="juegos.html" class="menu-item">🎮 Juegos</a>
+                <a href="Juegos.html" class="menu-item">🎮 Juegos</a>
                 <a href="sorpresa.html" class="menu-item">🎁 Sorpresa</a>
             </div>
             <a href="VD.html" class="menu-vd">🎲 Verdad o Reto</a>
@@ -525,235 +353,228 @@
     </div>
     <div class="mobile-drawer" id="mobileDrawer">
         <a href="Regalo1.html">🏠 Inicio</a>
-        <a href="timeline.html" class="active">📅 Timeline</a>
+        <a href="timeline.html" class="active">💘 Memorama</a>
         <a href="cartas.html">💌 Cartas</a>
         <a href="Musica.html">🎵 Música</a>
-        <a href="juegos.html">🎮 Juegos</a>
+        <a href="Juegos.html">🎮 Juegos</a>
         <a href="sorpresa.html">🎁 Sorpresa</a>
         <a href="VD.html" class="drawer-cta">🎲 Verdad o Reto</a>
     </div>
-    <div class="stars" id="stars"></div>
 
-    <div class="header">
-        <h1>📆 Nuestra Historia en 3D</h1>
-        <p>Gira la línea del tiempo y revive nuestros momentos</p>
-    </div>
+    <main class="page">
+        <div class="hero-eyebrow">🔥 modo difícil activado</div>
+        <h1>Memorama del Amor</h1>
+        <p class="subtitle">16 parejas. Solo 3 segundos para memorizarlas. Y el reloj no perdona.</p>
 
-    <div class="timeline-container">
-        <div class="timeline-carousel" id="timelineCarousel">
-            <!-- Los items se generarán con JS -->
+        <div class="hud">
+            <div class="hud-chip"><div class="val" id="movesVal">0</div><div class="lbl">Movimientos</div></div>
+            <div class="hud-chip"><div class="val" id="pairsVal">0/16</div><div class="lbl">Parejas</div></div>
+            <div class="hud-chip warn"><div class="val" id="timeVal">60</div><div class="lbl">Segundos</div></div>
+            <button class="restart-btn" id="restartBtn">🔄 Reiniciar</button>
+        </div>
+
+        <div class="preview-banner" id="previewBanner">👀 ¡Memorízalas! Se ocultan en <span id="previewCount">3</span>...</div>
+
+        <div class="board" id="board"></div>
+    </main>
+
+    <!-- VICTORIA -->
+    <div class="end-overlay" id="winOverlay">
+        <div class="end-card">
+            <div class="end-icon">💘</div>
+            <h2>¡Lo has conseguido!</h2>
+            <p>16 parejas, contrarreloj, y ni un solo hueco en tu memoria. Como en nosotros: cada pieza suelta no significaba nada, pero juntas formaron algo precioso.</p>
+            <div class="end-stats" id="winStats"></div>
+            <button class="end-close" id="winCloseBtn">Cerrar con cariño</button>
         </div>
     </div>
 
-    <div class="controls">
-        <button class="control-btn" onclick="pauseRotation()">⏸ Pausar</button>
-        <button class="control-btn" onclick="resumeRotation()">▶ Reanudar</button>
-        <button class="control-btn" onclick="addMoment()">✨ Agregar momento</button>
-    </div>
-
-    <div class="modal" id="momentModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <div class="modal-image" id="modalImage"></div>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDate"></p>
-            <p id="modalDescription"></p>
-            <p id="modalSong" style="color: #a855f7; margin-top: 15px;"></p>
+    <!-- DERROTA -->
+    <div class="end-overlay" id="loseOverlay">
+        <div class="end-card fail">
+            <div class="end-icon">⏳</div>
+            <h2>Se acabó el tiempo...</h2>
+            <p>El reloj ha ganado esta vez, pero tú y yo seguimos invictos. ¿Otra vuelta?</p>
+            <div class="end-stats" id="loseStats"></div>
+            <button class="end-close" id="loseRetryBtn">🔄 Reintentar</button>
+            <button class="end-close" id="loseCloseBtn">Cerrar</button>
         </div>
     </div>
+
+    <a href="Regalo1.html" class="back-button">← Volver</a>
 
     <script>
-        // Momentos de la historia
-        const moments = [
-            {
-                date: "13·07·2026",
-                title: "💫 Nos conocimos",
-                description: "El día que nuestras vidas cambiaron para siempre. Una mirada fue suficiente para saber que éramos el uno para el otro.",
-                song: "🎵 IA - ClarentKP & Mora",
-                image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400"
-            },
-            {
-                date: "20·07·2026",
-                title: "💜 Primera cita",
-                description: "Café, conversación eterna y la certeza de que queríamos seguir viéndonos. El inicio de algo hermoso.",
-                song: "🎵 No Se Vale - Mora",
-                image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400"
-            },
-            {
-                date: "27·07·2026",
-                title: "💋 Primer beso",
-                description: "Bajo las estrellas, el tiempo se detuvo. Ese beso lo confirmó todo: estábamos hechos el uno para el otro.",
-                song: "🎵 Domingo - Mora",
-                image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400"
-            },
-            {
-                date: "13·08·2026",
-                title: "💕 Dijimos 'Te quiero'",
-                description: "Tres palabras, un millón de sentimientos. El corazón no nos cabía en el pecho.",
-                song: "🎵 Como te imaginé - Demarco Flamenco",
-                image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400"
-            },
-            {
-                date: "13·09·2026",
-                title: "🎶 Nuestra canción",
-                description: "Descubrimos que 'IA' sería nuestra canción. Cada vez que suena, volvemos a ese momento.",
-                song: "🎵 IA - ClarentKP & Mora",
-                image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400"
-            },
-            {
-                date: "13·10·2026",
-                title: "🌅 Primer atardecer",
-                description: "Juntos viendo cómo el sol se escondía, prometiéndonos que veríamos muchos más atardeceres así.",
-                song: "🎵 Ojalá - Fondo Flamenco",
-                image: "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=400"
-            },
-            {
-                date: "13·11·2026",
-                title: "✈️ Primer viaje",
-                description: "Nuestra primera aventura juntos. Descubrimos que viajar contigo es el mejor plan del mundo.",
-                song: "🎵 Loco - La Beriso",
-                image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400"
-            },
-            {
-                date: "13·12·2026",
-                title: "🎄 Primera Navidad",
-                description: "Nuestra primera Navidad juntos. Regalos, abrazos y la certeza de que eres el mejor regalo.",
-                song: "🎵 Me Enamore Remix - Angel y Khriz",
-                image: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400"
-            }
-        ];
+        // ══════════════════════════════════════
+        //  CONFIGURACIÓN — MODO DIFÍCIL
+        // ══════════════════════════════════════
+        const ICONS = ['💜','🌟','🎵','🌹','🥂','✨','💫','🎁','💌','🔥','🌙','🍾','💍','🕊️','🎂','🧿'];
+        const PREVIEW_SECONDS = 3;
+        const TIME_LIMIT = 60;
+        const MISMATCH_DELAY = 550; // más rápido que el modo normal
 
-        let isPaused = false;
+        let deck = [];
+        let flipped = [];
+        let matchedCount = 0;
+        let moves = 0;
+        let lock = true;
+        let timeLeft = TIME_LIMIT;
+        let timerInterval = null;
+        let gameOver = false;
 
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 200; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 2 + 's';
-                starsContainer.appendChild(star);
+        const board = document.getElementById('board');
+        const movesVal = document.getElementById('movesVal');
+        const pairsVal = document.getElementById('pairsVal');
+        const timeVal = document.getElementById('timeVal');
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
+            return arr;
         }
 
-        // Generar línea del tiempo
-        function renderTimeline() {
-            const carousel = document.getElementById('timelineCarousel');
-            carousel.innerHTML = '';
+        function buildDeck() {
+            deck = shuffle([...ICONS, ...ICONS].map((icon, i) => ({ icon, id: i })));
+        }
 
-            moments.forEach((moment, index) => {
-                const item = document.createElement('div');
-                item.className = 'timeline-item';
-                item.style.setProperty('--i', index);
-                item.onclick = () => openModal(index);
-
-                item.innerHTML = `
-                    <div class="moment-card">
-                        <div class="moment-image" style="background-image: url('${moment.image}')">
-                            <div class="moment-date">${moment.date}</div>
-                        </div>
-                        <div class="moment-content">
-                            <div class="moment-title">${moment.title}</div>
-                            <div class="moment-description">${moment.description.substring(0, 50)}...</div>
-                            <div class="moment-song">${moment.song}</div>
-                        </div>
+        function render() {
+            board.innerHTML = '';
+            deck.forEach((cardData, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card preview';
+                card.dataset.idx = idx;
+                card.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-face card-back"></div>
+                        <div class="card-face card-front">${cardData.icon}</div>
                     </div>
                 `;
-
-                carousel.appendChild(item);
+                card.addEventListener('click', () => onCardClick(idx, card));
+                board.appendChild(card);
             });
         }
 
-        // Abrir modal
-        function openModal(index) {
-            const moment = moments[index];
-            document.getElementById('modalImage').style.backgroundImage = `url('${moment.image}')`;
-            document.getElementById('modalTitle').textContent = moment.title;
-            document.getElementById('modalDate').textContent = moment.date;
-            document.getElementById('modalDescription').textContent = moment.description;
-            document.getElementById('modalSong').textContent = moment.song;
-            document.getElementById('momentModal').style.display = 'flex';
+        function startPreview() {
+            lock = true;
+            const banner = document.getElementById('previewBanner');
+            const countEl = document.getElementById('previewCount');
+            banner.classList.add('show');
+            let n = PREVIEW_SECONDS;
+            countEl.textContent = n;
+            const iv = setInterval(() => {
+                n--;
+                if (n <= 0) {
+                    clearInterval(iv);
+                    banner.classList.remove('show');
+                    document.querySelectorAll('.card.preview').forEach(c => c.classList.remove('preview'));
+                    lock = false;
+                    startTimer();
+                } else {
+                    countEl.textContent = n;
+                }
+            }, 1000);
         }
 
-        function closeModal() {
-            document.getElementById('momentModal').style.display = 'none';
+        function startTimer() {
+            clearInterval(timerInterval);
+            timeLeft = TIME_LIMIT;
+            timeVal.textContent = timeLeft;
+            timerInterval = setInterval(() => {
+                if (gameOver) return;
+                timeLeft--;
+                timeVal.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showLose();
+                }
+            }, 1000);
         }
 
-        function pauseRotation() {
-            document.getElementById('timelineCarousel').style.animationPlayState = 'paused';
-        }
+        function onCardClick(idx, cardEl) {
+            if (lock || gameOver) return;
+            if (cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+            if (flipped.length === 2) return;
 
-        function resumeRotation() {
-            document.getElementById('timelineCarousel').style.animationPlayState = 'running';
-        }
+            cardEl.classList.add('flipped');
+            flipped.push({ idx, el: cardEl });
 
-        function addMoment() {
-            const newMoment = {
-                date: prompt("Fecha (ej: 13·07·2026):"),
-                title: prompt("Título del momento:"),
-                description: prompt("Descripción:"),
-                song: prompt("Canción relacionada:"),
-                image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400"
-            };
-
-            if (newMoment.date && newMoment.title) {
-                moments.push(newMoment);
-                renderTimeline();
+            if (flipped.length === 2) {
+                moves++;
+                movesVal.textContent = moves;
+                lock = true;
+                const [a, b] = flipped;
+                if (deck[a.idx].icon === deck[b.idx].icon) {
+                    setTimeout(() => {
+                        a.el.classList.add('matched');
+                        b.el.classList.add('matched');
+                        matchedCount++;
+                        pairsVal.textContent = matchedCount + '/' + ICONS.length;
+                        flipped = [];
+                        lock = false;
+                        if (matchedCount === ICONS.length) {
+                            clearInterval(timerInterval);
+                            setTimeout(showWin, 450);
+                        }
+                    }, 350);
+                } else {
+                    a.el.classList.add('wrong');
+                    b.el.classList.add('wrong');
+                    setTimeout(() => {
+                        a.el.classList.remove('flipped', 'wrong');
+                        b.el.classList.remove('flipped', 'wrong');
+                        flipped = [];
+                        lock = false;
+                    }, MISMATCH_DELAY);
+                }
             }
         }
 
-        // Abrir modal
-        function openModal(index) {
-            const moment = moments[index];
-            document.getElementById('modalImage').style.backgroundImage = `url('${moment.image}')`;
-            document.getElementById('modalTitle').textContent = moment.title;
-            document.getElementById('modalDate').textContent = moment.date;
-            document.getElementById('modalDescription').textContent = moment.description;
-            document.getElementById('modalSong').textContent = moment.song;
-            document.getElementById('momentModal').style.display = 'flex';
+        function showWin() {
+            gameOver = true;
+            const elapsed = TIME_LIMIT - timeLeft;
+            document.getElementById('winStats').textContent = `${moves} movimientos · ${elapsed}s empleados`;
+            document.getElementById('winOverlay').classList.add('show');
         }
 
-        function closeModal() {
-            document.getElementById('momentModal').style.display = 'none';
+        function showLose() {
+            gameOver = true;
+            document.getElementById('loseStats').textContent = `Llegaste a ${matchedCount}/${ICONS.length} parejas en ${moves} movimientos`;
+            document.getElementById('loseOverlay').classList.add('show');
         }
 
-        function pauseRotation() {
-            document.getElementById('timelineCarousel').style.animationPlayState = 'paused';
+        function hideOverlays() {
+            document.getElementById('winOverlay').classList.remove('show');
+            document.getElementById('loseOverlay').classList.remove('show');
         }
 
-        function resumeRotation() {
-            document.getElementById('timelineCarousel').style.animationPlayState = 'running';
+        function newGame() {
+            clearInterval(timerInterval);
+            hideOverlays();
+            matchedCount = 0;
+            moves = 0;
+            flipped = [];
+            gameOver = false;
+            lock = true;
+            movesVal.textContent = '0';
+            pairsVal.textContent = '0/' + ICONS.length;
+            timeVal.textContent = TIME_LIMIT;
+            buildDeck();
+            render();
+            startPreview();
         }
 
-        function addMoment() {
-            const newMoment = {
-                date: prompt("Fecha (ej: 13·07·2026):"),
-                title: prompt("Título del momento:"),
-                description: prompt("Descripción:"),
-                song: prompt("Canción relacionada:"),
-                image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400"
-            };
+        document.getElementById('restartBtn').addEventListener('click', newGame);
+        document.getElementById('winCloseBtn').addEventListener('click', hideOverlays);
+        document.getElementById('loseRetryBtn').addEventListener('click', newGame);
+        document.getElementById('loseCloseBtn').addEventListener('click', hideOverlays);
+        document.getElementById('winOverlay').addEventListener('click', function (e) { if (e.target === this) hideOverlays(); });
+        document.getElementById('loseOverlay').addEventListener('click', function (e) { if (e.target === this) hideOverlays(); });
 
-            if (newMoment.date && newMoment.title) {
-                moments.push(newMoment);
-                renderTimeline();
-            }
-        }
+        newGame();
 
-        // Inicializar
-        createStars();
-        renderTimeline();
-
-        // Click en fondo para cerrar modal
-        window.onclick = function (event) {
-            const modal = document.getElementById('momentModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
+        // Mobile menu toggle
+        (function () { var t = document.getElementById('menuToggle'), d = document.getElementById('mobileDrawer'); if (!t || !d) return; t.addEventListener('click', function () { t.classList.toggle('open'); d.classList.toggle('open'); }); d.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { t.classList.remove('open'); d.classList.remove('open'); }); }); })();
     </script>
 </body>
 
